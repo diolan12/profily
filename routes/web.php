@@ -13,6 +13,10 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return view('main');//$router->app->version();
+$router->get('/v', function () use ($router) {
+    $router->app->version();
 });
+$router->get('/', 'Main@index');
+$router->get('/product', 'Main@product');
+$router->get('/contact', 'Main@contact');
+$router->get('/about', 'Main@about');
