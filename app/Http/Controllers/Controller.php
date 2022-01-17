@@ -15,7 +15,7 @@ class Controller extends BaseController
     {
         //
     }
-    protected $data = [
+    protected $extra = [
         'nav' => [
             'active' => 'home'
         ],
@@ -25,6 +25,6 @@ class Controller extends BaseController
     ];
     
     protected function bootstrap() {
-        return view('main', $this->data);
+        return view('main', $this->extra);
     }
 }
