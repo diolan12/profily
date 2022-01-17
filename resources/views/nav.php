@@ -1,12 +1,15 @@
 <div class="navbar-fixed">
     <nav id="home" class="pink darken-3" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">Chintia Coffee</a>
+            <a href="<?= url()?>" class="logo">
+                
+            <img src="<?= url('assets/img/logo-chintia.png'); ?>" class="" alt="" />
+            </a>
             <ul class="right hide-on-med-and-down">
                 <li><a href="<?= url('/')?>" <?php if ($active == 'home') echo 'class="active"' ?>>Home</a></li>
                 <li><a href="<?= url('/product')?>"  <?php if ($active == 'product') echo 'class="active"' ?>>Product</a></li>
                 <li><a href="<?= url('/contact')?>"  <?php if ($active == 'contact') echo 'class="active"' ?>>Contact</a></li>
-                <li><a href="<?= url('/about')?>"  <?php if ($active == 'about') echo 'class="active"' ?>>About Us</a></li>
+                <li><a href="<?= url('/about')?>"  <?php if ($active == 'about us') echo 'class="active"' ?>>About Us</a></li>
             </ul>
 
 
@@ -16,7 +19,7 @@
 </div>
 <ul id="nav-mobile" class="sidenav">
     <li><a href="<?= url('/')?>"  <?php if ($active == 'home') echo 'class="active"' ?>>Home</a></li>
-    <li><a href="<?= url('/product')?>">Product</a></li>
-    <li><a href="<?= url('/contact')?>">Contact</a></li>
-    <li><a href="<?= url('/about')?>">About Us</a></li>
+    <li><a href="<?= url('/product')?>" <?php if ($active == 'product') echo 'class="active"' ?>>Product</a></li>
+    <li><a href="<?= url('/contact')?>" <?php if ($active == 'contact') echo 'class="active"' ?>>Contact</a></li>
+    <li><a href="<?= url('/about')?>" <?php if ($active == 'about us') echo 'class="active"' ?>>About Us</a></li>
 </ul>
