@@ -2,7 +2,9 @@
     <div class="section no-pad-bot">
         <div class="container">
             <br><br>
-            <h1 class="header center pink-text text-darken-3">Chintia Coffee</h1>
+            <div class="header center pink-text text-darken-3">
+            <img src="<?= url('assets/img/logo-chintia.png'); ?>" class="responsive-img" alt="" />
+</div>
             <div class="row center">
                 <h5 class="header col s12 light white-text ">A modern responsive front-end framework based on Material Design</h5>
             </div>
