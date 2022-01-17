@@ -1,3 +1,13 @@
+.logo {
+    display: inline-block;
+    height: 100%;
+}
+
+.logo>img {
+    vertical-align: middle;
+    max-height: 64px;
+}
+
 a.active {
     background-color: rgba(0, 0, 0, 0.1);
 }
