@@ -16,29 +16,29 @@ class Main extends Controller
 
     public function index()
     {
-        $this->data['nav']['active'] = 'home';
-        $this->data['content']['main'] = 'content.home';
+        $this->extra['nav']['active'] = 'home';
+        $this->extra['content']['main'] = 'content.home';
         return $this->bootstrap();
     }
 
     public function product()
     {
-        $this->data['nav']['active'] = 'product';
-        $this->data['content']['main'] = 'content.product';
+        $this->extra['nav']['active'] = 'product';
+        $this->extra['content']['main'] = 'content.product';
         return $this->bootstrap();
     }
 
     public function contact()
     {
-        $this->data['nav']['active'] = 'contact';
-        $this->data['content']['main'] = 'content.contact';
+        $this->extra['nav']['active'] = 'contact';
+        $this->extra['content']['main'] = 'content.contact';
         return $this->bootstrap();
     }
 
     public function about()
     {
-        $this->data['nav']['active'] = 'about';
-        $this->data['content']['main'] = 'content.about';
+        $this->extra['nav']['active'] = 'about us';
+        $this->extra['content']['main'] = 'content.about';
         return $this->bootstrap();
     }
 }
