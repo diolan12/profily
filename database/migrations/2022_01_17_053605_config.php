@@ -6,14 +6,27 @@ use Illuminate\Support\Facades\Schema;
 
 class Config extends Migration
 {
+    static $name = 'configs';
     /**
      * Run the migrations.
      *
      * @return void
      */
     public function up()
-    {
-        //
+    {Schema::defaultStringLength(256);
+        Schema::create(self::$name, function (Blueprint $table) {
+            $table->id();
+            $table->string('key', 32)->index()->unique();
+            $table->string('val1', 256)->nullable();
+            $table->string('val2', 256)->nullable();
+            $table->string('val3', 256)->nullable();
+            $table->string('val4', 256)->nullable();
+            $table->string('val5', 256)->nullable();
+            $table->string('val6', 256)->nullable();
+            $table->string('val7', 256)->nullable();
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -23,6 +36,6 @@ class Config extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists(self::$name);
     }
 }

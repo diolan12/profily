@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-class Main extends Controller
+class Main extends BaseViewController
 {
+    protected function configure($key) {
+        return $this->config[$key];
+    }
     /**
      * Create a new controller instance.
      *
@@ -11,7 +14,7 @@ class Main extends Controller
      */
     public function __construct()
     {
-        //
+        parent::__construct();
     }
 
     public function index()

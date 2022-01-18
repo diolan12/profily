@@ -23,7 +23,7 @@
         <!--   Icon Section   -->
         <div class="row">
             <div class="col s12 m4">
-                <div class="icon-block" scroll="showcase">
+                <div class="icon-block">
                     <h2 class="center pink-text"><i class="material-icons">flash_on</i></h2>
                     <h5 class="center">Speeds up development</h5>
 
@@ -32,7 +32,7 @@
             </div>
 
             <div class="col s12 m4">
-                <div class="icon-block" scroll="showcase">
+                <div class="icon-block">
                     <h2 class="center pink-text"><i class="material-icons">group</i></h2>
                     <h5 class="center">User Experience Focused</h5>
 
@@ -41,7 +41,7 @@
             </div>
 
             <div class="col s12 m4">
-                <div class="icon-block" scroll="showcase">
+                <div class="icon-block">
                     <h2 class="center pink-text"><i class="material-icons">settings</i></h2>
                     <h5 class="center">Easy to work with</h5>
 
@@ -161,17 +161,11 @@
     </div>
 </div>
 
-
-<div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-        <div class="container">
-            <div class="row center">
-                <h5 class="header col s12 light white-text">A modern responsive front-end framework based on Material Design</h5>
-            </div>
-        </div>
-    </div>
-    <div class="parallax"><img src="https://materializecss.com/templates/parallax-template/background2.jpg" alt="Unsplashed background img 2"></div>
-</div>
+<?= component('parallax', [
+    'text' => 'A modern responsive front-end framework based on Material Design',
+    'image' => 'https://materializecss.com/templates/parallax-template/background2.jpg',
+    'alt' => 'Unsplashed background img 2'
+])?>
 
 <div class="container">
     <div class="section">
@@ -187,14 +181,8 @@
     </div>
 </div>
 
-
-<div class="parallax-container valign-wrapper">
-    <div class="section no-pad-bot">
-        <div class="container">
-            <div class="row center">
-                <h5 class="header col s12 light white-text">A modern responsive front-end framework based on Material Design</h5>
-            </div>
-        </div>
-    </div>
-    <div class="parallax"><img src="https://materializecss.com/templates/parallax-template/background3.jpg" alt="Unsplashed background img 3"></div>
-</div>
+<?= component('parallax', [
+    'text' => 'A modern responsive front-end framework based on Material Design',
+    'image' => 'https://materializecss.com/templates/parallax-template/background3.jpg',
+    'alt' => 'Unsplashed background img 3'
+])?>

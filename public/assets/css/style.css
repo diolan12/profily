@@ -8,6 +8,10 @@
     max-height: 64px;
 }
 
+.header>img {
+    max-height: 96px;
+}
+
 a.active {
     background-color: rgba(0, 0, 0, 0.1);
 }
