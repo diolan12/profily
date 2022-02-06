@@ -16,10 +16,24 @@
 $router->get('/v', function () use ($router) {
     $router->app->version();
 });
+$router->get('/key', function() {
+    return \Illuminate\Support\Str::random(32);
+});
+
 $router->get('/', 'Main@index');
 $router->get('/product', 'Main@product');
-$router->get('/contact', 'Main@contact');
-$router->get('/about', 'Main@about');
+$router->get('/product/{productName}', 'Main@productAt');
+$router->get('/commodity/{commodity}', 'Main@productWhereCommodity');
+$router->get('/gallery', 'Main@gallery');
+$router->get('/cookies-policy', 'Main@cookies_policy');
+
+$router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi'], function () use ($router) {
+    $router->get('/', 'Dashboard@home');
+    $router->get('/home', 'Dashboard@home');
+    $router->get('/product', 'Main@product');
+    $router->get('/product/{productName}', 'Main@productAt');
+    $router->get('/about', 'Main@about');
+});
 
 $router->group(['prefix' => 'auth'], function () use ($router) {
     $router->post('login', ['uses' => 'AuthController@login']);

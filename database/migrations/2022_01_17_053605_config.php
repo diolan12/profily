@@ -17,6 +17,7 @@ class Config extends Migration
         Schema::create(self::$name, function (Blueprint $table) {
             $table->id();
             $table->string('key', 32)->index()->unique();
+            $table->string('type', 256);
             $table->string('val1', 256)->nullable();
             $table->string('val2', 256)->nullable();
             $table->string('val3', 256)->nullable();

@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Crawl-delay: 5
+
+Sitemap: https://primaagrindo.com
+
+User-agent: *
+Allow: /home
+
+User-agent: *
+Allow: /product

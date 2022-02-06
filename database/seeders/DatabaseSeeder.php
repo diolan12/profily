@@ -15,6 +15,12 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             Init::class,
+            Commodity::class,
+            Type::class,
+            Product::class,
+            Spesification::class,
+            SubSpesification::class,
+            Image::class,
         ]);
     }
 }

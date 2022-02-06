@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Laravel\Lumen\Routing\Controller;
+use Illuminate\Http\Request;
 use App\Models\Rest\Config;
+use App\Models\Rest\Visitor;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\URL;
 
 class BaseViewController extends Controller
 {
@@ -19,22 +23,93 @@ class BaseViewController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->config = config_parser(Config::all());
+
+        $fullurl = ($_SERVER['REQUEST_URI']);
+        $trimmed = trim($fullurl, ".php");
+        $this->extra['meta']['canonical'] = URL::current(); // rtrim($trimmed, '/') . '/';
+
+        $visitor = [
+            'ip' => $request->ip(),
+            'browser' => $request->userAgent(),
+            'country' => '',
+            // 'server' => $_SERVER
+        ];
+        // Visitor::create($visitor);
+        $this->extra['visitor'] = $visitor;
     }
+    protected $data = [];
     protected $extra = [
+        'meta' => [
+            'title' => '',
+            'description' => 'Permata Agrindo is engaged in general supplier, general trading ,and distributor as well as cultivation in agriculture. We partner with Indonesian farmers to produce the highest quality products. We can be sure that our products are of superior quality.',
+            'keywords' => [
+                // make website keywords about Permata Agrindo, coffee, and coffee production
+                'permata agrindo coffee',
+                'permata agrindo coffee production',
+                'permata agrindo coffee production indonesia',
+                'Permata Agrindo',
+                'Permata Agrindo Indonesia',
+                'Permata Agrindo Indonesia Supplier',
+                'Permata Agrindo Indonesia Distributor',
+                'Permata Agrindo Indonesia Agriculture',
+                'Permata Agrindo Indonesia Agriculture Supplier',
+                'Permata Agrindo Indonesia Agriculture Distributor',
+                'Coffee',
+                'Coffee Supplier',
+                'Coffee Distributor',
+                'Coffee Agriculture',
+                'Coffee Agriculture Supplier',
+                'Coffee Agriculture Distributor',
+            ],
+            'image' => '',
+            'url' => ''
+        ],
         'nav' => [
             'active' => 'home'
         ],
         'content' => [
             'main' => 'content.home'
-        ]
+        ],
+        'pagination' => null,
     ];
-    
-    protected function bootstrap() {
-        $this->extra['config'] = (object) $this->config;
+
+    protected function setupPaginations(string $path, int $current, int $total){
+
+        $this->extra['pagination'] = (object) [
+            'path' => $path,
+            'current' => $current,
+            'total' => $total
+        ];
+    }
+
+    protected function load($model)
+    {
+        if (!is_array($model)) {
+            if ($model != null) {
+                $m = "App\\Models\\Rest\\" . ucwords($model);
+                $this->$model = new $m;
+            }
+        } else {
+            foreach ($model as $key => $value) {
+                $m = "App\\Models\\Rest\\" . ucwords($value);
+                (object) $this->$value = new $m;
+            }
+        }
+    }
+
+    protected function bootstrap($dashboard = false)
+    {
+        $this->extra['config'] = (object) json_decode(json_encode($this->config));
+        $this->extra['data'] = (object) json_decode(json_encode($this->data));
         $this->extra['extra'] = $this->extra;
-        return view('main', $this->extra);
+        $this->extra['extra']['extra'] = $this->extra;
+        if ($dashboard) {
+            return view('dashboard', $this->extra);
+        } else {
+            return view('main', $this->extra);
+        }
     }
 }
