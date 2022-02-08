@@ -40,14 +40,6 @@ class Product extends BaseModel
      */
     protected $hidden = [];
 
-    // public function getImageAttribute($value)
-    // {
-    //     if ($value == null) {
-    //         return null;
-    //     }
-    //     return asset('img/' . $value);
-    // }
-
     protected $relations = ['commodity', 'type', 'specification', 'specification.subspecification', 'image'];
 
     public function specification()

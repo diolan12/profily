@@ -1,11 +1,5 @@
 <?php
-// echo 'hello world!<br/>';
-// echo $config->web_brand_text.'<br/>';
-// foreach ($config as $key => $value) {
-//     echo $key .' = '. $value.'<br/>';
-// }
-// dd($config);
-// var_dump($config);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,14 +19,14 @@
     <link rel="stylesheet" href="<?= asset('css/style.css') ?>">
     <style>
         blockquote {
-            border-left: 5px solid <?= color($config->color->accent, false, false, true)?> !important;
+            border-left: 5px solid <?= color($config->color->accent, false, false, true) ?> !important;
         }
     </style>
 
     <script type="text/javascript" src="<?= asset('js/materialize.min.js') ?>"></script>
     <script type="text/javascript" src="<?= asset('js/jquery-2.1.1.min.js') ?>"></script>
     <script type="text/javascript" src="<?= asset('js/chart.min.js') ?>"></script>
-    
+
     <link rel="apple-touch-icon" sizes="57x57" href="<?= asset('img/icon/apple-icon-57x57.png') ?>">
     <link rel="apple-touch-icon" sizes="60x60" href="<?= asset('img/icon') ?>/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="<?= asset('img/icon') ?>/apple-icon-72x72.png">
@@ -60,21 +54,13 @@
 
         <?= view($content['main'], $extra) ?>
 
-        <?= component('pagination', $extra)?>
+        <?= component('pagination', $extra) ?>
 
         <?= view('footer', $extra) ?>
         <canvas class="hide" id="myChart" width="400" height="300"></canvas>
     </main>
 
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large teal accent-4">
-            <i class="large material-icons">whatsapp</i>
-        </a>
-        <ul>
-            <li><a class="btn-floating yellow darken-2 tooltipped modal-trigger" href="#cookies-policy"data-position="left" data-tooltip="Cookies Policy"><i class="material-icons">gavel</i></a></li>
-            <li><a class="btn-floating teal accent-4 tooltipped" href="<?= $config->connect->connect_whatsapp->val2?>" data-position="left" data-tooltip="Chat via Whatsapp" target="_blank"><i class="material-icons">whatsapp</i></a></li>
-        </ul>
-    </div>
+    <?= component('fab', $extra) ?>
 
     <?= component('cookie', $extra) ?>
 

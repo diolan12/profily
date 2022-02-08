@@ -14,7 +14,7 @@ class BaseViewController extends Controller
     /**
      * Configuration from database.
      *
-     * @var object[] $config
+     * @var object $config
      */
     protected $config;
 
@@ -26,21 +26,24 @@ class BaseViewController extends Controller
     public function __construct(Request $request)
     {
         $this->config = config_parser(Config::all());
-
-        $fullurl = ($_SERVER['REQUEST_URI']);
-        $trimmed = trim($fullurl, ".php");
-        $this->extra['meta']['canonical'] = URL::current(); // rtrim($trimmed, '/') . '/';
-
-        $visitor = [
-            'ip' => $request->ip(),
-            'browser' => $request->userAgent(),
-            'country' => '',
-            // 'server' => $_SERVER
+        $this->extra['meta']['canonical'] = URL::current();
+        $this->extra['fab'] = (object) [
+            'whatsapp' => null
         ];
-        // Visitor::create($visitor);
-        $this->extra['visitor'] = $visitor;
     }
+
+    /**
+     * Data payload from required models.
+     *
+     * @var object[] $data
+     */
     protected $data = [];
+
+    /**
+     * Extra data required by views.
+     *
+     * @var object[] $data
+     */
     protected $extra = [
         'meta' => [
             'title' => '',
@@ -74,10 +77,13 @@ class BaseViewController extends Controller
             'main' => 'content.home'
         ],
         'pagination' => null,
+        'fab' => [
+            'whatsapp' => null
+        ]
     ];
 
-    protected function setupPaginations(string $path, int $current, int $total){
-
+    protected function setupPaginations(string $path, int $current, int $total)
+    {
         $this->extra['pagination'] = (object) [
             'path' => $path,
             'current' => $current,
@@ -85,6 +91,21 @@ class BaseViewController extends Controller
         ];
     }
 
+    protected function setupWhatsap(string $tooltip, string $link)
+    {
+        $this->extra['fab'] = (object) [
+            'whatsapp' => (object) [
+                'tooltip' => $tooltip,
+                'link' => $link
+            ]
+        ];
+    }
+    /**
+     * Create a new controller instance.
+     *
+     * @param string or string[] $model
+     * @return void
+     */
     protected function load($model)
     {
         if (!is_array($model)) {

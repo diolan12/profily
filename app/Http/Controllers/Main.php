@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\Models\Rest\Visitor;
+use App\Models\Rest\View;
 
 class Main extends BaseViewController
 {
@@ -54,7 +55,6 @@ class Main extends BaseViewController
         $this->load(['product', 'commodity']);
         $this->extra['meta']['title'] = 'Products';
 
-
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'content.products';
 
@@ -79,15 +79,31 @@ class Main extends BaseViewController
         $this->load('product');
         $this->extra['meta']['title'] = kebab_to_beauty($productName);
 
+        $text = urlencode("Hello, I'm interested about " . kebab_to_beauty($productName));
+        $link = $this->config->connect['connect_whatsapp']['val2'] . '?text=' . $text;
+        $this->setupWhatsap('Chat about ' . kebab_to_beauty($productName), $link);
+
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'content.product';
 
         $this->data['product'] = $this->product->with($this->product->getRelations())->where('name', kebab_to_beauty($productName))->first();
 
         $this->extra['meta']['description'] = $this->data['product']['description'];
-        
+
         if ($this->data['product'] == null) {
             abort(404, "Product " . kebab_to_beauty($productName) . " not found");
+        }
+
+        $todayProductView = View::whereDate('created_at', Carbon::today())->where('product', $this->data['product']['id'])->get();
+        if ($todayProductView->count() == 0) {
+            View::create([
+                'product' => $this->data['product']['id'],
+            ]);
+        } else {
+            $productView = $todayProductView->first();
+            $productView->product = $this->data['product']['id'];
+            $productView->count = $productView->count + 1;
+            $productView->save();
         }
 
         return $this->bootstrap();
@@ -96,7 +112,7 @@ class Main extends BaseViewController
     public function productWhereCommodity(Request $request, $commodity)
     {
         $this->load(['product', 'commodity']);
-        
+
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'content.commodities';
 
@@ -117,7 +133,7 @@ class Main extends BaseViewController
 
         $this->data['products'] = $this->product->offset($offset)->limit($limit)->with($this->product->getRelations())->where('commodity', $this->data['commodity']['id'])->get();
 
-        $this->setupPaginations('commodity/'.beauty_to_kebab($this->data['commodity']['name']), $paginator->current, $paginator->total);
+        $this->setupPaginations('commodity/' . beauty_to_kebab($this->data['commodity']['name']), $paginator->current, $paginator->total);
 
         return $this->bootstrap();
     }
@@ -134,7 +150,7 @@ class Main extends BaseViewController
 
         return $this->bootstrap();
     }
-    
+
     public function cookies_policy()
     {
         $this->extra['meta']['title'] = 'Cookies Policy';
