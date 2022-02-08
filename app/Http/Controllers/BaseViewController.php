@@ -128,7 +128,7 @@ class BaseViewController extends Controller
         $this->extra['extra'] = $this->extra;
         $this->extra['extra']['extra'] = $this->extra;
         if ($dashboard) {
-            return view('dashboard', $this->extra);
+            return view('main-dashboard', $this->extra);
         } else {
             return view('main', $this->extra);
         }

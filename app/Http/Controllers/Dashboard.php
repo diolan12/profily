@@ -22,8 +22,9 @@ class Dashboard extends BaseViewController
 
     public function home()
     {
+        $this->extra['meta']['title'] = 'Home';
         $this->extra['nav']['active'] = 'home';
-        $this->extra['content']['main'] = 'content.home';
+        $this->extra['content']['main'] = 'dashboard.home';
         return $this->bootstrap(true);
     }
 

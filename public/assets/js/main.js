@@ -1,4 +1,3 @@
-// import './materialize.min.js';
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.scrollspy');
     var activateds = document.querySelectorAll('.activated');
@@ -16,11 +15,10 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         activeClass: 'active'
     };
-    var instances = M.ScrollSpy.init(elems, options);
-    console.log(extra)
+    var scrollSpy = M.ScrollSpy.init(elems, options);
 
     var elems = document.querySelectorAll('.slider');
-    var instances = M.Slider.init(elems, options);
+    var slider = M.Slider.init(elems, options);
 });
 (function($) {
     $(function() {
