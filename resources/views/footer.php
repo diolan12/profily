@@ -8,6 +8,9 @@
         <div class="col s5 l3">
             <h5 class="white-text">Useful Links</h5>
             <ul>
+                <?php if ($user != null) : ?>
+                    <li><a href="<?= rootDashboard() ?>" class="white-text">Dashboard</a></li>
+                <?php endif; ?>
                 <li><a href="<?= root('gallery') ?>" class="white-text">Gallery</a></li>
                 <li><a href="<?= root('cookies-policy') ?>" class="white-text">Cookies Policy</a></li>
             </ul>
