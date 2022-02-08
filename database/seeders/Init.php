@@ -149,14 +149,5 @@ class Init extends Seeder
             'val3' => 'Whatsapp',
             'created_at' => Carbon::now('UTC')
         ]);
-        // DB::table(self::$name)->insert([
-        //     'key' => 'connect_facebook',
-        //     'type' => 'connect',
-        //     'val1' => 'link',
-        //     'val2' => 'https://www.facebook.com/douw.b.ii/',
-        //     'val3' => 'Facebook',
-        //     'created_at' => Carbon::now('UTC')
-        // ]);
-        
     }
 }

@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         $this->call([
+            Role::class,
             Init::class,
             Commodity::class,
             Type::class,
@@ -21,6 +22,7 @@ class DatabaseSeeder extends Seeder
             Spesification::class,
             SubSpesification::class,
             Image::class,
+            User::class
         ]);
     }
 }
