@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use Laravel\Lumen\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rest\Config;
-use App\Models\Rest\Visitor;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 
 class BaseViewController extends Controller
@@ -30,6 +28,11 @@ class BaseViewController extends Controller
         $this->extra['fab'] = (object) [
             'whatsapp' => null
         ];
+
+        if ($request->user() != null) {
+            $this->load('user');
+            $this->extra['user'] = (object) json_decode(json_encode($this->user->with($this->user->getRelations())->where('id', $request->user()->id)->first()));
+        }
     }
 
     /**
@@ -45,6 +48,7 @@ class BaseViewController extends Controller
      * @var object[] $data
      */
     protected $extra = [
+        'user' => null,
         'meta' => [
             'title' => '',
             'description' => 'Permata Agrindo is engaged in general supplier, general trading ,and distributor as well as cultivation in agriculture. We partner with Indonesian farmers to produce the highest quality products. We can be sure that our products are of superior quality.',
@@ -76,11 +80,17 @@ class BaseViewController extends Controller
         'content' => [
             'main' => 'content.home'
         ],
+        'toast' => null,
         'pagination' => null,
         'fab' => [
             'whatsapp' => null
         ]
     ];
+
+    protected function toast(string $message)
+    {
+        $this->extra['toast'] = $message;
+    }
 
     protected function setupPaginations(string $path, int $current, int $total)
     {

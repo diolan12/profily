@@ -7,7 +7,8 @@ use App\Models\Rest\Product;
 
 class Dashboard extends BaseViewController
 {
-    protected function configure($key) {
+    protected function configure($key)
+    {
         return $this->config[$key];
     }
     /**
@@ -18,6 +19,10 @@ class Dashboard extends BaseViewController
     public function __construct(Request $request)
     {
         parent::__construct($request);
+        $ref = $request->server('HTTP_REFERER');
+        if ($ref == url() . rootAuth()) {
+            $this->toast('Welcome ' . $request->user()->name);
+        }
     }
 
     public function stat()
@@ -34,7 +39,7 @@ class Dashboard extends BaseViewController
         $this->extra['meta']['title'] = 'Product';
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'dashboard.products';
-        
+
         $this->data['products'] = $product->with($product->getRelations())->get();
 
         return $this->bootstrap();

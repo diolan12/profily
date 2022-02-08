@@ -6,7 +6,7 @@ use App\Models\Rest\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
-class AuthServiceProvider extends ServiceProvider
+class ApiAuthServiceProvider extends ServiceProvider
 {
     /**
      * Register any application services.
@@ -31,10 +31,8 @@ class AuthServiceProvider extends ServiceProvider
         // the User instance via an API token or any other method necessary.
 
         $this->app['auth']->viaRequest('api', function ($request) {
-            if ($request->cookie(auth_cookie)) {
-                $jwt = jwtDecode($request->cookie(auth_cookie));
-                $user = new User();
-                return $user->with($user->getRelations())->where('email', $jwt->aud)->first();
+            if ($request->input('api_token')) {
+                return User::where('api_token', $request->input('api_token'))->first();
             }
         });
     }

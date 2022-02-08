@@ -27,7 +27,7 @@ $router->get('/commodity/{commodity}', 'Main@productWhereCommodity');
 $router->get('/gallery', 'Main@gallery');
 $router->get('/cookies-policy', 'Main@cookies_policy');
 
-$router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi'], function () use ($router) {
+$router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 'auth'], function () use ($router) {
     $router->get('/', 'Dashboard@stat');
     $router->get('/home', 'Dashboard@stat');
     $router->get('/product', 'Main@product');
@@ -36,11 +36,13 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi'], function () use
     $router->get('/setting', 'Main@setting');
 });
 
-$router->group(['prefix' => 'auth'], function () use ($router) {
-    $router->post('login', ['uses' => 'AuthController@login']);
-    $router->get('verify', ['uses' => 'AuthController@verify', 'middleware' => 'auth']);
-    $router->post('photo', ['uses' => 'AuthController@uploadPicture', 'middleware' => 'auth']);
-    $router->post('password', ['uses' => 'AuthController@changePassword', 'middleware' => 'auth']);
+$router->group(['prefix' => 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq'], function () use ($router) {
+    $router->get('/', 'Auth@index');
+    $router->post('/', ['uses' => 'Auth@login']);
+    $router->get('logout', ['uses' => 'Auth@logout']);
+    $router->get('verify', ['uses' => 'Auth@verify', 'middleware' => 'auth']);
+    $router->post('photo', ['uses' => 'Auth@uploadPicture', 'middleware' => 'auth']);
+    $router->post('password', ['uses' => 'Auth@changePassword', 'middleware' => 'auth']);
 });
 $router->group(['prefix' => 'api/{table}'], function () use ($router) {
     // $router->group(['prefix' => 'api/{table}', 'middleware' => 'auth'], function () use ($router) {

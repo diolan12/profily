@@ -19,7 +19,7 @@
     <ul id="more" class="dropdown-content">
         <li><a href="<?= root() ?>"><i class="material-icons left">public</i>View Page</a></li>
         <li class="divider"></li>
-        <li><a href="#!"><i class="material-icons left">logout</i>Logout</a></li>
+        <li><a href="<?= rootAuth('logout') ?>"><i class="material-icons left">logout</i>Logout</a></li>
     </ul>
     <nav class="<?= color($config->color->primary) ?>" role="navigation">
         <div class="nav-wrapper">
@@ -40,9 +40,10 @@
             <div class="background">
                 <img src="https://materializecss.com/images/office.jpg">
             </div>
-            <a href="#user"><img class="circle" src="https://materializecss.com/images/yuna.jpg"></a>
-            <a href="#name"><span class="white-text name">John Doe</span></a>
-            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+            <a><img class="circle" src="<?= root($user->picture->file) ?>" alt="<?= $user->name ?>"></a>
+            <a><span class="white-text name"><?= $user->name ?></span></a>
+            <a><span class="white-text email"><?= $user->email ?></span></a>
+            <a><span class="white-text email"><?= $user->role->name ?></span></a>
         </div>
     </li>
     <li><a class="subheader">Data</a></li>

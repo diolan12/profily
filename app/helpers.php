@@ -1,5 +1,42 @@
 <?php
 
+use App\Models\Rest\User;
+use Firebase\JWT\JWT;
+use Firebase\JWT\Key;
+use Illuminate\Support\Facades\URL;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Hash;
+
+if (!function_exists('jwtEncode')) {
+    function jwtEncode(User $user, $age)
+    {
+        $payload = [
+            "iss" => URL::to('/'), // base url server ini
+            "sub" => "Dashboard Authorization",
+            "aud" => $user['email'], // api key s3 status
+            "iat" => (int) strtotime(time()),
+            "jti" => Hash::make($user['id']),
+            "name" => $user['name'],
+            "picture" => $user['picture'],
+            "email" => $user['email'],
+            "admin" => $user['role']
+        ];
+        return JWT::encode($payload, privateKey, algorithm);
+    }
+}
+
+if (!function_exists('jwtDecode')) {
+    function jwtDecode(string $jwt)
+    {
+        $key = new Key(publicKey, algorithm);
+        try {
+            return JWT::decode($jwt, $key);
+        } catch (Exception $exception) {
+            throw $exception;
+        }
+    }
+}
+
 if (!function_exists('offset')) {
     function offset(int $page, int $limit)
     {
@@ -20,7 +57,7 @@ if (!function_exists('paginator')) {
 if (!function_exists('cookie')) {
     function cookie($name, string $value = '', int $age = 0)
     {
-        return setcookie($name, $value, time()+60*$age);
+        return setcookie($name, $value, time()+60*$age, '/');
     }
 }
 
@@ -54,6 +91,16 @@ if (!function_exists('root')) {
             return $path;
         }
         return "/$path";
+    }
+}
+
+if (!function_exists('rootAuth')) {
+    function rootAuth($path = '/')
+    {
+        if ($path[0] == '/') {
+            return $path.'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq';
+        }
+        return "/rWVfHZH4ge8vmZAQvre5IaHKToURoEQq/$path";
     }
 }
 

@@ -76,9 +76,9 @@ $app->configure('app');
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -92,7 +92,7 @@ $app->configure('app');
 */
 
 // $app->register(App\Providers\AppServiceProvider::class);
-// $app->register(App\Providers\AuthServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 
 /*
@@ -111,5 +111,18 @@ $app->router->group([
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+
+/*
+|--------------------------------------------------------------------------
+| Application JWT Constants
+|--------------------------------------------------------------------------
+|
+| Here we will define the JWT configuration to be used by the helper.
+|
+*/
+define('auth_cookie', 'Tvqr7NbwVBvrCjhxXfujtYAaEjZkx4W6');
+define('algorithm', 'RS256');
+define('privateKey', file_get_contents(storage_path('rsa.private')));
+define('publicKey', file_get_contents(storage_path('rsa.public')));
 
 return $app;

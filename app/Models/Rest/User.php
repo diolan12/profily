@@ -17,10 +17,10 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     public function validation()
     {
         return [
-            'commodity' => '',
-            'type' => '',
+            'picture' => '',
             'name' => 'required',
-            'description' => ''
+            'email' => 'required',
+            'role' => ''
         ];
     }
 
@@ -36,7 +36,7 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
      * @var array
      */
     protected $fillable = [
-        'picture', 'name', 'email',
+        'picture', 'name', 'email', 'role'
     ];
 
     /**
@@ -48,11 +48,11 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
         'password',
     ];
 
-    protected $relations = ['image', 'role'];
+    protected $relations = ['picture', 'role'];
 
-    public function image()
+    public function picture()
     {
-        return $this->hasOne('App\Models\Rest\Image', 'id', 'image');
+        return $this->hasOne('App\Models\Rest\Image', 'id', 'picture');
     }
 
     public function role()
