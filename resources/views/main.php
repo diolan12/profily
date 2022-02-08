@@ -67,6 +67,8 @@
     <?= component('fab', $extra) ?>
 
     <?= component('cookie', $extra) ?>
+    
+    <?= component('toast', $extra) ?>
 
     <!--  Scripts-->
     <?php if (getenv('APP_DEBUG')) : ?>
