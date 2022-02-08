@@ -1,13 +1,13 @@
 <div class="container">
     <div class="row">
-        <div class="col s6 l3">
+        <div class="col s12 m6">
             <h5 class="white-text">Useful Links</h5>
             <ul>
                 <li><a href="<?= root('gallery') ?>" class="white-text">Gallery</a></li>
                 <li><a href="<?= root('cookies-policy') ?>" class="white-text">Cookies Policy</a></li>
             </ul>
         </div>
-        <div class="col s6 l3">
+        <div class="col s12 m6">
             <h5 class="white-text">Developer</h5>
 
             <ul>
