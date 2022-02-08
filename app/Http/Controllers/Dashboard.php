@@ -20,10 +20,10 @@ class Dashboard extends BaseViewController
         parent::__construct($request);
     }
 
-    public function home()
+    public function stat()
     {
-        $this->extra['meta']['title'] = 'Home';
-        $this->extra['nav']['active'] = 'home';
+        $this->extra['meta']['title'] = 'Statistics';
+        $this->extra['nav']['active'] = 'stats';
         $this->extra['content']['main'] = 'dashboard.home';
         return $this->bootstrap(true);
     }
