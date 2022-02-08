@@ -49,12 +49,13 @@
         <div class="divider"></div>
     </li>
     <li><a class="subheader">Data</a></li>
-    <li><a href="<?= rootDashboard() ?>"><i class="material-icons">dashboard</i>Home</a></li>
-    <li><a href="<?= rootDashboard('product') ?>"><i class="material-icons">inventory_2</i>Products</a></li>
+    <li><a href="<?= rootDashboard() ?>" <?php if ($nav['active'] == 'stats') echo 'class="active"' ?>><i class="material-icons">dashboard</i>Statistics</a></li>
+    <li><a href="<?= rootDashboard('product') ?>" <?php if ($nav['active'] == 'product') echo 'class="active"' ?>><i class="material-icons">inventory_2</i>Products</a></li>
+    <li><a href="<?= rootDashboard('user') ?>" <?php if ($nav['active'] == 'user') echo 'class="active"' ?>><i class="material-icons">group</i>Users</a></li>
     <li>
         <div class="divider"></div>
     </li>
     <li><a class="subheader">Brand</a></li>
-    <li><a class="waves-effect" href="#!"><i class="material-icons">info</i>About</a></li>
-    <li><a class="waves-effect" href="#!"><i class="material-icons">settings</i>Settings</a></li>
+    <li><a class="waves-effect" href="#!" <?php if ($nav['active'] == 'about') echo 'class="active"' ?>><i class="material-icons">info</i>About</a></li>
+    <li><a class="waves-effect" href="#!" <?php if ($nav['active'] == 'setting') echo 'class="active"' ?>><i class="material-icons">settings</i>Settings</a></li>
 </ul>
