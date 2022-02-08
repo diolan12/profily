@@ -81,7 +81,7 @@ class Main extends BaseViewController
 
         $text = urlencode("Hello, I'm interested about " . kebab_to_beauty($productName));
         $link = $this->config->connect['connect_whatsapp']['val2'] . '?text=' . $text;
-        $this->setupWhatsap('Chat about ' . kebab_to_beauty($productName), $link);
+        $this->setupWhatssap('Chat about ' . kebab_to_beauty($productName), $link);
 
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'content.product';
@@ -94,16 +94,15 @@ class Main extends BaseViewController
             abort(404, "Product " . kebab_to_beauty($productName) . " not found");
         }
 
-        $todayProductView = View::whereDate('created_at', Carbon::today())->where('product', $this->data['product']['id'])->get();
-        if ($todayProductView->count() == 0) {
+        $todayProductView = View::whereDate('created_at', Carbon::today())->where('product', $this->data['product']['id'])->first();
+        if ($todayProductView == null) {
             View::create([
                 'product' => $this->data['product']['id'],
             ]);
         } else {
-            $productView = $todayProductView->first();
-            $productView->product = $this->data['product']['id'];
-            $productView->count = $productView->count + 1;
-            $productView->save();
+            $todayProductView->product = $this->data['product']['id'];
+            $todayProductView->count = $todayProductView->count + 1;
+            $todayProductView->save();
         }
 
         return $this->bootstrap();

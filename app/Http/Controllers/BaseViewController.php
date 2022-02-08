@@ -101,7 +101,7 @@ class BaseViewController extends Controller
         ];
     }
 
-    protected function setupWhatsap(string $tooltip, string $link)
+    protected function setupWhatssap(string $tooltip, string $link)
     {
         $this->extra['fab'] = (object) [
             'whatsapp' => (object) [
