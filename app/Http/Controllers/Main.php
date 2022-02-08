@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Cookie;
 use Carbon\Carbon;
 use App\Models\Rest\Visitor;
 
 class Main extends BaseViewController
 {
+    static $default_item_show = 8;
     protected function configure($key)
     {
         return $this->config[$key];
@@ -59,7 +59,7 @@ class Main extends BaseViewController
         $this->extra['content']['main'] = 'content.products';
 
         $page = (int) $request->input('page', 1);
-        $limit = (int) $request->input('show', 6);
+        $limit = (int) $request->input('show', $this::$default_item_show);
         $offset = offset($page, $limit);
 
         $count = $this->product->count();
@@ -109,7 +109,7 @@ class Main extends BaseViewController
         $this->extra['meta']['description'] = $this->data['commodity']['description1'];
 
         $page = (int) $request->input('page', 1);
-        $limit = (int) $request->input('show', 6);
+        $limit = (int) $request->input('show', $this::$default_item_show);
         $offset = offset($page, $limit);
         $count = $this->product->where('commodity', $this->data['commodity']['id'])->count();
 
