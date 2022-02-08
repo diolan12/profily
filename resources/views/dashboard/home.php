@@ -1,4 +1,6 @@
-<canvas id="myChart" width="400" height="300"></canvas>
+<div class="container">
+    <canvas id="myChart" width="400" height="300"></canvas>
+</div>
 <script>
     const ctx = document.getElementById('myChart').getContext('2d');
     const myChart = new Chart(ctx, {

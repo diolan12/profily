@@ -31,8 +31,9 @@ class Dashboard extends BaseViewController
     public function product()
     {
         $product = new Product();
+        $this->extra['meta']['title'] = 'Product';
         $this->extra['nav']['active'] = 'product';
-        $this->extra['content']['main'] = 'content.products';
+        $this->extra['content']['main'] = 'dashboard.products';
         
         $this->data['products'] = $product->with($product->getRelations())->get();
 

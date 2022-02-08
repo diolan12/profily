@@ -3,7 +3,7 @@
         <div class="col l6 s12">
             <h5 class="white-text">Company Bio</h5>
             <p class="white-text"><?= $config->brand->about->val1 ?></p>
-
+            <p class="white-text"><?= $config->brand->information->val2 ?>, <?= $config->brand->information->val3 ?></p>
         </div>
         <div class="col s5 l3">
             <h5 class="white-text">Useful Links</h5>

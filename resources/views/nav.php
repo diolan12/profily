@@ -1,6 +1,6 @@
 <div class="navbar-fixed">
     <nav class="<?= color($config->color->primary) ?>" role="navigation">
-        <div class="nav-wrapper container">
+        <div class="nav-wrapper">
 
             <?php if ($config->web->brand_type->val1 == 'logo') : ?>
                 <a href="<?= root() ?>" class="logo">
@@ -16,7 +16,6 @@
                 <li><a scroll="product" href="<?= root('/product') ?>" <?php if ($nav['active'] == 'product') echo 'class="active"' ?>>Product</a></li>
                 <li><a scroll="shipping" class="activated" href="<?= root('/#shipping') ?>">Shipping & Payment</a></li>
                 <li><a scroll="testimony" class="activated" href="<?= root('/#testimony') ?>">Testimony</a></li>
-                <!-- <li><a href="<?= root('/gallery') ?>" <?php if ($nav['active'] == 'gallery') echo 'class="active"' ?>>Gallery</a></li> -->
             </ul>
 
 
@@ -30,5 +29,4 @@
     <li><a scroll="product" href="<?= root('/product') ?>" <?php if ($nav['active'] == 'product') echo 'class="active"' ?>>Product</a></li>
     <li><a scroll="shipping" class="activated" href="<?= root('/#shipping') ?>">Shipping & Payment</a></li>
     <li><a scroll="testimony" class="activated" href="<?= root('/#testimony') ?>">Testimony</a></li>
-    <!-- <li><a href="<?= root('/gallery') ?>" <?php if ($nav['active'] == 'gallery') echo 'class="active"' ?>>Gallery</a></li> -->
 </ul>

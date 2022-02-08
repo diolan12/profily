@@ -57,6 +57,16 @@ if (!function_exists('root')) {
     }
 }
 
+if (!function_exists('rootDashboard')) {
+    function rootDashboard($path = '/')
+    {
+        if ($path[0] == '/') {
+            return $path.'J2mV38xHiH4abejTlpY9pXhbGtubTCZi';
+        }
+        return "/J2mV38xHiH4abejTlpY9pXhbGtubTCZi/$path";
+    }
+}
+
 if (!function_exists('asset')) {
     function asset($path)
     {

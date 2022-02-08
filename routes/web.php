@@ -33,6 +33,7 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi'], function () use
     $router->get('/product', 'Main@product');
     $router->get('/product/{productName}', 'Main@productAt');
     $router->get('/about', 'Main@about');
+    $router->get('/setting', 'Main@setting');
 });
 
 $router->group(['prefix' => 'auth'], function () use ($router) {
