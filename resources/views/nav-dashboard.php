@@ -26,7 +26,7 @@
 
             <a id="logo-container" href="<?= rootDashboard() ?>" class="brand-logo">Dashboard</a>
 
-            <ul class="right hide-on-med-and-down">
+            <ul class="right">
                 <li><a class="dropdown-trigger" data-target="more"><i class="material-icons">more_vert</i></a></li>
             </ul>
 
