@@ -20,7 +20,7 @@ class Product extends Migration
             $table->foreignId('type')->nullable();
             $table->string('name', 32)->index()->unique();
             $table->string('description', 512)->nullable();
-            $table->string('image', 32)->default('default-product.jpg');
+            $table->foreignId('image')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

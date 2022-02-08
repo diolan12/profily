@@ -40,15 +40,15 @@ class Product extends BaseModel
      */
     protected $hidden = [];
 
-    public function getImageAttribute($value)
-    {
-        if ($value == null) {
-            return null;
-        }
-        return asset('img/' . $value);
-    }
+    // public function getImageAttribute($value)
+    // {
+    //     if ($value == null) {
+    //         return null;
+    //     }
+    //     return asset('img/' . $value);
+    // }
 
-    protected $relations = ['commodity', 'type', 'specification', 'specification.subspecification'];
+    protected $relations = ['commodity', 'type', 'specification', 'specification.subspecification', 'image'];
 
     public function specification()
     {
@@ -63,5 +63,9 @@ class Product extends BaseModel
     public function type()
     {
         return $this->belongsTo('App\Models\Rest\Type', 'type');
+    }
+    public function image()
+    {
+        return $this->hasOne('App\Models\Rest\Image', 'id', 'image');
     }
 }

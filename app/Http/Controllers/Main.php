@@ -115,7 +115,7 @@ class Main extends BaseViewController
 
         $paginator = paginator($page, $limit, $count);
 
-        $this->data['products'] = $this->product->offset($offset)->limit($limit)->where('commodity', $this->data['commodity']['id'])->get();
+        $this->data['products'] = $this->product->offset($offset)->limit($limit)->with($this->product->getRelations())->where('commodity', $this->data['commodity']['id'])->get();
 
         $this->setupPaginations('commodity/'.beauty_to_kebab($this->data['commodity']['name']), $paginator->current, $paginator->total);
 
@@ -134,6 +134,7 @@ class Main extends BaseViewController
 
         return $this->bootstrap();
     }
+    
     public function cookies_policy()
     {
         $this->extra['meta']['title'] = 'Cookies Policy';
