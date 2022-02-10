@@ -57,11 +57,8 @@ class Auth extends BaseViewController
         }
 
         $age = 60 * 24;
-        $jwt = jwtEncode($user, $age);
+        $jwt = jwtEncode($user);
 
-        // $this->extra['nav']['active'] = 'login';
-
-        // $this->authorize()
         cookie(auth_cookie, $jwt, $age);
 
         return redirect(rootDashboard());
@@ -105,7 +102,7 @@ class Auth extends BaseViewController
 
         $text = urlencode("Hello, I'm interested about " . kebab_to_beauty($productName));
         $link = $this->config->connect['connect_whatsapp']['val2'] . '?text=' . $text;
-        $this->setupWhatsap('Chat about ' . kebab_to_beauty($productName), $link);
+        $this->setupWhatsapp('Chat about ' . kebab_to_beauty($productName), $link);
 
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'content.product';
