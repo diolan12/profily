@@ -1,3 +1,10 @@
+function checkTimezone() {
+    let timezone = getCookie("visitor-timezone");
+    if (timezone == null) {
+        timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        setCookie("visitor-timezone", timezone, 7);
+    }
+}
 document.addEventListener('DOMContentLoaded', function() {
     var elems = document.querySelectorAll('.scrollspy');
     var activateds = document.querySelectorAll('.activated');
@@ -23,6 +30,10 @@ document.addEventListener('DOMContentLoaded', function() {
 (function($) {
     $(function() {
         M.AutoInit();
+
+        // set client timezone
+        checkTimezone()
+
         // $('.slider').slider();
     }); // end of document ready
 })(jQuery); // end of jQuery name space
