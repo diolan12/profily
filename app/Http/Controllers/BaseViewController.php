@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Laravel\Lumen\Routing\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rest\Config;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\URL;
 
 class BaseViewController extends Controller
@@ -28,11 +29,36 @@ class BaseViewController extends Controller
         $this->extra['fab'] = (object) [
             'whatsapp' => null
         ];
+        $this->extra['server'] =  [
+            'time' => Carbon::now(),
+            'timezone' => date_default_timezone_get(),
+            'client' => [
+                'timeZone' => $request->cookie("visitor-timezone", 'UTC'),
+                'refresh' => false
+            ]
+        ];
 
         if ($request->user() != null) {
             $this->load('user');
-            $this->extra['user'] = (object) json_decode(json_encode($this->user->with($this->user->getRelations())->where('id', $request->user()->id)->first()));
+            $user = $this->user->with($this->user->getRelations())->where('id', $request->user()->id)->first();
+            $this->extra['user'] = (object) json_decode(json_encode($user));
+            $hour = 1;
+            $age = 60 * $hour;
+            $jwt = jwtEncode($user);
+
+            cookie(auth_cookie, $jwt, $age);
         }
+
+        // $visitorCookie = $request->cookie(auth_cookie);
+        // if ($visitorCookie != null) {
+        //     $this->load('user');
+        //     $jwtCookie = jwtDecode($visitorCookie);
+        //     $this->extra['user'] = $this->user->with($this->user->getRelations())->where('email', $jwtCookie->aud)->first();
+        //     $age = 60 * 24;
+        //     $jwt = jwtEncode($this->extra['user'], $age);
+
+        //     cookie(auth_cookie, $jwt, $age);
+        // }
     }
 
     /**
@@ -84,6 +110,10 @@ class BaseViewController extends Controller
         'pagination' => null,
         'fab' => [
             'whatsapp' => null
+        ],
+        'server' =>  [
+            'time' => null,
+            'client' => []
         ]
     ];
 
@@ -101,7 +131,7 @@ class BaseViewController extends Controller
         ];
     }
 
-    protected function setupWhatssap(string $tooltip, string $link)
+    protected function setupWhatsapp(string $tooltip, string $link)
     {
         $this->extra['fab'] = (object) [
             'whatsapp' => (object) [
