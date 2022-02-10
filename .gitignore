@@ -5,5 +5,7 @@ Homestead.yaml
 .env
 .phpunit.result.cache
 
+public/assets
+
 storage/rsa.private
 storage/rsa.public
