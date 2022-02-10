@@ -8,13 +8,13 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Hash;
 
 if (!function_exists('jwtEncode')) {
-    function jwtEncode(User $user, $age)
+    function jwtEncode(User $user)
     {
         $payload = [
             "iss" => URL::to('/'), // base url server ini
             "sub" => "Dashboard Authorization",
-            "aud" => $user['email'], // api key s3 status
-            "iat" => (int) strtotime(time()),
+            "aud" => $user['email'],
+            "iat" => Carbon::now()->timestamp, // epoch time
             "jti" => Hash::make($user['id']),
             "name" => $user['name'],
             "picture" => $user['picture'],
@@ -194,5 +194,20 @@ if (!function_exists('lorem_long')) {
     function lorem_long()
     {
         return "lorem_long";
+    }
+}
+
+if (!function_exists('js_utc_date')) {
+    function js_utc_date(string $utcTime)
+    {
+        return "new Date('$utcTime')";
+    }
+}
+
+if (!function_exists('utc_to_locale_string')) {
+    function utc_to_locale_string($js_utc_date, string $dateStyle = "full", string $timeStyle = "full")
+    {
+        $option = '{ timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, dateStyle: "'.$dateStyle.'", timeStyle: "'.$timeStyle.'" }';
+        return "$js_utc_date.toLocaleString(undefined, $option)";
     }
 }
