@@ -5,10 +5,12 @@
 <html lang="en">
 
 <head>
-    <!-- <meta http-equiv="refresh" content="5"> -->
+    <?php if ($server['client']['refresh']) : ?>
+        <meta http-equiv="refresh" content="<?= $server['client']['refresh'] ?>">
+    <?php endif ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><?= ucwords($meta['title']) ?> - Dashboard</title>
+    <title><?= ucwords($meta['title']) ?> - <?= getenv('APP_NAME') ?> Dashboard</title>
     <link rel="canonical" href="<?= $meta['canonical'] ?>" />
     <meta name="description" content="<?= substr($meta['description'], 0, 170) ?>" />
     <meta name="keywords" content="<?= implode(', ', $meta['keywords']) ?>" />
@@ -47,6 +49,14 @@
 </head>
 
 <body>
+    <?php if (getenv('APP_DEBUG')) : ?>
+        <script type="text/javascript">
+            const extra = <?= json_encode($extra) ?>;
+            console.log(extra)
+        </script>
+    <?php endif; ?>
+
+    <script type="text/javascript" src="<?= asset('js/lib.js') ?>"></script>
 
     <header>
         <?= view('nav-dashboard', $extra) ?>
@@ -67,17 +77,10 @@
     <?= component('fab', $extra) ?>
 
     <?= component('cookie', $extra) ?>
-    
+
     <?= component('toast', $extra) ?>
 
-    <!--  Scripts-->
-    <?php if (getenv('APP_DEBUG')) : ?>
-        <script type="text/javascript">
-            const extra = <?= json_encode($extra) ?>;
-            console.log(extra)
-        </script>
-    <?php endif; ?>
-    <script type="module" src="<?= asset('js/main.js') ?>"></script>
+    <script type="text/javascript" src="<?= asset('js/main.js') ?>"></script>
 </body>
 
 </html>
