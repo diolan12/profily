@@ -6,5 +6,6 @@ Homestead.yaml
 .phpunit.result.cache
 
 storage/rsa copy.private
+storage/rsa copy.public
 storage/rsa.private
 storage/rsa.public
