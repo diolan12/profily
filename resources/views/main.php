@@ -47,6 +47,14 @@
 </head>
 
 <body>
+    <?php if (getenv('APP_DEBUG')) : ?>
+        <script type="text/javascript">
+            const extra = <?= json_encode($extra) ?>;
+            console.log(extra)
+        </script>
+    <?php endif; ?>
+
+    <script type="text/javascript" src="<?= asset('js/lib.js') ?>"></script>
 
     <header>
         <?= view('nav', $extra) ?>
@@ -67,17 +75,10 @@
     <?= component('fab', $extra) ?>
 
     <?= component('cookie', $extra) ?>
-    
+
     <?= component('toast', $extra) ?>
 
-    <!--  Scripts-->
-    <?php if (getenv('APP_DEBUG')) : ?>
-        <script type="text/javascript">
-            const extra = <?= json_encode($extra) ?>;
-            console.log(extra)
-        </script>
-    <?php endif; ?>
-    <script type="module" src="<?= asset('js/main.js') ?>"></script>
+    <script type="text/javascript" src="<?= asset('js/main.js') ?>"></script>
 </body>
 
 </html>
