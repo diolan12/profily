@@ -9,3 +9,5 @@ public/assets
 
 storage/rsa.private
 storage/rsa.public
+
+*.zip
