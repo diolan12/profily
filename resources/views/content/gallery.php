@@ -11,12 +11,10 @@
             <div>
                 <?php foreach ($data->images as $image) : ?>
                     <div class="col s6 m6 l4 xl3">
-                        <div class="card small">
+                        <div class="card">
                             <div class="card-image">
                                 <img src="<?= $image->file ?>" class="materialboxed" data-caption="<?= $image->title ?>" alt="<?= $image->title ?>">
-                            </div>
-                            <div class="card-content">
-                                <span class="card-title activator grey-text text-darken-4"><?= $image->title ?></span>
+                                <span class="card-title activator"><?= $image->title ?></span>
                             </div>
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-darken-4"><?= $image->title ?><i class="material-icons right">close</i></span>
