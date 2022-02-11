@@ -1,6 +1,7 @@
 <div class="slider">
     <ul class="slides">
-        <?php foreach ($data->commodities as $commodity) : ?>
+        <?php shuffle($data->commodities);
+        foreach ($data->commodities as $commodity) :  ?>
             <li>
                 <img src="<?= $commodity->image->file ?>" alt="<?= $commodity->image->title ?>">
                 <div class="caption <?= random_align() ?>-align">
