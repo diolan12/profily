@@ -34,16 +34,9 @@ class Commodity extends Seeder
         DB::table(self::$name)->insert([
             'name' => 'Coconut',
             'image' => 5,
-            'slogan' => 'innovative product from coconut',
+            'slogan' => 'Innovative product from coconut',
             'description1' => 'A coconut is the edible fruit of the coconut palm (Cocos nucifera), a tree of the palm family. Coconut flesh is high in fat and can be dried or eaten fresh or processed into coconut milk or coconut oil. The liquid of the nut, known as coconut water, is used in beverages.',
             'created_at' => Carbon::now('UTC')
         ]);
-        // DB::table(self::$name)->insert([
-        //     'name' => 'Coconut Fiber',
-        //     'image' => 'coco_fiber.jpg',
-        //     'slogan' => 'The best coconut fiber',
-        //     'description1' => 'Coconut fiber is fiber from coconut fiber that has been milled or described in the form of long hair and is generally yellow-brown in color. Cocofiber or coconut fiber is the result of processed coconut skin to produce coir fiber that has many benefits.',
-        //     'created_at' => Carbon::now('UTC')
-        // ]);
     }
 }

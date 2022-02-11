@@ -126,5 +126,16 @@ class Image extends Seeder
             'credit' => '<a href="https://imgur.com/WxNkK7J">Default Avatar</a> by <a href="https://imgur.com/user/coolboi567">coolboi567</a>',
             'created_at' => Carbon::now('UTC')
         ]);
+        DB::table(self::$name)->insert([
+            'file' => 'parallax-shipping.jpg',
+            'title' => 'Cargo ship',
+            'credit' => 'Photo by <a href="https://unsplash.com/@ventiviews?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Venti Views</a> on <a href="https://unsplash.com/s/photos/shipping?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'file' => 'founders.jpeg',
+            'title' => 'Founder',
+            'created_at' => Carbon::now('UTC')
+        ]);
     }
 }

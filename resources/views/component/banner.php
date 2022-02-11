@@ -14,12 +14,12 @@
                     <h5 class="header col s12 light white-text "><?= $config->web->brand_slogan->val1 ?></h5>
                 </div>
                 <div class="row center">
-                    <a href="<?= $config->connect->connect_whatsapp->val2?>" target="_blank" class="btn-large waves-effect waves-light <?= color($config->color->accent) ?>">Contact Us</a>
+                    <a href="<?= $config->connect->connect_whatsapp->val2 ?>" target="_blank" class="btn-large waves-effect waves-light <?= color($config->color->accent) ?>">Contact Us</a>
                 </div>
                 <br><br>
 
             </div>
         </div>
-        <div class="parallax"><img src="<?= asset('img/parallax-beans.jpg') ?>" alt="Main Banner"></div>
+        <div class="parallax"><img src="<?= asset('img/' . $config->parallax->banner->val1) ?>" alt="<?= $config->parallax->banner->val1 ?>"></div>
     </div>
 </div>

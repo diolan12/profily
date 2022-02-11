@@ -7,7 +7,9 @@
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="https://materializecss.com/templates/parallax-template/background2.jpg" alt="Unsplashed background img 2"></div>
+        <div class="parallax">
+            <img src="<?= asset('img/' . $config->parallax->shipping->val1) ?>" alt="<?= $config->parallax->shipping->val1 ?>">
+        </div>
     </div>
 
     <div class="container">

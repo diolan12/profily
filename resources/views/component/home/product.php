@@ -4,11 +4,13 @@
             <div class="container">
                 <div class="row center">
                     <h5 class="header col s12 light white-text right-align animate">Delivering good quality products</h5>
-                    <a href="<?= root('product') ?>" class="waves-effect <?= color($config->color->accent)?> waves-light btn">Browse More</a>
+                    <a href="<?= root('product') ?>" class="waves-effect <?= color($config->color->accent) ?> waves-light btn">Browse More</a>
                 </div>
             </div>
         </div>
-        <div class="parallax"><img src="<?= asset('img/parallax-beans.jpg') ?>" alt="Unsplashed background img 2"></div>
+        <div class="parallax">
+            <img src="<?= asset('img/' . $config->parallax->product->val1) ?>" alt="<?= $config->parallax->product->val1 ?>">
+        </div>
     </div>
 
     <div class="container">
@@ -27,7 +29,7 @@
                                 <p class="light"><?= substr($commodity->description1, 0, 126) ?>...</p>
                             </div>
                             <div class="card-action right-align">
-                                <a class="<?= color($config->color->accent, true)?>-text" href="<?= root('commodity/' . beauty_to_kebab($commodity->name)) ?>">Browse <?= $commodity->name ?></a>
+                                <a class="<?= color($config->color->accent, true) ?>-text" href="<?= root('commodity/' . beauty_to_kebab($commodity->name)) ?>">Browse <?= $commodity->name ?></a>
                             </div>
                         </div>
 

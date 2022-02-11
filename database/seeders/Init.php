@@ -72,6 +72,32 @@ class Init extends Seeder
             'created_at' => Carbon::now('UTC')
         ]);
 
+        // Parallax
+        DB::table(self::$name)->insert([
+            'key' => 'banner',
+            'type' => 'parallax',
+            'val1' => 'banner.jpg',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'product',
+            'type' => 'parallax',
+            'val1' => 'parallax-beans.jpg',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'shipping',
+            'type' => 'parallax',
+            'val1' => 'parallax-shipping.jpg',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'founder',
+            'type' => 'parallax',
+            'val1' => 'founders.jpeg',
+            'created_at' => Carbon::now('UTC')
+        ]);
+
         // General
         DB::table(self::$name)->insert([
             'key' => 'information',
