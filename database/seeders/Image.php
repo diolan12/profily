@@ -120,5 +120,11 @@ class Image extends Seeder
             'title' => 'Coconut Fiber',
             'created_at' => Carbon::now('UTC')
         ]);
+        DB::table(self::$name)->insert([
+            'file' => 'default-avatar.png',
+            'title' => 'Default Avatar',
+            'credit' => '<a href="https://imgur.com/WxNkK7J">Default Avatar</a> by <a href="https://imgur.com/user/coolboi567">coolboi567</a>',
+            'created_at' => Carbon::now('UTC')
+        ]);
     }
 }

@@ -16,7 +16,7 @@ class User extends Migration
     {Schema::defaultStringLength(256);
         Schema::create(self::$name, function (Blueprint $table) {
             $table->id();
-            $table->foreignId('picture')->default(1);
+            $table->foreignId('picture')->default(21);
             $table->foreignId('role')->default(2);
             $table->string('name', 32);
             $table->string('email', 32);
