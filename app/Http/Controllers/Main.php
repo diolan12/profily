@@ -39,13 +39,14 @@ class Main extends BaseViewController
 
     public function index()
     {
-        $this->load('commodity');
+        $this->load(['commodity', 'user']);
         $this->extra['meta']['title'] = 'Home';
 
         $this->extra['nav']['active'] = 'home';
         $this->extra['content']['main'] = 'content.home';
 
         $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
+        $this->data['founders'] = $this->user->with($this->user->getRelations())->where('role', 2)->get();
 
         return $this->bootstrap();
     }

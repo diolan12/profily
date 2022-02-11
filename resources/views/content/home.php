@@ -10,3 +10,5 @@
 <?= component('home.payment', $extra) ?>
 
 <?= component('home.testimony', $extra) ?>
+
+<?= component('home.founder', $extra) ?>
