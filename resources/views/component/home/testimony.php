@@ -9,7 +9,7 @@
                 </div>
                 
                 <?php foreach ($data->testimonies as $testimony) : ?>
-                    <div class="col s6 m4 l4 xl3">
+                    <div class="col s12 m4 l4 xl3">
                         <div class="card">
                             <div class="card-content">
                                 <span class="card-title grey-text text-darken-4"><?= $testimony->name?></span>
