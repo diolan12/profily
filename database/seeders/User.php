@@ -19,7 +19,7 @@ class User extends Seeder
     {
         DB::table(self::$name)->insert([
             'role' => 1,
-            'name' => 'Administrator',
+            'name' => 'Dio Lantief Widoyoko',
             'email' => 'admin@permataagrindo.com',
             'password' => Hash::make('Didola_12'),
             'created_at' => Carbon::now()
