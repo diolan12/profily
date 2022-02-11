@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
             SubSpesification::class,
             Image::class,
             User::class,
-            DummyStat::class // comment on production
+            //DummyStat::class // comment on production
         ]);
     }
 }
