@@ -1,13 +1,28 @@
 User-agent: *
-Allow: /
+Disallow: /
 
 Crawl-delay: 5
 
-Sitemap: https://primaagrindo.com
-
 User-agent: *
-Allow: /home
-Disallow: /rWVfHZH4ge8vmZAQvre5IaHKToURoEQq
+Allow: /
 
 User-agent: *
 Allow: /product
+
+User-agent: *
+Allow: /commodity
+
+User-agent: *
+Allow: /gallery
+
+User-agent: *
+Allow: /cookies-policy
+
+User-agent: *
+Disallow: /rWVfHZH4ge8vmZAQvre5IaHKToURoEQq
+
+User-agent: *
+Disallow: /J2mV38xHiH4abejTlpY9pXhbGtubTCZi
+
+User-agent: *
+Disallow: /api
