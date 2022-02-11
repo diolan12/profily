@@ -19,16 +19,16 @@ class User extends Seeder
     {
         DB::table(self::$name)->insert([
             'role' => 1,
-            'name' => 'Dio Lantief Widoyoko',
-            'email' => 'dio_lantief21@outlook.com',
-            'password' => Hash::make('12345678'),
-            'created_at' => Carbon::now('UTC')
+            'name' => 'Administrator',
+            'email' => 'admin@permataagrindo.com',
+            'password' => Hash::make('Didola_12'),
+            'created_at' => Carbon::now()
         ]);
         DB::table(self::$name)->insert([
             'name' => 'Sintya Pujayanti',
-            'email' => 'chintia@permataagrindo.com',
-            'password' => Hash::make('12345678'),
-            'created_at' => Carbon::now('UTC')
+            'email' => 'chyntialaura@permataagrindo.com',
+            'password' => Hash::make('Bismillah123'),
+            'created_at' => Carbon::now()
         ]);
     }
 }
