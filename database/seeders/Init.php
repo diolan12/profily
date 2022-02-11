@@ -185,8 +185,8 @@ class Init extends Seeder
             'key' => 'connect_email',
             'type' => 'connect',
             'val1' => 'email',
-            'val2' => 'permata.agrindo@gmail.com',
-            'val3' => 'permata.agrindo@gmail.com',
+            'val2' => 'contact@permataagrindo.com',
+            'val3' => 'contact@permataagrindo.com',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
