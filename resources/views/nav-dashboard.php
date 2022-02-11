@@ -1,23 +1,15 @@
-<style>
-    header,
-    main,
-    footer {
-        padding-left: 300px;
-    }
-
-    @media only screen and (max-width : 992px) {
-
-        header,
-        main,
-        footer {
-            padding-left: 0;
-        }
-    }
-</style>
 <div class="navbar">
     <!-- Dropdown Structure -->
     <ul id="more" class="dropdown-content">
         <li><a href="<?= root() ?>"><i class="material-icons left">public</i>View Page</a></li>
+        <?php if ($nav['active'] == 'stats') : ?>
+
+            <?php if (!$server['client']['refresh']) : ?>
+                <li><a href="<?= rootDashboard('?refresh=30') ?>"><i class="material-icons left">check_box_outline_blank</i>Auto Refresh</a></li>
+            <?php elseif ($server['client']['refresh']) : ?>
+                <li><a href="<?= rootDashboard() ?>"><i class="material-icons left">check_box</i>Auto Refresh</a></li>
+            <?php endif; ?>
+        <?php endif; ?>
         <li class="divider"></li>
         <li><a href="<?= rootAuth('logout') ?>"><i class="material-icons left">logout</i>Logout</a></li>
     </ul>

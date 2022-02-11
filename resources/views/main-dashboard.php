@@ -23,6 +23,25 @@
         blockquote {
             border-left: 5px solid <?= color($config->color->accent, false, false, true) ?> !important;
         }
+
+        ul.dropdown-content {
+            min-width: 300px !important;
+        }
+
+        header,
+        main,
+        footer {
+            padding-left: 300px;
+        }
+
+        @media only screen and (max-width : 992px) {
+
+            header,
+            main,
+            footer {
+                padding-left: 0;
+            }
+        }
     </style>
 
     <script type="text/javascript" src="<?= asset('js/materialize.min.js') ?>"></script>
