@@ -17,7 +17,7 @@ class User extends Migration
         Schema::create(self::$name, function (Blueprint $table) {
             $table->id();
             $table->foreignId('picture')->default(1);
-            $table->foreignId('role')->default(1);
+            $table->foreignId('role')->default(2);
             $table->string('name', 32);
             $table->string('email', 32);
             $table->string('password', 96);
