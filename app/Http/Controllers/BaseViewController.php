@@ -42,7 +42,7 @@ class BaseViewController extends Controller
             $this->load('user');
             $user = $this->user->with($this->user->getRelations())->where('id', $request->user()->id)->first();
             $this->extra['user'] = (object) json_decode(json_encode($user));
-            $hour = 1;
+            $hour = 6;
             $age = 60 * $hour;
             $jwt = jwtEncode($user);
 
