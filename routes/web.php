@@ -13,12 +13,12 @@
 |
 */
 
-$router->get('/v', function () use ($router) {
-    $router->app->version();
-});
-$router->get('/key', function() {
-    return \Illuminate\Support\Str::random(32);
-});
+// $router->get('/v', function () use ($router) {
+//     $router->app->version();
+// });
+// $router->get('/key', function() {
+//     return \Illuminate\Support\Str::random(32);
+// });
 
 $router->get('/', 'Main@index');
 $router->get('/product', 'Main@product');
