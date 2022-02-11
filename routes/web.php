@@ -44,18 +44,18 @@ $router->group(['prefix' => 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq'], function () use
     $router->post('photo', ['uses' => 'Auth@uploadPicture', 'middleware' => 'auth']);
     $router->post('password', ['uses' => 'Auth@changePassword', 'middleware' => 'auth']);
 });
-$router->group(['prefix' => 'api/{table}'], function () use ($router) {
+// $router->group(['prefix' => 'api/{table}'], function () use ($router) {
     // $router->group(['prefix' => 'api/{table}', 'middleware' => 'auth'], function () use ($router) {
-    $router->get('/count', ['uses' => 'RestReadController@index']);
-    $router->get('', ['uses' => 'RestReadController@get']);
-    $router->get('{id}', ['uses' => 'RestReadController@getAt']);
-    $router->get('{id}/{column}', ['uses' => 'RestReadController@getAtColumn']);
+    // $router->get('/count', ['uses' => 'RestReadController@index']);
+    // $router->get('', ['uses' => 'RestReadController@get']);
+    // $router->get('{id}', ['uses' => 'RestReadController@getAt']);
+    // $router->get('{id}/{column}', ['uses' => 'RestReadController@getAtColumn']);
 
-    $router->post('', ['uses' => 'RestCreateController@insert']);
+    // $router->post('', ['uses' => 'RestCreateController@insert']);
     // $router->post('/w/{column}/{value}', ['uses' => 'RestController@insertWhere']);
 
-    $router->put('/{id}', ['uses' => 'RestUpdateController@update']);
-    $router->post('/{id}/upload/{column}', ['uses' => 'RestUpdateController@uploadAtColumn']);
+    // $router->put('/{id}', ['uses' => 'RestUpdateController@update']);
+    // $router->post('/{id}/upload/{column}', ['uses' => 'RestUpdateController@uploadAtColumn']);
 
-    $router->delete('/{id}', ['uses' => 'RestDeleteController@delete']);
-});
+    // $router->delete('/{id}', ['uses' => 'RestDeleteController@delete']);
+// });
