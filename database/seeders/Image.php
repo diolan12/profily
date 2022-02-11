@@ -111,8 +111,8 @@ class Image extends Seeder
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
-            'file' => 'prod-cocopeat-block.jpg',
-            'title' => 'Cocopeat Block',
+            'file' => 'prod-cocopeat.jpg',
+            'title' => 'Cocopeat',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([

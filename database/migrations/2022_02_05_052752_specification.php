@@ -17,7 +17,7 @@ class Specification extends Migration
         Schema::create(self::$name, function (Blueprint $table) {
             $table->id();
             $table->foreignId('product')->index();
-            $table->string('value', 64);
+            $table->string('value', 128);
             $table->timestamps();
             $table->softDeletes();
         });

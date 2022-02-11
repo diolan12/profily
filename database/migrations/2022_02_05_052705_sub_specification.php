@@ -17,7 +17,7 @@ class SubSpecification extends Migration
         Schema::create(self::$name, function (Blueprint $table) {
             $table->id();
             $table->foreignId('specification')->index();
-            $table->string('value', 32);
+            $table->string('value', 128);
             $table->timestamps();
             $table->softDeletes();
         });

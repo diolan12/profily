@@ -39,7 +39,7 @@ foreach ($data->views_month as $view) {
     }
 }
 foreach ($products as $index => $product) {
-    $productData = range(0, count($product['records']) - 1);
+    $productData = array_fill(0, $dayThisMonth, 0);
     foreach ($product['records'] as $key => $view) {
         $productData[(int) Carbon::parse($view->updated_at, 'UTC')->format('d') - 1] += $view->count;
     }
@@ -58,13 +58,15 @@ foreach ($products as $index => $product) {
 ?>
 <div class="card">
     <div class="card-content">
-        <span class="card-title">Products views on <?= Carbon::now('UTC')->monthName ?></span>
+        <span class="card-title">Products views on <?= Carbon::now()->monthName ?></span>
         <canvas id="view_month" width="400" height="350"></canvas>
     </div>
 </div>
 <script>
     const views_month_label = <?= json_encode($label) ?>;
     // console.log(visitors_month_label);
+
+    // console.log(<?= json_encode($datasets) ?>);
 
     const elem_view_month = document.getElementById('view_month').getContext('2d');
     const chart_view_month = new Chart(elem_view_month, {

@@ -185,7 +185,7 @@ class SubSpesification extends Seeder
                 'created_at' => Carbon::now('UTC')
             ]
         ]);
-        
+
         // Robusta Dampit
         DB::table(self::$name)->insert([
             [
@@ -223,7 +223,7 @@ class SubSpesification extends Seeder
                 'created_at' => Carbon::now('UTC')
             ]
         ]);
-        
+
         // Pitaya Roja Dragon Fruit
         DB::table(self::$name)->insert([
             [
@@ -254,6 +254,94 @@ class SubSpesification extends Seeder
             [
                 'specification' => 93,
                 'value' => '40 HC ( 20 MT )',
+                'created_at' => Carbon::now('UTC')
+            ]
+        ]);
+
+        // Cocopeat
+        DB::table(self::$name)->insert([
+            [
+                'specification' => 94,
+                'value' => 'Weight 15 kg/bag',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 94,
+                'value' => 'Electrical conductivity ( EC) = <0.5 ms/cm (affects plant metabolism based on nutrient solution & fertilizer solution)',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 94,
+                'value' => 'Brown',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 94,
+                'value' => 'Water content > 20%',
+                'created_at' => Carbon::now('UTC')
+            ]
+        ]);
+
+        // Cocopeat (block)
+        DB::table(self::$name)->insert([
+            [
+                'specification' => 95,
+                'value' => 'Size: 30 X 30 X 12 - 15 cm',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Size: 30 X 30 X 12 - 15 cm',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Weight: 5 kilograms',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Color: brown',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Ec: < 0.5ms/cm',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Ph: 5.0-7.0',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Moisture: < 25%',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Short fiber content: < 10% (2 mm)',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Contamination control: non-sand, stone, coco shell - fragment',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Drying: sun drying',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Packing: palletized with shrink film',
+                'created_at' => Carbon::now('UTC')
+            ],
+            [
+                'specification' => 95,
+                'value' => 'Certificate: quality analysis, fumigatron, phytosanitary',
                 'created_at' => Carbon::now('UTC')
             ]
         ]);

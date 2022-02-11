@@ -132,7 +132,7 @@ class Product extends Seeder
             'type' => 4,
             'name' => 'Cocopeat',
             'image' => 19,
-            'description' => 'The advantages of cocopeat include being more environmentally friendly. Because it is made of organic material and can be properly degraded in the soil, when it isnot used. Even some types of pests such as those from the ground do not like being in the cocopeat.',
+            'description' => 'Many benefits can be obtained by using it. Good for use with the ground, or stand alone. Cocopeat is alsowidely chosen as a substitute for soil, cocopeat is easy to absorb and store water. It also has pores, wich facilitate the exchange pf air, and the entry of sunlight. The content of Trichoderma molds, a type of enzyme from fungi, can reduce disease in the soil. Thus, cocopeat can keep the soil loose and fertile.',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([

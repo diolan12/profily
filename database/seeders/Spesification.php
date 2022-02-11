@@ -537,57 +537,12 @@ class Spesification extends Seeder
         DB::table(self::$name)->insert([
             [
                 'product' => 14,
-                'value' => 'Size: 30 X 30 X 12 - 15 cm',
+                'value' => 'Cocopeat specifications:',
                 'created_at' => Carbon::now('UTC')
             ],
             [
                 'product' => 14,
-                'value' => 'Weight: 5 kilograms',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Color: brown',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Ec: < 0.5ms/cm',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Ph: 5.0-7.0',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Moisture: < 25%',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Short fiber content: < 10% (2 mm)',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Contamination control: non-sand, stone, coco shell - fragment',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Drying: sun drying',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Packing: palletized with shrink film',
-                'created_at' => Carbon::now('UTC')
-            ],
-            [
-                'product' => 14,
-                'value' => 'Certificate: quality analysis, fumigatron, phytosanitary',
+                'value' => 'Spesifications of Cocopeat (block):',
                 'created_at' => Carbon::now('UTC')
             ]
         ]);

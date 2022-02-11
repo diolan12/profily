@@ -39,7 +39,7 @@ class Dashboard extends BaseViewController
         $this->data['visitors_month'] = $this->visitor->whereMonth('created_at', Carbon::now()->month)->get();
         $this->data['visitors_year'] = $this->visitor->whereYear('created_at', Carbon::now()->year)->get();
         
-        $this->data['views_today'] = $this->view->with($this->view->getRelations())->whereDate('created_at', Carbon::today())->orderBy('count', 'DESC')->get();
+        $this->data['views_today'] = $this->view->with($this->view->getRelations())->whereDate('created_at', Carbon::today())->orderBy('count', 'DESC')->orderBy('updated_at', 'DESC')->get();
         $this->data['views_month'] = $this->view->with($this->view->getRelations())->whereMonth('created_at', Carbon::now()->month)->orderBy('count', 'DESC')->get();
 
         return $this->bootstrap(true);
