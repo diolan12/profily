@@ -7,7 +7,8 @@
                     <img src="<?= root('assets/img/logo-chintia.png'); ?>" class="" alt="" />
                 </a>
             <?php else : ?>
-                <a id="logo-container" href="<?= root() ?>" class="brand-logo"><?= $config->web->brand_text->val1; ?></a>
+                <a id="logo-container" href="<?= root() ?>" class="brand-logo hide-on-small-only"><?= $config->web->brand_text->val1; ?></a>
+                <a id="logo-container" href="<?= root() ?>" class="brand-logo small hide-on-med-and-up"><?= $config->web->brand_text->val1; ?></a>
             <?php endif; ?>
 
             <ul class="right hide-on-med-and-down">
