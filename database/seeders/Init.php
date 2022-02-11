@@ -93,34 +93,64 @@ class Init extends Seeder
             'val1' => 'Permata Agrindo is engaged in general supplier, general trading, and distributor as well as cultivation in agriculture. We partner with Indonesian farmers to produce the highest quality products. We can be sure that our products are of superior quality.',
             'created_at' => Carbon::now('UTC')
         ]);
+        // Vision
         DB::table(self::$name)->insert([
             'key' => 'vision',
             'type' => 'brand',
-            'val1' => 'We envisioned to become the best exporter in the world and promote Indonesian agriculture.',
+            'val1' => 'Our vision is to become the best exporter in the world and promote Indonesian agriculture.',
             'created_at' => Carbon::now('UTC')
         ]);
+
+        // Mission
         DB::table(self::$name)->insert([
-            'key' => 'mission_icon',
-            'type' => 'brand',
+            'key' => 'mission_1',
+            'type' => 'mission',
             'val1' => 'lightbulb',
-            'val2' => 'star_rate',
-            'val3' => 'group',
+            'val2' => 'Helping Indonesian farmers to become innovative farmers.',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
-            'key' => 'mission_title',
-            'type' => 'brand',
-            'val1' => 'Innovation',
-            'val2' => 'Quality',
-            'val3' => 'Partnership',
-            'created_at' => Carbon::now('UTC')
-        ]);
-        DB::table(self::$name)->insert([
-            'key' => 'mission_text',
-            'type' => 'brand',
-            'val1' => 'Helping Indonesian farmers to become innovative farmers.',
+            'key' => 'mission_2',
+            'type' => 'mission',
+            'val1' => 'star_rate',
             'val2' => 'Strategies for innovation in-stock availability and producing the best quality products from Indonesian farmers.',
-            'val3' => 'Build strategic business partners with buyers, farmers, and the government in the long term.',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'mission_3',
+            'type' => 'mission',
+            'val1' => 'group',
+            'val2' => 'Build strategic business partners with buyers, farmers, and the government in the long term.',
+            'created_at' => Carbon::now('UTC')
+        ]);
+
+        // Value
+        DB::table(self::$name)->insert([
+            'key' => 'value_1',
+            'type' => 'value',
+            'val1' => 'Quality',
+            'val2' => 'Each product we sell always uses the best raw material and tested with a highly advanced machine, and certified laboratory to produce the best quality.',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'value_2',
+            'type' => 'value',
+            'val1' => 'Innovation',
+            'val2' => 'We always innovate in developing and making new breakthroughs in producing products that have always been of market interest and strengthen the customer\'s taste.',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'value_3',
+            'type' => 'value',
+            'val1' => 'Commitment',
+            'val2' => 'Commitment is one of the keys to customer trust so it is something we always take care of and cannot be ignored. All forms of privileges that we give to serve customers are things that we always take care of.',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'value_4',
+            'type' => 'value',
+            'val1' => 'Integrity',
+            'val2' => 'Integrity means telling the truth, keeping our word and treating others with fairness and respect. Integrity is one of our most cherished assets. It must not be compromised.',
             'created_at' => Carbon::now('UTC')
         ]);
 
