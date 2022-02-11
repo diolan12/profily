@@ -3,7 +3,7 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h5 class="col s12 light white-text">Here is what our happy customer says</h5>
+                    <h5 class="col s12 light white-text">The founder</h5>
                 </div>
             </div>
         </div>
