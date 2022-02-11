@@ -130,7 +130,7 @@ class Product extends Seeder
         DB::table(self::$name)->insert([
             'commodity' => 3,
             'type' => 4,
-            'name' => 'Cocopeat Block',
+            'name' => 'Cocopeat',
             'image' => 19,
             'description' => 'The advantages of cocopeat include being more environmentally friendly. Because it is made of organic material and can be properly degraded in the soil, when it isnot used. Even some types of pests such as those from the ground do not like being in the cocopeat.',
             'created_at' => Carbon::now('UTC')
