@@ -30,14 +30,19 @@ $router->get('/cookies-policy', 'Main@cookies_policy');
 $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 'auth'], function () use ($router) {
     $router->get('/', 'Dashboard@stat');
 
-    $router->get('/commodity', 'Dashboard@commodity');
-    $router->post('/commodity', 'Dashboard@commodityNew');
-    $router->get('/commodity/{commodityName}', 'Dashboard@commodityAt');
-    $router->post('/commodity/{commodityName}', 'Dashboard@commodityUpdateAt');
+    $router->get('/commodity', 'DashboardCommodity@commodity');
+    $router->post('/commodity', 'DashboardCommodity@commodityNew');
+    $router->get('/commodity/{commodityName}', 'DashboardCommodity@commodityAt');
+    $router->post('/commodity/{commodityName}', 'DashboardCommodity@commodityUpdateAt');
 
     $router->get('/product', 'Dashboard@product');
     $router->get('/product/{productName}', 'Dashboard@productAt');
     
+    $router->get('/testimony', 'DashboardTestimony@testimony');
+    $router->post('/testimony', 'DashboardTestimony@testimonyNew');
+    $router->get('/testimony/{testimonyID}', 'DashboardTestimony@testimonyAt');
+    $router->post('/testimony/{testimonyID}', 'DashboardTestimony@testimonyUpdateAt');
+
     $router->get('/about', 'Dashboard@about');
     $router->get('/setting', 'Dashboard@setting');
 });

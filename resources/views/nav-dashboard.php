@@ -44,15 +44,21 @@
     <li><a href="<?= rootDashboard() ?>" class="waves-effect <?php if ($nav['active'] == 'stats') echo 'active' ?>"><i class="material-icons">dashboard</i>Statistik</a></li>
     <li><a href="<?= rootDashboard('commodity') ?>" class="waves-effect <?php if ($nav['active'] == 'commodity') echo 'active' ?>"><i class="material-icons">category</i>Komoditas</a></li>
     <li><a href="<?= rootDashboard('product') ?>" class="waves-effect <?php if ($nav['active'] == 'product') echo 'active' ?>"><i class="material-icons">inventory_2</i>Produk</a></li>
-
-    <?php if ($user->role->id == 1) : ?>
-        <li><a href="<?= rootDashboard('user') ?>" class="waves-effect <?php if ($nav['active'] == 'user') echo 'active' ?>"><i class="material-icons">group</i>Users</a></li>
-    <?php endif; ?>
+    <li><a href="<?= rootDashboard('testimony') ?>" class="waves-effect <?php if ($nav['active'] == 'testimony') echo 'active' ?>"><i class="material-icons">reviews</i>Testimoni</a></li>
 
     <li>
         <div class="divider"></div>
     </li>
     <li><a class="subheader">Brand</a></li>
-    <li><a class="waves-effect <?php if ($nav['active'] == 'about') echo 'active' ?>" href="#!" <?php if ($nav['active'] == 'about') echo 'class="active"' ?>><i class="material-icons">info</i>About</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'color') echo 'active' ?>" href="#!"><i class="material-icons">palette</i>Color</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'about') echo 'active' ?>" href="#!"><i class="material-icons">info</i>About</a></li>
+
+    <li>
+        <div class="divider"></div>
+    </li>
+    <li><a class="subheader">Web</a></li>
+    <?php if ($user->role->id == 1) : ?>
+        <li><a href="<?= rootDashboard('user') ?>" class="waves-effect <?php if ($nav['active'] == 'user') echo 'active' ?>"><i class="material-icons">group</i>Users</a></li>
+    <?php endif; ?>
     <li><a class="waves-effect <?php if ($nav['active'] == 'setting') echo 'active' ?>" href="#!"><i class="material-icons">settings</i>Settings</a></li>
 </ul>

@@ -20,6 +20,9 @@ class Testimony extends BaseModel
     public function filter($data)
     {
         unset($data['id']);
+        $data['name'] = ucwords($data['name']);
+        $data['quote'] = ucfirst($data['quote']);
+        $data['country'] = ucwords($data['country']);
         return $data;
     }
 
