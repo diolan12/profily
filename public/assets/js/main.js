@@ -5,8 +5,13 @@ function checkTimezone() {
         setCookie("visitor-timezone", timezone, 7);
     }
 }
+
+function replaceHistory() {
+    let current = window.location.href.split("?")[0];
+    history.replaceState({}, '', current);
+}
 document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.scrollspy');
+    var elemScrollspy = document.querySelectorAll('.scrollspy');
     var activateds = document.querySelectorAll('.activated');
     var options = {
         throttle: 50,
@@ -22,17 +27,18 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         activeClass: 'active'
     };
-    var scrollSpy = M.ScrollSpy.init(elems, options);
+    var scrollSpy = M.ScrollSpy.init(elemScrollspy, options);
 
-    var elems = document.querySelectorAll('.slider');
-    var slider = M.Slider.init(elems, options);
+    var elemSlider = document.querySelectorAll('.slider');
+    var slider = M.Slider.init(elemSlider, options);
 });
 (function($) {
     $(function() {
         M.AutoInit();
 
         // set client timezone
-        checkTimezone()
+        checkTimezone();
+        replaceHistory();
 
         // $('.slider').slider();
     }); // end of document ready
