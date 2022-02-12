@@ -41,8 +41,9 @@
         </div>
     </li>
     <li><a class="subheader">Data</a></li>
-    <li><a href="<?= rootDashboard() ?>" class="waves-effect <?php if ($nav['active'] == 'stats') echo 'active' ?>"><i class="material-icons">dashboard</i>Statistics</a></li>
-    <li><a href="<?= rootDashboard('product') ?>" class="waves-effect <?php if ($nav['active'] == 'product') echo 'active' ?>"><i class="material-icons">inventory_2</i>Products</a></li>
+    <li><a href="<?= rootDashboard() ?>" class="waves-effect <?php if ($nav['active'] == 'stats') echo 'active' ?>"><i class="material-icons">dashboard</i>Statistik</a></li>
+    <li><a href="<?= rootDashboard('commodity') ?>" class="waves-effect <?php if ($nav['active'] == 'commodity') echo 'active' ?>"><i class="material-icons">category</i>Komoditas</a></li>
+    <li><a href="<?= rootDashboard('product') ?>" class="waves-effect <?php if ($nav['active'] == 'product') echo 'active' ?>"><i class="material-icons">inventory_2</i>Produk</a></li>
 
     <?php if ($user->role->id == 1) : ?>
         <li><a href="<?= rootDashboard('user') ?>" class="waves-effect <?php if ($nav['active'] == 'user') echo 'active' ?>"><i class="material-icons">group</i>Users</a></li>

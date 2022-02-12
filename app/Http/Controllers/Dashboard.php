@@ -8,6 +8,7 @@ use Carbon\Carbon;
 
 class Dashboard extends BaseViewController
 {
+    static $default_item_show = 8;
     protected function configure($key)
     {
         return $this->config[$key];
@@ -45,31 +46,126 @@ class Dashboard extends BaseViewController
         return $this->bootstrap(true);
     }
 
-    public function product()
+    public function commodity(Request $request)
     {
-        $product = new Product();
-        $this->extra['meta']['title'] = 'Product';
+        $toast = $request->input('toast', null);
+        $this->toast($toast);
+
+        $this->load(['commodity']);
+        $this->extra['meta']['title'] = 'Komoditas';
+        $this->extra['nav']['active'] = 'commodity';
+        $this->extra['content']['main'] = 'dashboard.commodities';
+
+        $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
+
+        return $this->bootstrap(true);
+    }
+
+    public function commodityNew(Request $request)
+    {
+        $this->load(['commodity']);
+        $this->extra['meta']['title'] = 'Komoditas';
+        $this->extra['nav']['active'] = 'commodity';
+        $this->extra['content']['main'] = 'dashboard.commodities';
+        
+        $data = $this->validate($request, $this->commodity->validation());
+        $data['created_at'] = Carbon::now('UTC');
+        $data['updated_at'] = Carbon::now('UTC');
+        $data = $this->commodity->filter($data);
+
+        $toast = (!($this->commodity->insert($data))) ? "Gagal menambahkan komoditas" : "Komoditas berhasil ditambahkan";
+
+        $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
+
+        return redirect(rootDashboard('commodity?toast=' . $toast));
+    }
+
+    public function commodityAt(Request $request, $commodityName)
+    {
+        $toast = $request->input('toast', null);
+        $this->toast($toast);
+
+        $this->load('commodity');
+        $this->extra['meta']['title'] = kebab_to_beauty($commodityName);
+
+        $this->extra['nav']['active'] = 'commodity';
+        $this->extra['content']['main'] = 'dashboard.commodity';
+
+        $this->data['commodity'] = $this->commodity->with($this->commodity->getRelations())->where('name', kebab_to_beauty($commodityName))->first();
+
+        if ($this->data['commodity'] == null) {
+            // abort(404, "Komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
+            return redirect(rootDashboard('commodity'));
+        }
+
+        return $this->bootstrap(true);
+    }
+
+    public function commodityUpdateAt(Request $request, $commodityName)
+    {
+        $this->load('commodity');
+        $this->extra['meta']['title'] = kebab_to_beauty($commodityName);
+
+        $this->extra['nav']['active'] = 'commodity';
+        $this->extra['content']['main'] = 'dashboard.commodity';
+
+        $data = $request->all();
+        $data['updated_at'] = Carbon::now();
+        $data = $this->commodity->filter($data);
+
+        $commodity = $this->commodity->with($this->commodity->getRelations())->where('name', kebab_to_beauty($commodityName))->first();
+
+        if ($commodity == null) {
+            abort(404, "Komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
+        }
+
+        $toast = (!($commodity->update($data))) ? "Gagal memperbarui komoditas" : "Komoditas berhasil diperbarui";
+        
+        // $this->toast($toast);
+
+        $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
+        return redirect(rootDashboard('commodity/'.beauty_to_kebab($data['name']).'?toast=' . $toast));
+    }
+
+    public function product(Request $request)
+    {
+        $this->load(['product', 'commodity']);
+        $this->extra['meta']['title'] = 'Produk';
+
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'dashboard.products';
 
-        $this->data['products'] = $product->with($product->getRelations())->get();
+        $page = (int) $request->input('page', 1);
+        $limit = (int) $request->input('show', $this::$default_item_show);
+        $offset = offset($page, $limit);
 
-        return $this->bootstrap();
+        $count = $this->product->count();
+
+        $paginator = paginator($page, $limit, $count);
+
+        $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
+        $this->data['products'] = $this->product->with($this->product->getRelations())->offset($offset)->limit($limit)->get();
+
+        $this->setupPaginations('product', $paginator->current, $paginator->total);
+
+        return $this->bootstrap(true);
     }
 
     public function productAt($productName)
     {
-        $product = new Product();
-        $this->extra['nav']['active'] = 'product';
-        $this->extra['content']['main'] = 'content.product';
+        $this->load('product');
+        $this->extra['meta']['title'] = kebab_to_beauty($productName);
 
-        $this->data['product'] = $product->with($product->getRelations())->where('name', kebab_to_beauty($productName))->first();
+        $this->extra['nav']['active'] = 'product';
+        $this->extra['content']['main'] = 'dashboard.product';
+
+        $this->data['product'] = $this->product->with($this->product->getRelations())->where('name', kebab_to_beauty($productName))->first();
 
         if ($this->data['product'] == null) {
             // throw NotFoundHttpException();
         }
 
-        return $this->bootstrap();
+        return $this->bootstrap(true);
     }
 
     public function about()

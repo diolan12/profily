@@ -14,8 +14,10 @@ class Commodity extends BaseModel
     {
         return [
             'name' => 'required',
+            'slogan' => '',
             'description1' => '',
-            'description2' => ''
+            'description2' => '',
+            'image' => ''
         ];
     }
     public function filter($data)
@@ -30,7 +32,7 @@ class Commodity extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'description1', 'description2'
+        'name', 'slogan','description1', 'description2', 'image'
     ];
 
     /**

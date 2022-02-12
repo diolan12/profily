@@ -29,11 +29,17 @@ $router->get('/cookies-policy', 'Main@cookies_policy');
 
 $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 'auth'], function () use ($router) {
     $router->get('/', 'Dashboard@stat');
-    $router->get('/home', 'Dashboard@stat');
-    $router->get('/product', 'Main@product');
-    $router->get('/product/{productName}', 'Main@productAt');
-    $router->get('/about', 'Main@about');
-    $router->get('/setting', 'Main@setting');
+
+    $router->get('/commodity', 'Dashboard@commodity');
+    $router->post('/commodity', 'Dashboard@commodityNew');
+    $router->get('/commodity/{commodityName}', 'Dashboard@commodityAt');
+    $router->post('/commodity/{commodityName}', 'Dashboard@commodityUpdateAt');
+
+    $router->get('/product', 'Dashboard@product');
+    $router->get('/product/{productName}', 'Dashboard@productAt');
+    
+    $router->get('/about', 'Dashboard@about');
+    $router->get('/setting', 'Dashboard@setting');
 });
 
 $router->group(['prefix' => 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq'], function () use ($router) {

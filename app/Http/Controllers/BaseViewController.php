@@ -117,7 +117,7 @@ class BaseViewController extends Controller
         ]
     ];
 
-    protected function toast(string $message)
+    protected function toast($message)
     {
         $this->extra['toast'] = $message;
     }

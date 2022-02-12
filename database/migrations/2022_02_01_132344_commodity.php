@@ -20,7 +20,7 @@ class Commodity extends Migration
             $table->string('slogan', 32)->nullable();
             $table->string('description1', 512)->nullable();
             $table->string('description2', 512)->nullable();
-            $table->foreignId('image')->nullable();
+            $table->foreignId('image')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

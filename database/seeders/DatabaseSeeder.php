@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
             Image::class,
             User::class,
             Testimony::class,
-            //DummyStat::class // comment on production
+            DummyStat::class // comment on production
         ]);
     }
 }
