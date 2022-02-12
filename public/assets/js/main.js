@@ -10,6 +10,7 @@ function replaceHistory() {
     let current = window.location.href.split("?")[0];
     history.replaceState({}, '', current);
 }
+
 document.addEventListener('DOMContentLoaded', function() {
     var elemScrollspy = document.querySelectorAll('.scrollspy');
     var activateds = document.querySelectorAll('.activated');
