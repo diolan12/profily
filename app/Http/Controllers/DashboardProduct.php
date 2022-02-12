@@ -44,7 +44,7 @@ class DashboardProduct extends BaseViewController
         $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
         $this->data['products'] = $this->product->with($this->product->getRelations())->offset($offset)->limit($limit)->get();
 
-        $this->setupPaginations('product', $paginator->current, $paginator->total);
+        $this->setupPaginations(rootDashboard('product'), $paginator->current, $paginator->total);
 
         return $this->bootstrap(true);
     }

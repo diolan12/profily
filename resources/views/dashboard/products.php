@@ -4,8 +4,8 @@
         <!--   Icon Section   -->
         <div class="row">
             <div class="col s12">
-                <h4>Data Produk</h4>
-                <a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Add product</a>
+                <h5>Data Produk</h5>
+                <a class="waves-effect waves-light btn"><i class="material-icons left">add</i>tambah produk</a>
             </div>
             <div class="col s12">
                 <ul class="collection">

@@ -4,7 +4,7 @@
         <!--   Icon Section   -->
         <div class="row">
             <div class="col s12">
-                <h4>Data Komoditas</h4>
+                <h5>Data Komoditas</h5>
                 <button data-target="add-commodity" class="waves-effect waves-light btn modal-trigger">
                     <i class="material-icons left">add</i>Tambah Komoditas</button>
             </div>
