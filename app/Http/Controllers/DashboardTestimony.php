@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Rest\Product;
 use Carbon\Carbon;
 
 class DashboardTestimony extends BaseViewController
@@ -17,10 +16,6 @@ class DashboardTestimony extends BaseViewController
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $ref = $request->server('HTTP_REFERER');
-        if ($ref == url() . rootAuth()) {
-            $this->toast('Welcome ' . $request->user()->name);
-        }
         $this->setupWhatsapp('Chat with developer', 'https://wa.me/6285648535927');
     }
 
