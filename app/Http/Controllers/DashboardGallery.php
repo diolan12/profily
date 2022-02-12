@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
-class DashboardTestimony extends BaseViewController
+class DashboardGallery extends BaseViewController
 {
     static $default_item_show = 8;
     /**
@@ -20,38 +20,54 @@ class DashboardTestimony extends BaseViewController
     }
 
 
-    public function testimony(Request $request)
+    public function gallery(Request $request)
     {
         $toast = $request->input('toast', null);
         $this->toast($toast);
 
-        $this->load(['testimony']);
-        $this->extra['meta']['title'] = 'Testimoni';
-        $this->extra['nav']['active'] = 'testimony';
-        $this->extra['content']['main'] = 'dashboard.testimonies';
+        $this->load(['image']);
+        $this->extra['meta']['title'] = 'Gallery';
+        $this->extra['nav']['active'] = 'gallery';
+        $this->extra['content']['main'] = 'dashboard.images';
 
-        $this->data['testimonies'] = $this->testimony->with($this->testimony->getRelations())->get();
+        $this->data['images'] = $this->image->orderBy('created_at', 'DESC')->get();
 
         return $this->bootstrap(true);
     }
 
-    public function testimonyNew(Request $request)
+    public function galleryNew(Request $request)
     {
-        $this->load(['testimony']);
-        $this->extra['meta']['title'] = 'Komoditas';
-        $this->extra['nav']['active'] = 'testimony';
-        $this->extra['content']['main'] = 'dashboard.testimonies';
+        $this->load(['image']);
+        $this->extra['meta']['title'] = 'Gallery';
+        $this->extra['nav']['active'] = 'gallery';
+        $this->extra['content']['main'] = 'dashboard.gallery';
+
+        $file = $request->file('image');
+
+        $fn = explode('.', $file->getClientOriginalName()); // file path
+        $format = $fn[(count($fn) - 1)];
+
+        $picName = uniqid() . '.' . $format;
+        $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
+        $destinationPath = base_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
         
-        $data = $this->validate($request, $this->testimony->validation());
+        $isSuccess = $request->file('image')->move($destinationPath, $picName);
+
+        $data = $this->validate($request, $this->image->validation());
+        $data['file'] = $picName;
         $data['created_at'] = Carbon::now('UTC');
         $data['updated_at'] = Carbon::now('UTC');
-        $data = $this->testimony->filter($data);
+        $data = $this->image->filter($data);
 
-        $toast = (!($this->testimony->insert($data))) ? "Gagal menambahkan komoditas" : "Komoditas berhasil ditambahkan";
+        $toast = "Gagal menambahkan gambar";
 
-        $this->data['commodities'] = $this->testimony->with($this->testimony->getRelations())->get();
+        if ($isSuccess) {
+            $toast = (!($this->image->insert($data))) ? "Gagal menambahkan gambar" : "Gambar berhasil ditambahkan";
+        }
 
-        return redirect(rootDashboard('testimony?toast=' . $toast));
+        $this->data['images'] = $this->image->with($this->image->getRelations())->get();
+
+        return redirect(rootDashboard('gallery?toast=' . $toast));
     }
 
     public function testimonyAt(Request $request, $testimonyID)
@@ -94,11 +110,10 @@ class DashboardTestimony extends BaseViewController
         }
 
         $toast = (!($testimony->update($data))) ? "Gagal memperbarui testimony" : "Testimony berhasil diperbarui";
-        
+
         // $this->toast($toast);
 
         $this->data['testimony'] = $testimony;
-        return redirect(rootDashboard('testimony/'.$testimonyID.'?toast=' . $toast));
+        return redirect(rootDashboard('testimony/' . $testimonyID . '?toast=' . $toast));
     }
-
 }

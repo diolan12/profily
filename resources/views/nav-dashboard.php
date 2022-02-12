@@ -45,6 +45,7 @@
     <li><a href="<?= rootDashboard('commodity') ?>" class="waves-effect <?php if ($nav['active'] == 'commodity') echo 'active' ?>"><i class="material-icons">category</i>Komoditas</a></li>
     <li><a href="<?= rootDashboard('product') ?>" class="waves-effect <?php if ($nav['active'] == 'product') echo 'active' ?>"><i class="material-icons">inventory_2</i>Produk</a></li>
     <li><a href="<?= rootDashboard('testimony') ?>" class="waves-effect <?php if ($nav['active'] == 'testimony') echo 'active' ?>"><i class="material-icons">reviews</i>Testimoni</a></li>
+    <li><a href="<?= rootDashboard('gallery') ?>" class="waves-effect <?php if ($nav['active'] == 'gallery') echo 'active' ?>"><i class="material-icons">collections</i>Gallery</a></li>
 
     <li>
         <div class="divider"></div>

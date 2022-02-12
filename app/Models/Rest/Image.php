@@ -13,13 +13,18 @@ class Image extends BaseModel
     {
         return [
             'file' => 'required',
-            'title' => '',
+            'title' => 'required',
             'credit' => ''
         ];
     }
     public function filter($data)
     {
         unset($data['id']);
+        unset($data['image']);
+        $data['title'] = ucwords($data['title']);
+        if ($data['credit'] == '') {
+            unset($data['credit']);
+        }
         return $data;
     }
 
@@ -46,12 +51,4 @@ class Image extends BaseModel
         }
         return asset('img/' . $value);
     }
-
-    protected $relations = ['commodity'];
-
-    public function commodity()
-    {
-        return $this->belongsTo('App\Models\Rest\Commodity', 'commodity');
-    }
-
 }

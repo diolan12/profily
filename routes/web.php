@@ -43,6 +43,11 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     $router->get('/testimony/{testimonyID}', 'DashboardTestimony@testimonyAt');
     $router->post('/testimony/{testimonyID}', 'DashboardTestimony@testimonyUpdateAt');
 
+    $router->get('/gallery', 'DashboardGallery@gallery');
+    $router->post('/gallery', 'DashboardGallery@galleryNew');
+    $router->get('/gallery/{galleryID}', 'DashboardGallery@galleryAt');
+    $router->post('/gallery/{galleryID}', 'DashboardGallery@galleryUpdateAt');
+
     $router->get('/about', 'Dashboard@about');
     $router->get('/setting', 'Dashboard@setting');
 });
