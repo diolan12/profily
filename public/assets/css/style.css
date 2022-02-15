@@ -1,25 +1,40 @@
-.logo {
-    display: inline-block;
-    height: 100%;
-}
-
-.logo>img {
-    vertical-align: middle;
-    max-height: 64px;
-}
+/* Banner logo image */
 
 .header>img {
     max-height: 96px;
 }
 
-nav .brand-logo {
+nav .brand-logo.text {
     padding-left: 32px;
     font-size: 1.5rem !important;
 }
 
-nav .brand-logo.small {
-    padding-left: 0;
-    font-size: 1.1rem !important;
+nav .brand-logo.img>img {
+    padding-left: 32px;
+    display: inline-block;
+    height: 100%;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    vertical-align: middle;
+    max-height: 48px;
+}
+
+@media only screen and (max-width: 600px) {
+    nav .brand-logo.img>img {
+        padding-left: 0;
+        max-height: 40px !important;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    nav .brand-logo.text {
+        padding-left: 0;
+        font-size: 1.5rem !important;
+    }
+    nav .brand-logo.img>img {
+        padding-left: 0;
+        max-height: 48px;
+    }
 }
 
 ul.dropdown-content {
