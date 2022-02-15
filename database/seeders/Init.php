@@ -23,7 +23,7 @@ class Init extends Seeder
         DB::table(self::$name)->insert([
             'key' => 'brand_type',
             'type' => 'web',
-            'val1' => 'text',
+            'val1' => 'logo',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
@@ -35,7 +35,7 @@ class Init extends Seeder
         DB::table(self::$name)->insert([
             'key' => 'brand_logo',
             'type' => 'web',
-            'val1' => 'logo-chintia.png',
+            'val1' => 'logo-long-light.png',
             'val2' => 'Chintia Coffee Logo',
             'created_at' => Carbon::now('UTC')
         ]);
