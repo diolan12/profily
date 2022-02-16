@@ -101,4 +101,51 @@ class DashboardCommodity extends BaseViewController
         return redirect(rootDashboard('commodity/'.beauty_to_kebab($data['name']).'?toast=' . $toast));
     }
 
+    public function typeAtCommodity(Request $request, $commodityName, $typeID)
+    {
+        $toast = $request->input('toast', null);
+        $this->toast($toast);
+
+        $this->load(['commodity', 'type']);
+        $this->extra['meta']['title'] = kebab_to_beauty($commodityName);
+
+        $this->extra['nav']['active'] = 'commodity';
+        $this->extra['content']['main'] = 'dashboard.type';
+
+        $this->data['type'] = $this->type->with($this->type->getRelations())->where('id', $typeID)->first();
+
+        if ($this->data['type'] == null) {
+            // abort(404, "Komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
+            return redirect(rootDashboard('commodity/'.beauty_to_kebab($commodityName)));
+        }
+
+        return $this->bootstrap(true);
+    }
+
+    public function typeUpdateAtCommodity(Request $request, $commodityName, $typeID)
+    {
+        $this->load(['commodity', 'type']);
+        $this->extra['meta']['title'] = kebab_to_beauty($commodityName);
+
+        $this->extra['nav']['active'] = 'commodity';
+        $this->extra['content']['main'] = 'dashboard.type';
+
+        $data = $request->all();
+        $data['updated_at'] = Carbon::now();
+        $data = $this->type->filter($data);
+
+        $type = $this->type->with($this->type->getRelations())->where('id', $typeID)->first();
+
+        if ($type == null) {
+            abort(404, "Jenis komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
+        }
+
+        $toast = (!($type->update($data))) ? "Gagal memperbarui jenis komoditas" : "Jenis komoditas berhasil diperbarui";
+        
+        // $this->toast($toast);
+
+        $this->data['types'] = $this->type->with($this->type->getRelations())->get();
+        return redirect(rootDashboard('commodity/'.$commodityName.'?toast=' . $toast));
+    }
+
 }
