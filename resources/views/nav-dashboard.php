@@ -17,8 +17,7 @@
     <nav class="<?= color($config->color->primary) ?>" role="navigation">
         <div class="nav-wrapper">
 
-            <a id="logo-container" href="<?= rootDashboard() ?>" class="brand-logo hide-on-small-only">Dashboard</a>
-            <a id="logo-container" href="<?= rootDashboard() ?>" class="brand-logo small hide-on-med-and-up">Dashboard</a>
+            <a href="<?= rootDashboard() ?>" class="brand-logo text">Dashboard</a>
 
             <ul class="right">
                 <li><a class="dropdown-trigger" data-target="more"><i class="material-icons">more_vert</i></a></li>
