@@ -4,27 +4,10 @@
         <!--   Icon Section   -->
         <div class="row">
             <div class="col s12 center">
-                <img class="col s12 m5 materialboxed responsive-img" src="<?= $data->commodity->image->file ?>" data-caption="<?= $data->commodity->name ?>" alt="<?= $data->commodity->name ?>">
                 <h4><?= $data->commodity->name ?></h4>
-                <ul class="left-align">
-                    <li>Commodity: <b><?= $data->commodity->name ?></b></li>
-                </ul>
-                <p class="left-align"><?= $data->commodity->description1 ?></p>
-                <p class="left-align"><?= $data->commodity->description2 ?></p>
-
-                <div class="left-align col s12">
-                    <div class="col s12 m6">
-                        <h5>Jenis - Jenis</h5>
-                        <ul class="list">
-                            <?php
-                            foreach ($data->commodity->types as $specification) {
-                                echo '<li><i class="material-icons small">chevron_right</i><p>' . $specification->name . '</p></li>';
-                            }
-                            ?>
-                        </ul>
-                    </div>
-
-                </div>
+            </div>
+            <div class="col s12 center">
+                <img class="materialboxed responsive-img" src="<?= $data->commodity->image->file ?>" data-caption="<?= $data->commodity->name ?>" alt="<?= $data->commodity->name ?>">
             </div>
 
             <div class="col s12 m6">
@@ -33,7 +16,7 @@
 
                         <div class="card-content row">
 
-                            <span class="card-title"><strong>Ubah Komoditas</strong></span>
+                            <span class="card-title"><strong>Detail Komoditas</strong></span>
                             <div class="input-field col s12 m6">
                                 <input id="name" name="name" type="text" class="validate" value="<?= $data->commodity->name ?>">
                                 <label for="name">Nama Komoditas</label>
