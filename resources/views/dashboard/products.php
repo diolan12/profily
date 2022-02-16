@@ -13,9 +13,20 @@
                     <?php foreach ($data->products as $product) : ?>
                         <li class="collection-item avatar">
                             <img src="<?= $product->image->file ?>" alt="<?= $product->name ?>" class="circle">
-                            <span class="title"><strong><?= $product->name ?></strong></span>
-                            <p>Type: <?= $product->type->name ?></p>
-                            <p>Commodity: <?= $product->commodity->name ?></p>
+                            <span class="title">
+                                <?php if ($product->commodity == null || $product->type == null) : ?>
+                                    <i class="tooltipped material-icons red-text left" data-position="bottom" data-tooltip="Data produk yang bermasalah tidak akan muncul pada katalog produk">error</i>
+                                <?php endif; ?>
+                                <strong><?= $product->name ?></strong>
+                            </span>
+                            <?php
+                            $c = '<span class="red-text">Komoditas tidak ada</span>';
+                            $t = '<span class="red-text">Jenis komoditas tidak ada</span>';
+                            if ($product->commodity != null) $c = $product->commodity->name;
+                            if ($product->type != null) $t = $product->type->name;
+                            ?>
+                            <p>Jenis komoditas: <?= $t ?></p>
+                            <p>Komoditas: <?= $c ?></p>
                             <a href="<?= rootDashboard('product/' . beauty_to_kebab($product->name)) ?>" class="secondary-content"><i class="material-icons">edit</i></a>
                         </li>
                     <?php endforeach; ?>
