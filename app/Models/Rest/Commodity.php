@@ -23,6 +23,10 @@ class Commodity extends BaseModel
     public function filter($data)
     {
         unset($data['id']);
+        $data['name'] = ucwords($data['name']);
+        $data['slogan'] = ucfirst($data['slogan']);
+        $data['description1'] = ucfirst($data['description1']);
+        $data['description2'] = ucfirst($data['description2']);
         return $data;
     }
 
