@@ -47,7 +47,7 @@ class DashboardTestimony extends BaseViewController
         $data['updated_at'] = Carbon::now('UTC');
         $data = $this->testimony->filter($data);
 
-        $toast = (!($this->testimony->insert($data))) ? "Gagal menambahkan komoditas" : "Komoditas berhasil ditambahkan";
+        $toast = (!($this->testimony->insert($data))) ? "Gagal menambahkan testimoni" : "Testimoni berhasil ditambahkan";
 
         $this->data['commodities'] = $this->testimony->with($this->testimony->getRelations())->get();
 
@@ -93,7 +93,33 @@ class DashboardTestimony extends BaseViewController
             abort(404, "Testimoni tidak ditemukan");
         }
 
-        $toast = (!($testimony->update($data))) ? "Gagal memperbarui testimony" : "Testimony berhasil diperbarui";
+        $toast = (!($testimony->update($data))) ? "Gagal memperbarui testimoni" : "Testimoni berhasil diperbarui";
+        
+        // $this->toast($toast);
+
+        $this->data['testimony'] = $testimony;
+        return redirect(rootDashboard('testimony/'.$testimonyID.'?toast=' . $toast));
+    }
+
+    public function testimonyDeleteAt(Request $request, $testimonyID)
+    {
+        $this->load('testimony');
+        $this->extra['meta']['title'] = $testimonyID;
+
+        $this->extra['nav']['active'] = 'testimony';
+        $this->extra['content']['main'] = 'dashboard.testimony';
+
+        $data = $request->all();
+        $data['updated_at'] = Carbon::now();
+        $data = $this->testimony->filter($data);
+
+        $testimony = $this->testimony->where('id', $testimonyID)->dba_delete();
+
+        if ($testimony == null) {
+            abort(404, "Testimoni tidak ditemukan");
+        }
+
+        $toast = (!($testimony->update($data))) ? "Gagal menghapus testimoni" : "Testimoni dihapus";
         
         // $this->toast($toast);
 

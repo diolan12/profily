@@ -23,7 +23,12 @@ class RestDeleteController extends RestController
             $data['deleted_at'] = Carbon::now('UTC');
             // $data = $this->model->filter($data);
 
-            $this->code = ($this->model->where('id', $id)->update($data)) ? 200 : 422;
+            if ($request->has('force')) {
+                $this->code = ($this->model->where('id', $id)->forceDelete()) ? 200 : 422;
+            } else {
+                $this->code = ($this->model->where('id', $id)->update($data)) ? 200 : 422;
+            }
+
             $this->json = $this->model->get();
         }
         return $this->response();

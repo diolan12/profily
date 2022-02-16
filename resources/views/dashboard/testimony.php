@@ -1,6 +1,5 @@
 <div class="">
     <div class="section">
-
         <div class="row">
             <div class="col s12 m6 offset-m3">
                 <div class="card">
@@ -23,7 +22,12 @@
                             </div>
                         </div>
                         <div class="card-action right-align">
-                            <button type="submit" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>" type="submit" name="action">
+
+                            <a id="delete" class="btn-flat waves-effect waves-light red-text">
+                                Hapus
+                                <i class="material-icons left">delete</i>
+                            </a>
+                            <button type="submit" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>" name="action">
                                 Simpan
                                 <i class="material-icons left">save_as</i>
                             </button>
@@ -32,8 +36,19 @@
                 </div>
             </div>
         </div>
-
     </div>
+    <script type="text/javascript">
+        $('#delete').click(function() {
+            http.delete("<?= root('api/testimony/' . $data->testimony->id) ?>?force", (response, code) => {
+                // this.data.testimony = <?= json_encode($data->testimony) ?>;
+                console.log(code);
+                console.log(response);
+                toast('Testimoni berhasil dihapus')
+                reload(2000)
 
-</div>
+            }, ()=> {
+                console.log("error");
+            });
+        })
+    </script>
 </div>
