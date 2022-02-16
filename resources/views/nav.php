@@ -3,12 +3,11 @@
         <div class="nav-wrapper">
 
             <?php if ($config->web->brand_type->val1 == 'logo') : ?>
-                <a href="<?= root() ?>" class="logo">
-                    <img src="<?= root('assets/img/logo-chintia.png'); ?>" class="" alt="" />
+                <a href="<?= root() ?>" class="brand-logo img ">
+                    <img src="<?= root('assets/img/'. $config->web->brand_logo->val1); ?>" class="responsive-img" alt="Logo Long" />
                 </a>
             <?php else : ?>
-                <a id="logo-container" href="<?= root() ?>" class="brand-logo hide-on-small-only"><?= $config->web->brand_text->val1; ?></a>
-                <a id="logo-container" href="<?= root() ?>" class="brand-logo small hide-on-med-and-up"><?= $config->web->brand_text->val1; ?></a>
+                <a href="<?= root() ?>" class="brand-logo text"><?= $config->web->brand_text->val1; ?></a>
             <?php endif; ?>
 
             <ul class="right hide-on-med-and-down">
