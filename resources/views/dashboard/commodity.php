@@ -111,8 +111,6 @@
     <script type="text/javascript">
         $('#delete').click(function() {
             http.delete("<?= root('api/commodity/' . $data->commodity->id) ?>", (response, code) => {
-                console.log(code);
-                console.log(response);
                 toast('Komoditas berhasil dihapus')
                 reload(2000)
 
@@ -127,8 +125,6 @@
                 description: $('#form-type').find('textarea[name="description"]').val()
             }
             http.post("<?= root('api/type') ?>", data, (response, code) => {
-                console.log(code);
-                console.log(response);
                 toast('Jenis komoditas baru berhasil dibuat')
                 reload(2000)
 
