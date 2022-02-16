@@ -33,4 +33,18 @@ class RestDeleteController extends RestController
         }
         return $this->response();
     }
+
+    public function restore(Request $request, $table, $id)
+    {
+        parent::__construct($request, $table);
+        if ($this->model != null) {
+            // $data = $this->validate($request, $this->model->validation());
+            $data['deleted_at'] = null;
+            // $data = $this->model->filter($data);
+
+            $this->code = ($this->model->onlyTrashed()->where('id', $id)->update($data)) ? 200 : 422;
+            $this->json = $this->model->get();
+        }
+        return $this->response();
+    }
 }
