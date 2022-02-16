@@ -34,6 +34,9 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     $router->post('/commodity', 'DashboardCommodity@commodityNew');
     $router->get('/commodity/{commodityName}', 'DashboardCommodity@commodityAt');
     $router->post('/commodity/{commodityName}', 'DashboardCommodity@commodityUpdateAt');
+    
+    $router->post('/type', 'DashboardTestimony@typeNew');
+    // $router->delete('/type/{testimonyID}', 'DashboardTestimony@typeDeleteAt');
 
     $router->get('/product', 'DashboardProduct@product');
     $router->get('/product/{productName}', 'DashboardProduct@productAt');
@@ -42,7 +45,7 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     $router->post('/testimony', 'DashboardTestimony@testimonyNew');
     $router->get('/testimony/{testimonyID}', 'DashboardTestimony@testimonyAt');
     $router->post('/testimony/{testimonyID}', 'DashboardTestimony@testimonyUpdateAt');
-    $router->delete('/testimony/{testimonyID}', 'DashboardTestimony@testimonyDeleteAt');
+    // $router->delete('/testimony/{testimonyID}', 'DashboardTestimony@testimonyDeleteAt');
 
     $router->get('/gallery', 'DashboardGallery@gallery');
     $router->post('/gallery', 'DashboardGallery@galleryNew');
@@ -65,13 +68,13 @@ $router->group(['prefix' => 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq'], function () use
 $router->group(['prefix' => 'api/{table}', 'middleware' => 'auth'], function () use ($router) {
     // $router->get('/count', ['uses' => 'RestReadController@index']);
     // $router->get('', ['uses' => 'RestReadController@get']);
-    $router->get('{id}', ['uses' => 'RestReadController@getAt']);
+    // $router->get('{id}', ['uses' => 'RestReadController@getAt']);
     // $router->get('{id}/{column}', ['uses' => 'RestReadController@getAtColumn']);
 
-    // $router->post('', ['uses' => 'RestCreateController@insert']);
+    $router->post('', ['uses' => 'RestCreateController@insert']);
     // $router->post('/w/{column}/{value}', ['uses' => 'RestController@insertWhere']);
 
-    // $router->put('/{id}', ['uses' => 'RestUpdateController@update']);
+    $router->put('/{id}', ['uses' => 'RestUpdateController@update']);
     // $router->post('/{id}/upload/{column}', ['uses' => 'RestUpdateController@uploadAtColumn']);
 
     $router->delete('/{id}', ['uses' => 'RestDeleteController@delete']);
