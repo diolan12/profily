@@ -121,7 +121,11 @@
             });
         })
         $('#newType').click(function() {
-            var data = $("#form-type").serialize();
+            var data = {
+                commodity: $('#form-type').find('input[name="commodity"]').val(),
+                name: $('#form-type').find('input[name="name"]').val(),
+                description: $('#form-type').find('textarea[name="description"]').val()
+            }
             http.post("<?= root('api/type') ?>", data, (response, code) => {
                 console.log(code);
                 console.log(response);
