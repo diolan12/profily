@@ -25,8 +25,8 @@ function getCookie(cname) {
     return null
 }
 
-function reload(delay = 0) {
-    setTimeout(location.reload(), delay);
+function reload(delay = 500) {
+    setTimeout(() => { location.reload() }, delay);
 }
 
 function replaceState(url) {
@@ -62,8 +62,8 @@ class Http {
                 onError(this.responseText, this.status, response);
             };
             http.open("POST", url, true);
-            http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            http.send(data);
+            http.setRequestHeader('Content-type', 'application/json');
+            http.send(JSON.stringify(data));
         };
         this.put = (url, data, onSuccess, onError) => {
             http.onloadend = function(response) {
@@ -77,8 +77,8 @@ class Http {
                 onError(this.responseText, this.status, response);
             };
             http.open("PUT", url, true);
-            http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-            http.send(data);
+            http.setRequestHeader('Content-type', 'application/json');
+            http.send(JSON.stringify(data));
         };
         this.delete = (url, onSuccess, onError) => {
             http.onloadend = function(response) {
