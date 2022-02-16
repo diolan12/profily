@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col s12 center">
                 <h4><?= $data->commodity->name?></h4>
-                <blockquote class="left-align"><?= $data->commodity->description1.$data->commodity->description2?></blockquote>
+                <blockquote class="left-align"><?= $data->commodity->description1.' '.$data->commodity->description2?></blockquote>
                 <p class="left-align">Showing results for <?= $data->commodity->name?>. <a href="<?= root('product')?>">Click here</a> to see all products.</p>
             </div>
             <div>
