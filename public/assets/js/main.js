@@ -6,9 +6,9 @@ function checkTimezone() {
     }
 }
 
-function replaceHistory() {
+function deleteToast() {
     let current = window.location.href.split("?")[0];
-    history.replaceState({}, '', current);
+    replaceState(current);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // set client timezone
         checkTimezone();
-        replaceHistory();
+        deleteToast();
 
         // $('.slider').slider();
     }); // end of document ready
