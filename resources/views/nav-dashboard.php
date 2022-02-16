@@ -61,5 +61,5 @@
     <?php if ($user->role->id == 1) : ?>
         <li><a href="<?= rootDashboard('user') ?>" class="waves-effect <?php if ($nav['active'] == 'user') echo 'active' ?>"><i class="material-icons">manage_accounts</i>Users</a></li>
     <?php endif; ?>
-    <li><a class="waves-effect <?php if ($nav['active'] == 'setting') echo 'active' ?>" href="#!"><i class="material-icons">settings</i>Settings</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'setting') echo 'active' ?>" href="#!"><i class="material-icons">admin_panel_settings</i>Settings</a></li>
 </ul>
