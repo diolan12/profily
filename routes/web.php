@@ -37,11 +37,12 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
 
     $router->get('/product', 'DashboardProduct@product');
     $router->get('/product/{productName}', 'DashboardProduct@productAt');
-    
+
     $router->get('/testimony', 'DashboardTestimony@testimony');
     $router->post('/testimony', 'DashboardTestimony@testimonyNew');
     $router->get('/testimony/{testimonyID}', 'DashboardTestimony@testimonyAt');
     $router->post('/testimony/{testimonyID}', 'DashboardTestimony@testimonyUpdateAt');
+    $router->delete('/testimony/{testimonyID}', 'DashboardTestimony@testimonyDeleteAt');
 
     $router->get('/gallery', 'DashboardGallery@gallery');
     $router->post('/gallery', 'DashboardGallery@galleryNew');
@@ -61,10 +62,10 @@ $router->group(['prefix' => 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq'], function () use
     $router->post('password', ['uses' => 'Auth@changePassword', 'middleware' => 'auth']);
 });
 // $router->group(['prefix' => 'api/{table}'], function () use ($router) {
-    // $router->group(['prefix' => 'api/{table}', 'middleware' => 'auth'], function () use ($router) {
+$router->group(['prefix' => 'api/{table}', 'middleware' => 'auth'], function () use ($router) {
     // $router->get('/count', ['uses' => 'RestReadController@index']);
     // $router->get('', ['uses' => 'RestReadController@get']);
-    // $router->get('{id}', ['uses' => 'RestReadController@getAt']);
+    $router->get('{id}', ['uses' => 'RestReadController@getAt']);
     // $router->get('{id}/{column}', ['uses' => 'RestReadController@getAtColumn']);
 
     // $router->post('', ['uses' => 'RestCreateController@insert']);
@@ -73,5 +74,5 @@ $router->group(['prefix' => 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq'], function () use
     // $router->put('/{id}', ['uses' => 'RestUpdateController@update']);
     // $router->post('/{id}/upload/{column}', ['uses' => 'RestUpdateController@uploadAtColumn']);
 
-    // $router->delete('/{id}', ['uses' => 'RestDeleteController@delete']);
-// });
+    $router->delete('/{id}', ['uses' => 'RestDeleteController@delete']);
+});
