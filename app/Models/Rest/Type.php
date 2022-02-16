@@ -20,6 +20,8 @@ class Type extends BaseModel
     public function filter($data)
     {
         unset($data['id']);
+        $data['name'] = ucwords($data['name']);
+        $data['description'] = ucfirst($data['description']);
         return $data;
     }
 
