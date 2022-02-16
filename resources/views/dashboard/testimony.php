@@ -40,7 +40,6 @@
     <script type="text/javascript">
         $('#delete').click(function() {
             http.delete("<?= root('api/testimony/' . $data->testimony->id) ?>?force", (response, code) => {
-                // this.data.testimony = <?= json_encode($data->testimony) ?>;
                 console.log(code);
                 console.log(response);
                 toast('Testimoni berhasil dihapus')
