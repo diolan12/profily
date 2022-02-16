@@ -1,15 +1,16 @@
 <div class="navbar">
     <!-- Dropdown Structure -->
     <ul id="more" class="dropdown-content">
-        <li><a href="<?= root() ?>"><i class="material-icons left">public</i>View Page</a></li>
+        <li><a href="<?= root() ?>"><i class="material-icons left">public</i>Lihat halaman</a></li>
 
         <?php if ($nav['active'] == 'stats') : ?>
             <?php if (!$server['client']['refresh']) : ?>
                 <li><a href="<?= rootDashboard('?refresh=30') ?>"><i class="material-icons left">check_box_outline_blank</i>Auto Refresh</a></li>
             <?php elseif ($server['client']['refresh']) : ?>
-                <li><a href="<?= rootDashboard() ?>"><i class="material-icons left">check_box</i>Auto Refresh</a></li>
+                <li><a href="<?= rootDashboard() ?>"><i class="material-icons left">check_box</i>Auto refresh</a></li>
             <?php endif; ?>
         <?php endif; ?>
+        <li><a href="<?= rootAuth('profile') ?>"><i class="material-icons left">account_circle</i>Profil</a></li>
 
         <li class="divider"></li>
         <li><a href="<?= rootAuth('logout') ?>"><i class="material-icons left">logout</i>Logout</a></li>
@@ -58,7 +59,7 @@
     </li>
     <li><a class="subheader">Web</a></li>
     <?php if ($user->role->id == 1) : ?>
-        <li><a href="<?= rootDashboard('user') ?>" class="waves-effect <?php if ($nav['active'] == 'user') echo 'active' ?>"><i class="material-icons">group</i>Users</a></li>
+        <li><a href="<?= rootDashboard('user') ?>" class="waves-effect <?php if ($nav['active'] == 'user') echo 'active' ?>"><i class="material-icons">manage_accounts</i>Users</a></li>
     <?php endif; ?>
     <li><a class="waves-effect <?php if ($nav['active'] == 'setting') echo 'active' ?>" href="#!"><i class="material-icons">settings</i>Settings</a></li>
 </ul>
