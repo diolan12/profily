@@ -5,7 +5,7 @@
                 <br><br><br>
                 <div class="header center pink-text text-darken-3">
                     <?php if ($config->web->brand_type->val1 == 'logo') : ?>
-                        <img src="<?= asset('img/logo-chintia.png'); ?>" class="responsive-img" alt="" />
+                        <img src="<?= asset('img/logo-long-light.png'); ?>" class="responsive-img" alt="Logo Long" />
                     <?php else : ?>
                         <h1 class="header center <?= color($config->color->accent, true) ?>"><?= $config->web->brand_text->val1; ?></h1>
                     <?php endif; ?>
