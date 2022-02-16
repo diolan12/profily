@@ -101,30 +101,6 @@ class DashboardTestimony extends BaseViewController
         return redirect(rootDashboard('testimony/'.$testimonyID.'?toast=' . $toast));
     }
 
-    public function testimonyDeleteAt(Request $request, $testimonyID)
-    {
-        $this->load('testimony');
-        $this->extra['meta']['title'] = $testimonyID;
-
-        $this->extra['nav']['active'] = 'testimony';
-        $this->extra['content']['main'] = 'dashboard.testimony';
-
-        $data = $request->all();
-        $data['updated_at'] = Carbon::now();
-        $data = $this->testimony->filter($data);
-
-        $testimony = $this->testimony->where('id', $testimonyID)->dba_delete();
-
-        if ($testimony == null) {
-            abort(404, "Testimoni tidak ditemukan");
-        }
-
-        $toast = (!($testimony->update($data))) ? "Gagal menghapus testimoni" : "Testimoni dihapus";
-        
-        // $this->toast($toast);
-
-        $this->data['testimony'] = $testimony;
-        return redirect(rootDashboard('testimony/'.$testimonyID.'?toast=' . $toast));
-    }
+    
 
 }
