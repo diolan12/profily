@@ -4,8 +4,15 @@
         <!--   Icon Section   -->
         <div class="row">
             <div class="col s12 center">
+                <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                <div class="addthis_inline_share_toolbox"></div>
+            </div>
+            <div class="col s12 center">
                 <img class="col s12 m5 materialboxed responsive-img" src="<?= $data->product->image->file ?>" data-caption="<?= $data->product->name ?>" alt="<?= $data->product->name ?>">
                 <h4><?= $data->product->name ?></h4>
+
+                
+
                 <ul class="left-align">
                     <li>Commodity: <b><?= $data->product->commodity->name ?></b></li>
                     <?php if ($data->product->type != null) : ?>
