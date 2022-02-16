@@ -19,9 +19,9 @@ class User extends Seeder
     {
         DB::table(self::$name)->insert([
             'role' => 1,
-            'name' => 'Dio Lantief Widoyoko',
+            'name' => 'Administrator',
             'email' => 'admin@permataagrindo.com',
-            'password' => Hash::make('Didola_12'),
+            'password' => Hash::make('4dm1n15tr4t0r'),
             'created_at' => Carbon::now()
         ]);
         DB::table(self::$name)->insert([
