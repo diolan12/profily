@@ -62,6 +62,7 @@ class Http {
                 onError(this.responseText, this.status, response);
             };
             http.open("POST", url, true);
+            http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             http.send(data);
         };
         this.put = (url, data, onSuccess, onError) => {
@@ -76,6 +77,7 @@ class Http {
                 onError(this.responseText, this.status, response);
             };
             http.open("PUT", url, true);
+            http.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
             http.send(data);
         };
         this.delete = (url, onSuccess, onError) => {
