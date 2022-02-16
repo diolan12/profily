@@ -9,7 +9,7 @@
                     <p class="left-align"><?= $config->brand->about->val1 ?></p>
                 </div>
                 <div class="col s12 center">
-                    <h4>Vision and Mission</h4>
+                    <h5>Vision and Mission</h5>
                     <div class="row">
                         <div class="col s12 center">
                             <p class="left-align "><?= $config->brand->vision->val1 ?></p>
