@@ -47,7 +47,7 @@
                 reload(2000)
 
             }, ()=> {
-                console.log("error");
+                toast('Gagal menghapus testimoni')
             });
         })
     </script>
