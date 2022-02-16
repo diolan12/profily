@@ -9,6 +9,7 @@ use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Laravel\Lumen\Auth\Authorizable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Hash;
 
 class User extends BaseModel implements AuthenticatableContract, AuthorizableContract
 {
@@ -20,13 +21,21 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
             'picture' => '',
             'name' => 'required',
             'email' => 'required',
-            'role' => ''
+            'role' => '',
+            'password' => '',
+            'deleted_at' => ''
         ];
     }
 
     public function filter($data)
     {
         unset($data['id']);
+        if (isset($data['name'])) {
+            $data['name'] = ucwords($data['name']);
+        }
+        if (isset($data['password'])) {
+            $data['password'] = Hash::make($data['password']);
+        }
         return $data;
     }
 
@@ -36,7 +45,7 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
      * @var array
      */
     protected $fillable = [
-        'picture', 'name', 'email', 'role'
+        'picture', 'name', 'email', 'role', 'password', 'deleted_at'
     ];
 
     /**

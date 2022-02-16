@@ -37,7 +37,6 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     
     $router->get('/commodity/{commodityName}/{typeID}', 'DashboardCommodity@typeAtCommodity');
     $router->post('/commodity/{commodityName}/{typeID}', 'DashboardCommodity@typeUpdateAtCommodity');
-    // $router->delete('/type/{testimonyID}', 'DashboardTestimony@typeDeleteAt');
 
     $router->get('/product', 'DashboardProduct@product');
     $router->get('/product/{productName}', 'DashboardProduct@productAt');
@@ -55,6 +54,11 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
 
     $router->get('/about', 'Dashboard@about');
     $router->get('/setting', 'Dashboard@setting');
+    
+    $router->get('/user', 'DashboardUser@index');
+    $router->post('/user', 'DashboardUser@new');
+    $router->get('/user/{userName}', 'DashboardUser@userAt');
+    $router->post('/user/{userName}', 'DashboardUser@userUpdateAt');
 });
 
 $router->group(['prefix' => 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq'], function () use ($router) {
@@ -76,7 +80,9 @@ $router->group(['prefix' => 'api/{table}', 'middleware' => 'auth'], function () 
     // $router->post('/w/{column}/{value}', ['uses' => 'RestController@insertWhere']);
 
     $router->put('/{id}', ['uses' => 'RestUpdateController@update']);
+    $router->post('/{id}', ['uses' => 'RestUpdateController@update']);
     // $router->post('/{id}/upload/{column}', ['uses' => 'RestUpdateController@uploadAtColumn']);
 
     $router->delete('/{id}', ['uses' => 'RestDeleteController@delete']);
+    $router->delete('/{id}/restore', ['uses' => 'RestDeleteController@restore']);
 });
