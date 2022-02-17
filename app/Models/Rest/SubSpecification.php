@@ -19,16 +19,7 @@ class SubSpecification extends BaseModel
     public function filter($data)
     {
         unset($data['id']);
-        if (isset($data['value'])) {
-            if (str_contains($data['value'], ':')) {
-                $value = explode(':', $data['value']);
-                $k = $value[0];
-                $v = $value[1];
-                $data['value'] = ucfirst($k) . ': ' . ucfirst($v);
-            } else {
-                $data['value'] = ucfirst($data['value']);
-            }
-        }
+        if (isset($data['value'])) $data['value'] = ucfirst($data['value']);
         return $data;
     }
 
@@ -47,4 +38,5 @@ class SubSpecification extends BaseModel
      * @var array
      */
     protected $hidden = [];
+
 }
