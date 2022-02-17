@@ -21,10 +21,14 @@ class Image extends BaseModel
     {
         unset($data['id']);
         unset($data['image']);
-        $data['title'] = ucwords($data['title']);
-        if ($data['credit'] == '') {
-            unset($data['credit']);
+        if (isset($data['title'])) $data['title'] = ucwords($data['title']);
+
+        if (isset($data['title'])) {
+            if ($data['credit'] == '') {
+                unset($data['credit']);
+            }
         }
+
         return $data;
     }
 
