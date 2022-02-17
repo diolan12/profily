@@ -20,10 +20,10 @@ class Specification extends BaseModel
     {
         unset($data['id']);
         if (isset($data['value'])) {
-            if (str_contains($data['value'], ':')) {
+            if (strpos($data['value'], ':')) {
                 $value = explode(':', $data['value']);
                 $k = $value[0];
-                $v = $value[1];
+                $v = ltrim($value[1], ' ');
                 $data['value'] = ucfirst($k) . ': ' . ucfirst($v);
             } else {
                 $data['value'] = ucfirst($data['value']);
