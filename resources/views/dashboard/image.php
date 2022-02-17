@@ -11,6 +11,16 @@
                         </div>
                         <div class="card-content row">
                             <!-- <span class="card-title"><strong>Ubah Testimoni</strong></span> -->
+                            <div class="input-field col s12 center">
+                                <div class="switch">
+                                    <label>
+                                        Private
+                                        <input id="privacy" type="checkbox" checked="<?= $data->image->privacy ?>">
+                                        <span class="lever"></span>
+                                        Public
+                                    </label>
+                                </div>
+                            </div>
                             <div class="input-field col s12">
                                 <input id="name" name="name" type="text" class="validate" value="<?= $data->image->title ?>">
                                 <label for="name">Judul</label>
@@ -49,7 +59,25 @@
             } else {
                 console.log('Delete was canceled.');
             }
+        })
+        $('#privacy').change(function() {
+            var data = {
+                privacy: $(this).is(':checked')
+            }
+            http.post("<?= root('api/image/' . $data->image->id) ?>", data, (response, code) => {
+                var t = ''
 
+                if ($(this).is(':checked')) {
+                    t = 'public'
+                } else {
+                    t = 'private'
+                }
+                toast('Image set to '+t)
+
+            }, () => {
+                $(this).prop('checked', !$(this).is(':checked'));
+                toast('Gagal menyetel privasi')
+            });
         })
     </script>
 </div>

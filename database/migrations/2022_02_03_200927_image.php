@@ -20,6 +20,7 @@ class Image extends Migration
             $table->string('file', 64)->index();
             $table->string('title', 32);
             $table->string('credit', 512)->default('Property of <a href="' . root() . '">Permata Agrindo</a>');
+            $table->boolean('privacy')->default(true);
             $table->timestamps();
             $table->softDeletes();
         });

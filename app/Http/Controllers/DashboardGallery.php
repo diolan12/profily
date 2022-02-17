@@ -76,7 +76,6 @@ class DashboardGallery extends BaseViewController
         $this->toast($toast);
 
         $this->load('image');
-        $this->extra['meta']['title'] = 'Imgae';
 
         $this->extra['nav']['active'] = 'image';
         $this->extra['content']['main'] = 'dashboard.image';
@@ -87,6 +86,7 @@ class DashboardGallery extends BaseViewController
             // abort(404, "Komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
             return redirect(rootDashboard('gallery'));
         }
+        $this->extra['meta']['title'] = 'Image '.$this->data['image']->title;
 
         return $this->bootstrap(true);
     }

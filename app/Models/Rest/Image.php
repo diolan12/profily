@@ -29,6 +29,12 @@ class Image extends BaseModel
             }
         }
 
+        if (isset($data['credit'])) {
+            if ($data['credit'] == '') {
+                $data['credit'] = null;
+            }
+        }
+
         return $data;
     }
 
