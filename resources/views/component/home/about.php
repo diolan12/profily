@@ -12,7 +12,7 @@
                     <h4>Vision and Mission</h4>
                     <div class="row">
                         <div class="col s12 center">
-                            <p class="left-align "><?= $config->brand->vision->val1 ?></p>
+                            <h6><?= $config->brand->vision->val1 ?></h6>
                         </div>
 
                         <?php foreach ($config->mission as $mission) : ?>
