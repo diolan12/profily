@@ -109,3 +109,10 @@ ul.list ul.sub-list {
 .justify {
     justify-content: space-between;
 }
+
+
+/* Genaral cursor pointer */
+
+.pointer {
+    cursor: pointer;
+}
