@@ -16,7 +16,7 @@
                                 <div class="card-image">
                                     <img src="<?= $image->file ?>">
                                     <span class="card-title"><?= $image->title ?></span>
-                                    <a class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">edit</i></a>
+                                    <a href="<?= rootDashboard('gallery/'.$image->id)?>" class="btn-floating halfway-fab waves-effect waves-light"><i class="material-icons">edit</i></a>
                                 </div>
                                 <div class="card-content">
                                     <p><?= $image->credit ?></p>
@@ -38,11 +38,12 @@
                         <div class="input-field col s12">
                             <div class="file-field input-field">
                                 <div class="btn">
-                                    <span>Pilih Gambar</span>
+                                    <span>Pilih</span>
                                     <input type="file" name="image" accept="image/*" />
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input name="file" class="file-path validate" type="text">
+                                    <span class="helper-text">Disarankan mengupload foto yang sudah terkompres</span>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +54,7 @@
                         <div class="input-field col s12">
                             <textarea id="credit" name="credit" class="materialize-textarea"></textarea>
                             <label for="credit">Credit</label>
-                            <span class="helper-text" >Kosongi bila properti milik <?= $config->brand->information->val2?></span>
+                            <span class="helper-text">Kosongi bila properti milik <?= $config->brand->information->val2 ?></span>
                         </div>
                     </div>
                 </div>

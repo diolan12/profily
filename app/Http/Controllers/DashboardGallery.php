@@ -70,22 +70,22 @@ class DashboardGallery extends BaseViewController
         return redirect(rootDashboard('gallery?toast=' . $toast));
     }
 
-    public function testimonyAt(Request $request, $testimonyID)
+    public function galleryAt(Request $request, $imageID)
     {
         $toast = $request->input('toast', null);
         $this->toast($toast);
 
-        $this->load('testimony');
-        $this->extra['meta']['title'] = 'Testimoni';
+        $this->load('image');
+        $this->extra['meta']['title'] = 'Imgae';
 
-        $this->extra['nav']['active'] = 'testimony';
-        $this->extra['content']['main'] = 'dashboard.testimony';
+        $this->extra['nav']['active'] = 'image';
+        $this->extra['content']['main'] = 'dashboard.image';
 
-        $this->data['testimony'] = $this->testimony->with($this->testimony->getRelations())->where('id', $testimonyID)->first();
+        $this->data['image'] = $this->image->with($this->image->getRelations())->where('id', $imageID)->first();
 
-        if ($this->data['testimony'] == null) {
+        if ($this->data['image'] == null) {
             // abort(404, "Komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
-            return redirect(rootDashboard('testimony'));
+            return redirect(rootDashboard('gallery'));
         }
 
         return $this->bootstrap(true);
