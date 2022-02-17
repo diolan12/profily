@@ -62,6 +62,9 @@ ul.dropdown-content {
     color: #545454 !important;
 }
 
+
+/* Active nav link */
+
 a.active {
     background-color: rgba(0, 0, 0, 0.1);
 }
@@ -98,4 +101,11 @@ ul.list ul.sub-list {
 .element-word-spacing {
     padding-left: 8px;
     padding-right: 8px;
+}
+
+
+/* Collapsible */
+
+.justify {
+    justify-content: space-between;
 }
