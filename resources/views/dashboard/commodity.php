@@ -45,7 +45,7 @@
                                 Hapus
                                 <i class="material-icons left">delete</i>
                             </a>
-                            <button type="submit" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>" type="submit" name="action">
+                            <button class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>" type="submit" name="action">
                                 Simpan
                                 <i class="material-icons left">save_as</i>
                             </button>
