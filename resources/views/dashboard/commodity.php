@@ -40,7 +40,6 @@
                             </div>
                         </div>
                         <div class="card-action right-align">
-                            
                             <a id="delete" class="btn-flat waves-effect waves-light red-text <?php if ($data->commodity->id == 1) echo 'disabled';?>">
                                 Hapus
                                 <i class="material-icons left">delete</i>
