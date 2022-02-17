@@ -107,15 +107,20 @@
         }
 
         function deactivate() {
-            http.delete("<?= root('api/user/' . $data->user->id) ?>", (response, code) => {
-                console.log(code);
-                console.log(response);
-                toast('Pengguna berhasil dinonaktifkan')
-                reload(2000)
+            if (confirm('Are you sure you want to deactivate <?= $data->user->name ?>')) {
+                http.delete("<?= root('api/user/' . $data->user->id) ?>", (response, code) => {
+                    console.log(code);
+                    console.log(response);
+                    toast('Pengguna berhasil dinonaktifkan')
+                    reload(2000)
 
-            }, () => {
-                toast('Gagal menonaktifkan pengguna')
-            });
+                }, () => {
+                    toast('Gagal menonaktifkan pengguna')
+                });
+            } else {
+                console.log('Delete was canceled.');
+            }
+
         }
 
         function changePassword() {

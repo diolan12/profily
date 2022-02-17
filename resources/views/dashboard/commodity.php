@@ -71,7 +71,7 @@
                                 <!-- <a id="delete-type" class="secondary-content red-text">
                                     <i class="material-icons right">delete</i>
                                 </a> -->
-                                <a href="<?= rootDashboard('commodity/'. beauty_to_kebab($data->commodity->name).'/'.$type->id)?>" class="secondary-content">
+                                <a href="<?= rootDashboard('commodity/' . beauty_to_kebab($data->commodity->name) . '/' . $type->id) ?>" class="secondary-content">
                                     <i class="material-icons right">edit</i>
                                 </a>
                             </div>
@@ -110,13 +110,18 @@
     </div>
     <script type="text/javascript">
         $('#delete').click(function() {
-            http.delete("<?= root('api/commodity/' . $data->commodity->id) ?>", (response, code) => {
-                toast('Komoditas berhasil dihapus')
-                reload(2000)
+            if (confirm('Are you sure you want to delete <?= $data->commodity->name?>')) {
+                http.delete("<?= root('api/commodity/' . $data->commodity->id) ?>", (response, code) => {
+                    toast('Komoditas berhasil dihapus')
+                    reload(2000)
 
-            }, () => {
-                toast('Gagal menghapus komoditas')
-            });
+                }, () => {
+                    toast('Gagal menghapus komoditas')
+                });
+            } else {
+                console.log('Delete was canceled.');
+            }
+
         })
         $('#newType').click(function() {
             var data = {

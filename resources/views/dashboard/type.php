@@ -35,15 +35,19 @@
     </div>
     <script type="text/javascript">
         $('#delete').click(function() {
-            http.delete("<?= root('api/type/' . $data->type->id) ?>?force", (response, code) => {
-                console.log(code);
-                console.log(response);
-                toast('Jenis komoditas berhasil dihapus')
-                reload(2000)
 
-            }, () => {
-                toast('Gagal menghapus jenis komoditas')
-            });
+            if (confirm('Are you sure you want to delete <?= $data->type->name ?>')) {
+                http.delete("<?= root('api/type/' . $data->type->id) ?>?force", (response, code) => {
+                    toast('Jenis komoditas berhasil dihapus')
+                    reload(2000)
+
+                }, () => {
+                    toast('Gagal menghapus jenis komoditas')
+                });
+            } else {
+                console.log('Delete was canceled.');
+            }
+
         })
     </script>
 </div>

@@ -39,15 +39,18 @@
     </div>
     <script type="text/javascript">
         $('#delete').click(function() {
-            http.delete("<?= root('api/testimony/' . $data->testimony->id) ?>?force", (response, code) => {
-                console.log(code);
-                console.log(response);
-                toast('Testimoni berhasil dihapus')
-                reload(2000)
+            if (confirm('Are you sure you want to delete <?= $data->testimony->name ?>')) {
+                http.delete("<?= root('api/testimony/' . $data->testimony->id) ?>?force", (response, code) => {
+                    toast('Testimoni berhasil dihapus')
+                    reload(2000)
 
-            }, ()=> {
-                toast('Gagal menghapus testimoni')
-            });
+                }, () => {
+                    toast('Gagal menghapus testimoni')
+                });
+            } else {
+                console.log('Delete was canceled.');
+            }
+
         })
     </script>
 </div>
