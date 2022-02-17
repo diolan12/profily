@@ -93,7 +93,8 @@ class Main extends BaseViewController
         $this->extra['meta']['description'] = $this->data['product']['description'];
 
         if ($this->data['product'] == null) {
-            abort(404, "Product " . kebab_to_beauty($productName) . " not found");
+            // abort(404, "Product " . kebab_to_beauty($productName) . " not found");
+            return redirect(root('product'));
         }
 
         $todayProductView = View::whereDate('created_at', Carbon::today())->where('product', $this->data['product']['id'])->first();
@@ -120,7 +121,8 @@ class Main extends BaseViewController
         $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
         $this->data['commodity'] = $this->commodity->where('name', kebab_to_beauty($commodity))->first();
         if ($this->data['commodity'] == null) {
-            abort(404, "Commodity " . kebab_to_beauty($commodity) . " not found");
+            // abort(404, "Commodity " . kebab_to_beauty($commodity) . " not found");
+            return redirect(root('product'));
         }
         $this->extra['meta']['title'] = 'Commodity ' . kebab_to_beauty($commodity);
         $this->extra['meta']['description'] = $this->data['commodity']['description1'];
