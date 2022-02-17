@@ -13,7 +13,7 @@
                             <!-- <span class="card-title"><strong>Ubah Testimoni</strong></span> -->
                             <div class="input-field col s12 center">
                                 <div class="switch">
-                                    <label>
+                                    <label class="tooltipped" data-position="top" data-tooltip="Tampilkan pada gallery?">
                                         Private
                                         <input id="privacy" type="checkbox" checked="<?= $data->image->privacy ?>">
                                         <span class="lever"></span>
