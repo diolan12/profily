@@ -18,8 +18,11 @@
                             </div>
                         </div>
                         <div class="card-action right-align">
-
-                            <a id="delete" class="btn-flat waves-effect waves-light red-text">
+                            <?php
+                            $c = '';
+                            if ($data->type->id == 1 || $data->type->id == 2) $c = 'disabled';
+                            ?>
+                            <a id="delete" class="btn-flat waves-effect waves-light red-text <?= $c ?>">
                                 Hapus
                                 <i class="material-icons left">delete</i>
                             </a>
