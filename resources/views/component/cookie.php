@@ -1,5 +1,6 @@
 <style>
     .cookie-banner {
+        z-index: 1002;
         position: fixed;
         margin: 0 auto;
         bottom: 40px;
