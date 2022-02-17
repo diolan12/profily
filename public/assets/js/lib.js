@@ -33,6 +33,10 @@ function replaceState(url) {
     history.replaceState({}, '', url);
 }
 
+function deleteToast() {
+    let current = window.location.href.split("?")[0];
+    replaceState(current);
+}
 class Http {
     constructor() {
         const http = new XMLHttpRequest();

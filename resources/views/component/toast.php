@@ -5,5 +5,6 @@
                 html: '<?= $toast?>'
             })
         }, 1000)
+        deleteToast();
     </script>
 <?php endif; ?>

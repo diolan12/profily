@@ -6,11 +6,6 @@ function checkTimezone() {
     }
 }
 
-function deleteToast() {
-    let current = window.location.href.split("?")[0];
-    replaceState(current);
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     var elemScrollspy = document.querySelectorAll('.scrollspy');
     var activateds = document.querySelectorAll('.activated');
@@ -39,7 +34,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // set client timezone
         checkTimezone();
-        deleteToast();
 
         // $('.slider').slider();
     }); // end of document ready
