@@ -94,7 +94,9 @@
                                         </strong>
                                         <div>
                                             <a onclick="openModal(<?= $spec->id ?>)" class="secondary-content"><i class="material-icons">add</i></a>
-                                            <a onclick="delSpec(<?= $spec->id ?>)" class="secondary-content"><i class="material-icons red-text">delete</i></a>
+                                            <?php if (count($spec->subspecification) == 0) : ?>
+                                                <a onclick="delSpec(<?= $spec->id ?>)" class="secondary-content"><i class="material-icons red-text">delete</i></a>
+                                            <?php endif; ?>
                                         </div>
                                     </div>
                                     <div class="collapsible-body">
