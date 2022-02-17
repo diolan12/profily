@@ -19,6 +19,7 @@ class Specification extends BaseModel
     public function filter($data)
     {
         unset($data['id']);
+        if (isset($data['value'])) $data['value'] = ucfirst($data['value']);
         return $data;
     }
 
