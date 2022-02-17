@@ -41,18 +41,30 @@
                     <h4>Produk Baru</h4>
 
                     <div class="row">
-
-                        <div class="input-field col s12 m6">
+                        <div class="input-field col s12">
                             <input id="name" name="name" type="text" class="validate">
                             <label for="name">Nama Produk</label>
                         </div>
-                        <div class="input-field col s12 m6">
-                            <input id="country" name="country" type="text" class="validate">
-                            <label for="country">Negara</label>
+                        <div class="input-field col s12">
+                            <select id="commodity" onchange="changed('commodity')" name="commodity">
+                                <option value="" disabled selected>Pilih komoditas</option>
+                                <?php foreach ($data->commodities as $commodity) : ?>
+                                    <?php if (count($commodity->types) != 0) : ?>
+                                        <option value="<?= $commodity->id ?>"><?= $commodity->name ?></option>
+                                    <?php endif; ?>
+                                <?php endforeach; ?>
+                            </select>
+                            <label>Komoditas</label>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="quote" name="quote" class="materialize-textarea"></textarea>
-                            <label for="quote">Quote</label>
+                            <select id="type" onchange="changedType('type')" name="type">
+                                <option value="" disabled selected>Pilih jenis komoditas</option>
+                            </select>
+                            <label>Jenis</label>
+                        </div>
+                        <div class="input-field col s12">
+                            <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                            <label for="description">Deskripsi</label>
                         </div>
                     </div>
                 </div>
@@ -66,4 +78,29 @@
         </div>
 
     </div>
+    <script type="text/javascript">
+        data = <?= json_encode($data->commodities) ?>;
+
+        function changed(id) {
+            selectedCommodityID = $(`#${id}`).val();
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].id == selectedCommodityID) {
+                    $('#type').html('');
+                    $('#type').append(`<option value="" disabled selected>Pilih jenis komoditas</option>`);
+                    for (var j = 0; j < data[i].types.length; j++) {
+                        $('#type').append(`<option value="${data[i].types[j].id}">${data[i].types[j].name}</option>`);
+                    }
+                    var elems = document.querySelectorAll('select');
+                    var instances = M.FormSelect.init(elems);
+                    break;
+                }
+            }
+            console.log(selectedCommodityID);
+        }
+
+        function changedType(id) {
+            selectedTypeID = $(`#${id}`).val();
+            console.log(selectedTypeID);
+        }
+    </script>
 </div>

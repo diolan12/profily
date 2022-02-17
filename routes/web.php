@@ -38,14 +38,15 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     $router->get('/commodity/{commodityName}/{typeID}', 'DashboardCommodity@typeAtCommodity');
     $router->post('/commodity/{commodityName}/{typeID}', 'DashboardCommodity@typeUpdateAtCommodity');
 
-    $router->get('/product', 'DashboardProduct@product');
+    $router->get('/product', 'DashboardProduct@index');
+    $router->post('/product', 'DashboardProduct@new');
     $router->get('/product/{productName}', 'DashboardProduct@productAt');
+    $router->post('/product/{productName}', 'DashboardProduct@updateAt');
 
     $router->get('/testimony', 'DashboardTestimony@testimony');
     $router->post('/testimony', 'DashboardTestimony@testimonyNew');
     $router->get('/testimony/{testimonyID}', 'DashboardTestimony@testimonyAt');
     $router->post('/testimony/{testimonyID}', 'DashboardTestimony@testimonyUpdateAt');
-    // $router->delete('/testimony/{testimonyID}', 'DashboardTestimony@testimonyDeleteAt');
 
     $router->get('/gallery', 'DashboardGallery@gallery');
     $router->post('/gallery', 'DashboardGallery@galleryNew');

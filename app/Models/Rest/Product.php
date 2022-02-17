@@ -21,6 +21,8 @@ class Product extends BaseModel
     public function filter($data)
     {
         unset($data['id']);
+        if (isset($data['name'])) $data['name'] = ucwords($data['name']);
+        if (isset($data['description'])) $data['description'] = ucfirst($data['description']);
         return $data;
     }
 
