@@ -12,9 +12,13 @@
                 <ul class="collection">
                     <?php foreach ($data->products as $product) : ?>
                         <li class="collection-item avatar">
-                            <img src="<?= $product->image->file ?>" alt="<?= $product->name ?>" class="circle">
+                            <?php if ($product->image != null) : ?>
+                                <img src="<?= $product->image->file ?>" alt="<?= $product->name ?>" class="circle">
+                            <?php else : ?>
+                                <img src="<?= asset('img/no-image-icon.png') ?>" alt="<?= $product->name ?>" class="circle">
+                            <?php endif; ?>
                             <span class="title">
-                                <?php if ($product->commodity == null || $product->type == null) : ?>
+                                <?php if ($product->commodity == null || $product->type == null || $product->image == null) : ?>
                                     <i class="tooltipped material-icons red-text left" data-position="bottom" data-tooltip="Data produk yang bermasalah tidak akan muncul pada katalog produk">error</i>
                                 <?php endif; ?>
                                 <strong><?= $product->name ?></strong>

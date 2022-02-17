@@ -10,7 +10,7 @@
             </div>
             <div>
                 <?php foreach ($data->products as $product) : ?>
-                    <?php if ($product->commodity != null && $product->type != null) : ?>
+                    <?php if ($product->commodity != null && $product->type != null && $product->image != null) : ?>
                         <div class="col s12 m6 l4 xl3">
                             <div class="card medium">
                                 <div class="card-image">
