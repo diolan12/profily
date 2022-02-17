@@ -113,7 +113,7 @@
             if (confirm('Are you sure you want to delete <?= $data->commodity->name?>')) {
                 http.delete("<?= root('api/commodity/' . $data->commodity->id) ?>", (response, code) => {
                     toast('Komoditas berhasil dihapus')
-                    reload(2000)
+                    reload(500)
 
                 }, () => {
                     toast('Gagal menghapus komoditas')
@@ -131,7 +131,7 @@
             }
             http.post("<?= root('api/type') ?>", data, (response, code) => {
                 toast('Jenis komoditas baru berhasil dibuat')
-                reload(2000)
+                reload(500)
 
             }, () => {
                 toast('Gagal membuat jenis komoditas baru')

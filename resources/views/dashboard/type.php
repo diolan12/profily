@@ -42,7 +42,7 @@
             if (confirm('Are you sure you want to delete <?= $data->type->name ?>')) {
                 http.delete("<?= root('api/type/' . $data->type->id) ?>?force", (response, code) => {
                     toast('Jenis komoditas berhasil dihapus')
-                    reload(2000)
+                    reload(500)
 
                 }, () => {
                     toast('Gagal menghapus jenis komoditas')

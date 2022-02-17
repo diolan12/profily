@@ -106,7 +106,7 @@
                                                 <li class="collection-item">
                                                     <div>
                                                         <?= $subspec->value ?>
-                                                        <a onclick="delSubSpec(<?= $subspec->id ?>)" class="secondary-content flat-btn"><i class="material-icons red-text">delete</i></a>
+                                                        <a onclick="delSubSpec(<?= $subspec->id ?>)" class="pointer secondary-content flat-btn"><i class="material-icons red-text">delete</i></a>
                                                     </div>
 
                                                 </li>
@@ -188,7 +188,7 @@
             if (confirm('Are you sure you want to delete <?= $data->product->name ?>')) {
                 http.delete("<?= root('api/product/' . $data->product->id) ?>", (response, code) => {
                     toast('Produk berhasil dihapus')
-                    reload(1000)
+                    reload(500)
 
                 }, () => {
                     toast('Gagal menghapus produk')
@@ -204,7 +204,7 @@
             }
             http.post("<?= root('api/specification') ?>", data, (response, code) => {
                 toast('Spesifikasi berhasil dibuat')
-                reload(1000)
+                reload(500)
 
             }, () => {
                 toast('Gagal membuat spesifikasi')
@@ -217,7 +217,7 @@
             }
             http.post("<?= root('api/subspecification') ?>", data, (response, code) => {
                 toast('Sub spesifikasi berhasil dibuat')
-                reload(1000)
+                reload(500)
             }, () => {
                 toast('Gagal membuat sub spesifikasi');
                 this.currentSpecificationID = 0;
@@ -228,7 +228,7 @@
             if (confirm('Are you sure you want to delete this specification?')) {
                 http.delete("<?= root('api/specification/') ?>" + id, (response, code) => {
                     toast('Spesifikasi berhasil dihapus')
-                    reload(1000)
+                    reload(500)
 
                 }, () => {
                     toast('Gagal menghapus spesifikasi')
@@ -242,7 +242,7 @@
             if (confirm('Are you sure you want to delete this sub specification?')) {
                 http.delete("<?= root('api/subspecification/') ?>" + id, (response, code) => {
                     toast('Sub spesifikasi berhasil dihapus')
-                    reload(1000)
+                    reload(500)
 
                 }, () => {
                     toast('Gagal menghapus sub spesifikasi')
@@ -265,7 +265,7 @@
             }
             http.post("<?= root('api/product/' . $data->product->id) ?>", data, (response, code) => {
                 toast('Gambar berhasil diubah')
-                reload(1000)
+                reload(500)
             }, () => {
                 toast('Gagal mengubah gambar');
                 this.currentSpecificationID = 0;

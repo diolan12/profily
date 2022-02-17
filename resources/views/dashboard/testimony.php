@@ -42,7 +42,7 @@
             if (confirm('Are you sure you want to delete <?= $data->testimony->name ?>')) {
                 http.delete("<?= root('api/testimony/' . $data->testimony->id) ?>?force", (response, code) => {
                     toast('Testimoni berhasil dihapus')
-                    reload(2000)
+                    reload(500)
 
                 }, () => {
                     toast('Gagal menghapus testimoni')

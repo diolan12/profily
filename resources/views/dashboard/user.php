@@ -99,7 +99,7 @@
                 console.log(code);
                 console.log(response);
                 toast('Pengguna berhasil diaktifkan')
-                reload(2000)
+                reload(500)
 
             }, () => {
                 toast('Gagal mengaktifkan pengguna')
@@ -112,7 +112,7 @@
                     console.log(code);
                     console.log(response);
                     toast('Pengguna berhasil dinonaktifkan')
-                    reload(2000)
+                    reload(500)
 
                 }, () => {
                     toast('Gagal menonaktifkan pengguna')

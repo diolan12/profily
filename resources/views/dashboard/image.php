@@ -41,7 +41,7 @@
             if (confirm('Are you sure you want to delete <?= $data->image->title ?>')) {
                 http.delete("<?= root('api/image/' . $data->image->id) ?>?force", (response, code) => {
                     toast('Gambar berhasil dihapus')
-                    reload(2000)
+                    reload(500)
 
                 }, () => {
                     toast('Gagal menghapus gambar')
