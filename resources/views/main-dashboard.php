@@ -80,8 +80,11 @@
     <header>
         <?= view('nav-dashboard', $extra) ?>
     </header>
-
+    <div class=" hide-on-med-and-up yellow">
+            <p>Kami menyarankan untuk membuka dashboard pada tablet atau desktop</p>
+        </div>
     <main>
+        
 
         <?= view($content['main'], $extra) ?>
 
