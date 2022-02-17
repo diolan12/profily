@@ -69,7 +69,7 @@ class Main extends BaseViewController
         $paginator = paginator($page, $limit, $count);
 
         $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
-        $this->data['products'] = $this->product->with($this->product->getRelations())->offset($offset)->limit($limit)->get();
+        $this->data['products'] = $this->product->with($this->product->getRelations())->offset($offset)->limit($limit)->orderBy('updated_at', 'DESC')->get();
 
         $this->setupPaginations('product', $paginator->current, $paginator->total);
 
