@@ -97,7 +97,7 @@ class DashboardCommodity extends BaseViewController
         
         // $this->toast($toast);
 
-        $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
+        // $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
         return redirect(rootDashboard('commodity/'.beauty_to_kebab($data['name']).'?toast=' . $toast));
     }
 
