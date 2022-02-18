@@ -61,7 +61,7 @@ class Auth extends BaseViewController
 
         cookie(auth_cookie, $jwt, $age);
 
-        return redirect(rootDashboard());
+        return redirect(rootDashboard().'?toast=Welcome ' . $user['name']);
     }
 
     public function logout(Request $request)
