@@ -22,8 +22,8 @@ class DashboardCommodity extends BaseViewController
 
     public function commodity(Request $request)
     {
-        $toast = $request->input('toast', null);
-        $this->toast($toast);
+        // $toast = $request->input('toast', null);
+        // $this->toast($toast);
 
         $this->load(['commodity']);
         $this->extra['meta']['title'] = 'Komoditas';
@@ -56,8 +56,8 @@ class DashboardCommodity extends BaseViewController
 
     public function commodityAt(Request $request, $commodityName)
     {
-        $toast = $request->input('toast', null);
-        $this->toast($toast);
+        // $toast = $request->input('toast', null);
+        // $this->toast($toast);
 
         $this->load('commodity');
         $this->extra['meta']['title'] = kebab_to_beauty($commodityName);
