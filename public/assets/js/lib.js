@@ -37,25 +37,42 @@ function deleteToast() {
     let current = window.location.href.split("?")[0];
     replaceState(current);
 }
-
-class Toast {
-    constructor(msg, option = undefined) {
-        this.show = (displayLength = 4000) => {
-            M.toast({ html: msg, option: { displayLength: displayLength } });
+class Storage {
+    constructor() {
+        this.has = (key) => {
+            return localStorage.getItem(key) != null;
+        }
+        this.set = (key, value) => {
+            localStorage.setItem(key, value);
             return this;
         }
-        this.dismiss = () => {
-            M.Toast.dismissAll();
+        this.get = (key) => {
+            return localStorage.getItem(key);
+        }
+        this.remove = (key) => {
+            localStorage.removeItem(key);
+            return this;
+        }
+        this.clear = () => {
+            localStorage.clear();
             return this;
         }
     }
 }
+
 class Cookie {
     constructor() {
-        this.hasCookie = (name) => {
+        this.has = (name) => {
             return this.getCookie(name) !== null;
         }
-        this.getCookie = (name) => {
+        this.set = (name, value) => {
+            const d = new Date();
+            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            return this;
+        }
+        this.get = (name) => {
             name += "=";
             let decodedCookie = decodeURIComponent(document.cookie);
             let ca = decodedCookie.split(';');
@@ -70,14 +87,7 @@ class Cookie {
             }
             return null
         }
-        this.setCookie = (name, value) => {
-            const d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-            let expires = "expires=" + d.toUTCString();
-            document.cookie = name + "=" + value + ";" + expires + ";path=/";
-            return this;
-        }
-        this.deleteCookie = (name) => {
+        this.remove = (name) => {
             this.setCookie(name, "", -1);
             return this;
         }
@@ -214,6 +224,23 @@ class Elem {
         return this;
     }
 }
+
+class Toast {
+    constructor(msg, option = undefined, storage) {
+        this.show = (displayLength = 4000) => {
+            M.toast({ html: msg, option: { displayLength: displayLength } });
+            return this;
+        }
+        this.dismiss = () => {
+            M.Toast.dismissAll();
+            return this;
+        }
+        this.next = () => {
+            storage.set('toast-next', msg);
+        }
+    }
+}
+
 class App {
     load() {
         $.getScript("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js", (Materialize) => {
@@ -221,19 +248,27 @@ class App {
             console.log("Materialize script loaded!");
         });
     }
+    checkToast() {
+        if (this.storage.has('toast-next')) {
+            this.toast(this.storage.get('toast-next')).show()
+            this.storage.remove('toast-next')
+        }
+    }
     constructor() {
+        this.storage = new Storage();
+        this.cookie = new Cookie();
         this.elem = new Elem();
+        this.href = new Href();
         this.http = new Http();
         this.reload = (delay = 0) => {
             setTimeout(() => { location.reload() }, delay);
         }
-        this.href = new Href();
-        this.cookie = new Cookie();
-        this.toast = (msg) => { return new Toast(msg) };
+        this.toast = (msg) => { return new Toast(msg, undefined, this.storage) };
+
+        this.checkToast();
         return this;
     }
 }
 
 
 const http = new Http();
-const app = new App();
