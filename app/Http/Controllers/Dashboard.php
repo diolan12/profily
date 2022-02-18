@@ -18,9 +18,10 @@ class Dashboard extends BaseViewController
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        $ref = $request->server('HTTP_REFERER');
-        if ($ref == url() . rootAuth()) {
-            $this->toast('Welcome ' . $request->user()->name);
+        
+        $authCookie = $request->cookie(auth_cookie);
+        if ($authCookie != null) {
+            cookie(auth_cookie, $authCookie, 60 * 24);
         }
         $this->setupWhatsapp('Chat with developer', 'https://wa.me/6285648535927');
     }
