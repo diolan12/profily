@@ -49,12 +49,12 @@
     <script type="text/javascript">
         $('#delete').click(function() {
             if (confirm('Are you sure you want to delete <?= $data->image->title ?>')) {
-                http.delete("<?= root('api/image/' . $data->image->id) ?>?force", (response, code) => {
-                    toast('Gambar berhasil dihapus')
-                    reload(500)
+                app.http.delete("<?= root('api/image/' . $data->image->id) ?>?force", (response, code) => {
+                    app.toast('Gambar berhasil dihapus').next()
+                    app.reload()
 
                 }, () => {
-                    toast('Gagal menghapus gambar')
+                    app.toast('Gagal menghapus gambar').show()
                 });
             } else {
                 console.log('Delete was canceled.');
@@ -64,7 +64,7 @@
             var data = {
                 privacy: $(this).is(':checked')
             }
-            http.post("<?= root('api/image/' . $data->image->id) ?>", data, (response, code) => {
+            app.http.post("<?= root('api/image/' . $data->image->id) ?>", data, (response, code) => {
                 var t = ''
 
                 if ($(this).is(':checked')) {
@@ -72,11 +72,11 @@
                 } else {
                     t = 'private'
                 }
-                toast('Image set to '+t)
+                app.toast('Image set to ' + t).show()
 
             }, () => {
                 $(this).prop('checked', !$(this).is(':checked'));
-                toast('Gagal menyetel privasi')
+                app.toast('Gagal menyetel privasi').show()
             });
         })
     </script>
