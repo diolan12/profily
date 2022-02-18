@@ -77,15 +77,18 @@
     <?php endif; ?>
 
     <script type="text/javascript" src="<?= asset('js/lib.js') ?>"></script>
+    <script type="text/javascript">
+        const app = new App();
+    </script>
 
     <header>
         <?= view('nav-dashboard', $extra) ?>
     </header>
     <div class=" hide-on-med-and-up yellow">
-            <p>Kami menyarankan untuk membuka dashboard pada tablet atau desktop</p>
-        </div>
+        <p>Kami menyarankan untuk membuka dashboard pada tablet atau desktop</p>
+    </div>
     <main>
-        
+
 
         <?= view($content['main'], $extra) ?>
 
