@@ -40,12 +40,12 @@
         $('#delete').click(function() {
 
             if (confirm('Are you sure you want to delete <?= $data->type->name ?>')) {
-                http.delete("<?= root('api/type/' . $data->type->id) ?>?force", (response, code) => {
-                    toast('Jenis komoditas berhasil dihapus')
-                    reload(500)
+                app.http.delete("<?= root('api/type/' . $data->type->id) ?>?force", (response, code) => {
+                    app.toast('Jenis komoditas berhasil dihapus').next()
+                    app.reload()
 
                 }, () => {
-                    toast('Gagal menghapus jenis komoditas')
+                    app.toast('Gagal menghapus jenis komoditas').show()
                 });
             } else {
                 console.log('Delete was canceled.');
