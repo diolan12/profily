@@ -172,10 +172,10 @@
 
     </div>
     <script type="text/javascript">
-        var modalElem = document.getElementById("add-subspecification");;
-        var modalSubspec = M.Modal.init(modalElem, {
-            dismissible: true
-        });
+        const modalSubspec = mat.modal("add-subspecification");
+        // var modalSubspec = M.Modal.init(app.elem.byID("add-subspecification"), {
+        //     dismissible: true
+        // });
         var currentSpecificationID = 0
 
         function openModal(specID) {
@@ -188,12 +188,12 @@
         }
         $('#delete').click(() => {
             if (confirm('Are you sure you want to delete <?= $data->product->name ?>')) {
-                http.delete("<?= root('api/product/' . $data->product->id) ?>", (response, code) => {
-                    toast('Produk berhasil dihapus')
-                    reload(500)
+                app.http.delete("<?= root('api/product/' . $data->product->id) ?>", (response, code) => {
+                    app.toast('Produk berhasil dihapus').next()
+                    app.reload()
 
                 }, () => {
-                    toast('Gagal menghapus produk')
+                    app.toast('Gagal menghapus produk').show()
                 });
             } else {
                 console.log('canceled');
@@ -204,12 +204,12 @@
                 product: <?= $data->product->id ?>,
                 value: $('#value').val()
             }
-            http.post("<?= root('api/specification') ?>", data, (response, code) => {
-                toast('Spesifikasi berhasil dibuat')
-                reload(500)
+            app.http.post("<?= root('api/specification') ?>", data, (response, code) => {
+                app.toast('Spesifikasi berhasil dibuat').next()
+                app.reload()
 
             }, () => {
-                toast('Gagal membuat spesifikasi')
+                app.toast('Gagal membuat spesifikasi').show()
             });
         })
         $('#action-add-subspecification').click(() => {
@@ -217,23 +217,23 @@
                 specification: this.currentSpecificationID,
                 value: $('#subvalue').val()
             }
-            http.post("<?= root('api/subspecification') ?>", data, (response, code) => {
-                toast('Sub spesifikasi berhasil dibuat')
-                reload(500)
+            app.http.post("<?= root('api/subspecification') ?>", data, (response, code) => {
+                app.toast('Sub spesifikasi berhasil dibuat').next()
+                app.reload()
             }, () => {
-                toast('Gagal membuat sub spesifikasi');
+                app.toast('Gagal membuat sub spesifikasi').show();
                 this.currentSpecificationID = 0;
             });
         })
 
         function delSpec(id) {
             if (confirm('Are you sure you want to delete this specification?')) {
-                http.delete("<?= root('api/specification/') ?>" + id, (response, code) => {
-                    toast('Spesifikasi berhasil dihapus')
-                    reload(500)
+                app.http.delete("<?= root('api/specification/') ?>" + id, (response, code) => {
+                    app.toast('Spesifikasi berhasil dihapus').next()
+                    app.reload()
 
                 }, () => {
-                    toast('Gagal menghapus spesifikasi')
+                    app.toast('Gagal menghapus spesifikasi').show()
                 });
             } else {
                 console.log('canceled');
@@ -242,12 +242,12 @@
 
         function delSubSpec(id) {
             if (confirm('Are you sure you want to delete this sub specification?')) {
-                http.delete("<?= root('api/subspecification/') ?>" + id, (response, code) => {
-                    toast('Sub spesifikasi berhasil dihapus')
-                    reload(500)
+                app.http.delete("<?= root('api/subspecification/') ?>" + id, (response, code) => {
+                    app.toast('Sub spesifikasi berhasil dihapus').next()
+                    app.reload()
 
                 }, () => {
-                    toast('Gagal menghapus sub spesifikasi')
+                    app.toast('Gagal menghapus sub spesifikasi').show()
                 });
             } else {
                 console.log('canceled');
@@ -265,11 +265,11 @@
             var data = {
                 image: select.value
             }
-            http.post("<?= root('api/product/' . $data->product->id) ?>", data, (response, code) => {
-                toast('Gambar berhasil diubah')
-                reload(500)
+            app.http.post("<?= root('api/product/' . $data->product->id) ?>", data, (response, code) => {
+                app.toast('Gambar berhasil diubah').next()
+                app.reload()
             }, () => {
-                toast('Gagal mengubah gambar');
+                app.toast('Gagal mengubah gambar').show();
                 this.currentSpecificationID = 0;
             });
         }
