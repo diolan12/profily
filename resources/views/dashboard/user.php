@@ -127,18 +127,18 @@
             pw1 = $('#password1').val()
             pw = $('#password').val()
             if (pw != pw1) {
-                toast('Password tidak sama')
+                app.toast('Password tidak sama').show()
                 return;
             } else {
                 data = {
                     password: pw
                 }
-                http.post("<?= root('api/user/' . $data->user->id) ?>", data, (response, code) => {
-                    toast('Password berhasil diubah')
-                    reload(2000)
+                app.http.post("<?= root('api/user/' . $data->user->id) ?>", data, (response, code) => {
+                    app.toast('Password berhasil diubah').next()
+                    app.reload()
 
                 }, () => {
-                    toast('Gagal mengubah password')
+                    app.toast('Gagal mengubah password').show()
                 });
             }
         }
