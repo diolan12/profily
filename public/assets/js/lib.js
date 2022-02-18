@@ -84,12 +84,14 @@ class Cookie {
     }
 }
 class Href {
+    url = window.location.href;
     constructor() {
-        const url = window.location.href;
-        const path = url.split("?")[0];
-        const param = url.split("?")[1];
-        const params = param.split("&");
+        const path = this.url.split("?")[0];
+        const param = this.url.split("?")[1];
+
         this.hasParam = (name) => {
+            if (param === undefined) return false;
+            let params = param.split("&");
             var r = false;
             for (var i = 0; i < params.length; i++) {
                 var p = params[i].split("=");
@@ -101,6 +103,8 @@ class Href {
             return r;
         }
         this.getParam = (name) => {
+            if (!this.hasParam(name)) return undefined;
+            let params = param.split("&");
             var r = undefined;
             for (var i = 0; i < params.length; i++) {
                 var p = params[i].split("=");
@@ -129,7 +133,7 @@ class Href {
             return this;
         }
         this.toString = () => {
-            return url;
+            return this.url;
         }
         return this;
     }
@@ -197,14 +201,17 @@ class Http {
         };
     }
 }
-class Elem extends HTMLElement {
+class Elem {
+    element = undefined;
     contructor() {
         this.id = (id) => {
-            return document.getElementById(id)
+            this.element = document.getElementById(id);
+            return this;
         }
         this.class = (className) => {
             return document.getElementsByClassName(className)
         }
+        return this;
     }
 }
 class App {
