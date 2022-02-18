@@ -77,6 +77,7 @@
     <?php endif; ?>
 
     <script type="text/javascript" src="<?= asset('js/lib.js') ?>"></script>
+    <script type="text/javascript" src="<?= asset('js/mat.js') ?>"></script>
     <script type="text/javascript">
         const app = new App();
     </script>
