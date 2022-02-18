@@ -163,19 +163,46 @@ class Href {
 class Http {
     constructor() {
         const http = new XMLHttpRequest();
-        this.get = (url, onSuccess, onError) => {
-            http.onloadend = function(response) {
-                if (this.status >= 400) {
-                    onError(this.responseText, this.status, response);
-                } else {
-                    onSuccess(this.responseText, this.status, response);
-                }
-            };
-            http.onerror = function(response) {
-                onError(this.responseText, this.status, response);
-            };
-            http.open("GET", url, true);
-            http.send();
+        this.get = (url) => {
+            return new Promise(function(resolve, reject) {
+                http.onloadend = function() {
+                    var response = {
+                        body: this.response,
+                        status: {
+                            code: this.status,
+                            text: this.statusText
+                        },
+                        xhr: this
+                    }
+                    if (this.status >= 400) {
+                        reject(response)
+                    } else {
+                        var json = undefined
+                        try {
+                            json = JSON.parse(this.response);
+                        } catch (error) {
+                            console.error(error);
+                        }
+                        if (json != undefined) {
+                            response.json = json;
+                        }
+                        resolve(response)
+                    }
+                };
+                http.onerror = function() {
+                    var data = {
+                        body: this.response,
+                        status: {
+                            code: this.status,
+                            text: this.statusText
+                        },
+                        xhr: this
+                    }
+                    reject(data)
+                };
+                http.open("GET", url, true);
+                http.send();
+            })
         };
         this.post = (url, data, onSuccess, onError) => {
             http.onloadend = function(response) {
@@ -249,6 +276,7 @@ class Toast {
         }
         this.next = () => {
             storage.set('toast-next', msg);
+            return this;
         }
     }
 }
