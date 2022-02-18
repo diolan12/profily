@@ -57,19 +57,24 @@ class Storage {
             localStorage.clear();
             return this;
         }
+        return this;
     }
 }
 
 class Cookie {
+    key = undefined;
+    value = undefined;
     constructor() {
         this.has = (name) => {
-            return this.getCookie(name) !== null;
+            return this.get(name) !== null;
         }
-        this.set = (name, value) => {
+        this.set = (name, value, age) => {
             const d = new Date();
-            d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            d.setTime(d.getTime() + (age * 24 * 60 * 60 * 1000));
             let expires = "expires=" + d.toUTCString();
             document.cookie = name + "=" + value + ";" + expires + ";path=/";
+            this.key = name;
+            this.value = value;
             return this;
         }
         this.get = (name) => {
@@ -82,15 +87,22 @@ class Cookie {
                     c = c.substring(1);
                 }
                 if (c.indexOf(name) == 0) {
-                    return c.substring(name.length, c.length);
+                    let v = c.substring(name.length, c.length)
+                    this.key = name;
+                    this.value = v;
+                    return v;
                 }
             }
             return null
         }
         this.remove = (name) => {
-            this.setCookie(name, "", -1);
+            this.set(name, "", -1);
             return this;
         }
+        return this;
+    }
+    toString() {
+        return JSON.stringify({ key: this.key, value: this.value });
     }
 }
 class Href {
