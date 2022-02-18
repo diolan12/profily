@@ -73,7 +73,6 @@
                 $('#password').attr('type', 'text');
                 $('#password').next().html('visibility');
                 shown = true;
-
             }
         }
     </script>
