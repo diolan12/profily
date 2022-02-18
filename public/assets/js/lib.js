@@ -251,17 +251,20 @@ class Http {
     }
 }
 class Elem {
-    element = undefined;
-    contructor() {
-        this.id = (id) => {
-            this.element = document.getElementById(id);
-            return this;
+    e = undefined;
+    constructor() {
+        this.byID = (id) => {
+            this.e = document.getElementById(id);
+            return this.e;
         }
-        this.class = (className) => {
-            return document.getElementsByClassName(className)
+        this.byClass = (className) => {
+            this.e = document.getElementsByClassName(className);
+            return this.e;
         }
+
         return this;
     }
+
 }
 
 class Toast {
