@@ -40,7 +40,7 @@
                             </div>
                         </div>
                         <div class="card-action right-align">
-                            <a id="delete" class="btn-flat waves-effect waves-light red-text <?php if ($data->commodity->id == 1) echo 'disabled';?>">
+                            <a id="delete" class="btn-flat waves-effect waves-light red-text <?php if ($data->commodity->id == 1) echo 'disabled'; ?>">
                                 Hapus
                                 <i class="material-icons left">delete</i>
                             </a>
@@ -110,13 +110,13 @@
     </div>
     <script type="text/javascript">
         $('#delete').click(function() {
-            if (confirm('Are you sure you want to delete <?= $data->commodity->name?>')) {
-                http.delete("<?= root('api/commodity/' . $data->commodity->id) ?>", (response, code) => {
-                    toast('Komoditas berhasil dihapus')
-                    reload(500)
+            if (confirm('Are you sure you want to delete <?= $data->commodity->name ?>')) {
+                app.http.delete("<?= root('api/commodity/' . $data->commodity->id) ?>", (response, code) => {
+                    app.toast('Komoditas berhasil dihapus').next()
+                    app.reload()
 
                 }, () => {
-                    toast('Gagal menghapus komoditas')
+                    app.toast('Gagal menghapus komoditas').show()
                 });
             } else {
                 console.log('Delete was canceled.');
@@ -129,12 +129,12 @@
                 name: $('#form-type').find('input[name="name"]').val(),
                 description: $('#form-type').find('textarea[name="description"]').val()
             }
-            http.post("<?= root('api/type') ?>", data, (response, code) => {
-                toast('Jenis komoditas baru berhasil dibuat')
-                reload(500)
+            app.http.post("<?= root('api/type') ?>", data, (response, code) => {
+                app.toast('Jenis komoditas baru berhasil dibuat').next()
+                app.reload()
 
             }, () => {
-                toast('Gagal membuat jenis komoditas baru')
+                app.toast('Gagal membuat jenis komoditas baru').show()
             });
         })
     </script>
