@@ -1,8 +1,7 @@
 function checkTimezone() {
-    let timezone = getCookie("visitor-timezone");
-    if (timezone == null) {
-        timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        setCookie("visitor-timezone", timezone, 7);
+    if (!app.cookie.has("visitor-timezone")) {
+        let timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        app.cookie.set("visitor-timezone", timezone, 7);
     }
 }
 
