@@ -40,12 +40,12 @@
     <script type="text/javascript">
         $('#delete').click(function() {
             if (confirm('Are you sure you want to delete <?= $data->testimony->name ?>')) {
-                http.delete("<?= root('api/testimony/' . $data->testimony->id) ?>?force", (response, code) => {
-                    toast('Testimoni berhasil dihapus')
-                    reload(500)
+                app.http.delete("<?= root('api/testimony/' . $data->testimony->id) ?>?force", (response, code) => {
+                    app.toast('Testimoni berhasil dihapus').next();
+                    app.reload()
 
                 }, () => {
-                    toast('Gagal menghapus testimoni')
+                    app.toast('Gagal menghapus testimoni').show();
                 });
             } else {
                 console.log('Delete was canceled.');
