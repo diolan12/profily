@@ -257,7 +257,7 @@ class App {
     load() {
         $.getScript("https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js", (Materialize) => {
             eval(Materialize);
-            console.log("Materialize script loaded!");
+            console.log("Materialize " + M.version + " script loaded!");
         });
     }
     checkToast() {
@@ -278,6 +278,7 @@ class App {
         this.toast = (msg) => { return new Toast(msg, undefined, this.storage) };
 
         this.checkToast();
+        // this.load();
         return this;
     }
 }
