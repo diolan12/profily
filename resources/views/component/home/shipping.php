@@ -16,6 +16,21 @@
         <div class="section">
 
             <div class="row">
+                <div class="col s12 center hide">
+                    <h4>Shipping Incoterms</h4>
+                    <div class="tf-tree tf-gap-lg">
+                        <ul>
+                            <li>
+                                <span class="tf-nc">Shipping</span>
+                                <ul>
+                                    <li><span class="tf-nc">Free On Board</span></li>
+                                    <li><span class="tf-nc">Cost, Insurance, Freight</span></li>
+                                    <li><span class="tf-nc">Domestic Shipping</span></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
                 <div class="col s12 center">
                     <h4>Shipping Incoterms</h4>
                     <div class="col s12 m6 offset-m3">

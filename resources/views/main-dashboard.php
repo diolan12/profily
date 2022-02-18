@@ -16,6 +16,7 @@
     <meta name="keywords" content="<?= implode(', ', $meta['keywords']) ?>" />
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/treeflex/dist/css/treeflex.css">
 
     <link rel="stylesheet" href="<?= asset('css/materialize.min.css') ?>">
     <link rel="stylesheet" href="<?= asset('css/style.css') ?>">
