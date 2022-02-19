@@ -71,4 +71,17 @@ class Auth extends BaseViewController
         return redirect(root());
     }
 
+    public function profile(){
+        $this->load('user');
+        $this->extra['meta']['title'] = 'Profile';
+        $this->extra['nav']['active'] = 'user';
+        $this->extra['content']['main'] = 'dashboard.profile';
+        $this->data['user'] = $this->user->with($this->user->getRelations())->find(auth()->user()->id);
+        return $this->bootstrap(true);
+    }
+
+    public function uploadPicture() {
+
+    }
+
 }

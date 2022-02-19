@@ -7,10 +7,10 @@
             <?php if (!$server['client']['refresh']) : ?>
                 <li><a href="<?= rootDashboard('?refresh=30') ?>"><i class="material-icons left">check_box_outline_blank</i>Auto Refresh</a></li>
             <?php elseif ($server['client']['refresh']) : ?>
-                <li><a href="<?= rootDashboard() ?>"><i class="material-icons left">check_box</i>Auto refresh</a></li>
+                <li class='active'><a href="<?= rootDashboard() ?>"><i class="material-icons left">check_box</i>Auto refresh</a></li>
             <?php endif; ?>
         <?php endif; ?>
-        <li><a href="<?= rootAuth('profile') ?>"><i class="material-icons left">account_circle</i>Profil</a></li>
+        <li <?php if ($nav['active'] == 'profile') echo 'class="active"' ?> ><a href="<?= rootAuth('profile') ?>"><i class="material-icons left">account_circle</i>Profil</a></li>
 
         <li class="divider"></li>
         <li><a href="<?= rootAuth('logout') ?>"><i class="material-icons left">logout</i>Logout</a></li>

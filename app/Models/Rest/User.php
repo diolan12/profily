@@ -16,7 +16,7 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     use SoftDeletes, Authenticatable, Authorizable, HasFactory;
 
     protected $validation = [
-        'picture' => '',
+        'avatar' => '',
         'name' => 'required',
         'email' => 'required',
         'role' => '',
@@ -26,7 +26,6 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     public function validation()
     {
         return [
-            'picture' => '',
             'name' => 'required',
             'email' => 'required',
             'role' => '',
@@ -53,7 +52,7 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
      * @var array
      */
     protected $fillable = [
-        'picture', 'name', 'email', 'role', 'password', 'deleted_at'
+        'avatar', 'name', 'email', 'role', 'password', 'deleted_at'
     ];
 
     /**
@@ -64,13 +63,19 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     protected $hidden = [
         'password',
     ];
-
-    protected $relations = ['picture', 'role'];
-
-    public function picture()
+    public function getAvatarAttribute($value)
     {
-        return $this->hasOne('App\Models\Rest\Image', 'id', 'picture');
+        if ($value == null) {
+            return null;
+        }
+        return asset('img/' . $value);
     }
+    protected $relations = [ 'role'];
+
+    // public function picture()
+    // {
+    //     return $this->hasOne('App\Models\Rest\Image', 'id', 'picture');
+    // }
 
     public function role()
     {

@@ -3,6 +3,9 @@
 
         <!--   Icon Section   -->
         <div class="row">
+            <div class="col s12 center">
+                <h5>Profil anda</h5>
+            </div>
             <div class="col s12 m6">
                 <form action="<?= rootDashboard('user/' . beauty_to_kebab($data->user->name)) ?>" method="post" enctype="multipart/form-data">
 

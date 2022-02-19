@@ -24,7 +24,7 @@
                     <div class="col s12 m4 l3">
                         <div class="card">
                             <div class="card-image">
-                                <img src="<?= $founder->picture->file ?>">
+                                <img src="<?= $founder->avatar ?>">
                                 <span class="card-title"><?= $founder->name ?></span>
                             </div>
                         </div>
