@@ -39,12 +39,6 @@ class Init extends Seeder
             'val2' => 'Chintia Coffee Logo',
             'created_at' => Carbon::now('UTC')
         ]);
-        DB::table(self::$name)->insert([
-            'key' => 'brand_slogan',
-            'type' => 'web',
-            'val1' => 'Best exporter in the world and promote Indonesian agriculture',
-            'created_at' => Carbon::now('UTC')
-        ]);
 
         // Brand Color
         DB::table(self::$name)->insert([
