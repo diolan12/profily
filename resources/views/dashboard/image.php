@@ -76,7 +76,7 @@
     <script type="text/javascript">
         $('#delete').click(function() {
             if (confirm('Are you sure you want to delete <?= $data->image->title ?>')) {
-                app.http.delete("<?= root('api/image/' . $data->image->id) ?>?force", (response, code) => {
+                app.http.delete("<?= root('api/image/' . $data->image->id) ?>?force&file=file", (response, code) => {
                     app.toast('Gambar berhasil dihapus').next()
                     app.reload()
 

@@ -19,17 +19,21 @@ class RestDeleteController extends RestController
     {
         parent::__construct($request, $table);
         if ($this->model != null) {
-            // $data = $this->validate($request, $this->model->validation());
-            $data['deleted_at'] = Carbon::now('UTC');
-            // $data = $this->model->filter($data);
+            $entity = $this->model->find($id);
 
-            if ($request->has('force')) {
-                $this->code = ($this->model->where('id', $id)->forceDelete()) ? 200 : 422;
-            } else {
-                $this->code = ($this->model->where('id', $id)->update($data)) ? 200 : 422;
+            if ($request->has('file')) {
+                $fileRow = $request->input('file');
+                $isDeleted = unlink(project_path('public' . $entity->$fileRow));
             }
 
-            $this->json = $this->model->get();
+            if ($request->has('force')) {
+                $this->code = ($entity->forceDelete()) ? 200 : 422;
+            } else {
+                $data['deleted_at'] = Carbon::now('UTC');
+                $this->code = ($entity->update($data)) ? 200 : 422;
+            }
+
+            $this->json = $entity;
         }
         return $this->response();
     }
