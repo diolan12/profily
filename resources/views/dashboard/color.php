@@ -367,7 +367,7 @@ $colors = [
                             </div>
                             <div class="input-field col s12 center">
                                 <select onchange="accentChanged(this)">
-                                    <option value="" disabled selected>Choose accent</option>
+                                    <option value="" disabled selected>Choose main accent</option>
                                     <?php foreach ($colors as $key => $value) : ?>
                                         <option value="<?= $key ?>" <?php if ($key == $config->color->accent->val1) echo 'selected' ?>><?= $key ?></option>
                                     <?php endforeach; ?>
@@ -392,7 +392,8 @@ $colors = [
     <script type="text/javascript">
         function primaryChanged(ele) {
             var data = {
-                val1: ele.value
+                val1: ele.value,
+                val2: ''
             }
             app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
                 app.toast('Primary color changed to ' + ele.value).next()
@@ -419,7 +420,8 @@ $colors = [
 
         function secondaryChanged(ele) {
             var data = {
-                val1: ele.value
+                val1: ele.value,
+                val2: ''
             }
             app.http.put("<?= root('api/config/6') ?>", data, (response, code) => {
                 app.toast('Secondary color changed to ' + ele.value).next()
@@ -446,7 +448,8 @@ $colors = [
 
         function accentChanged(ele) {
             var data = {
-                val1: ele.value
+                val1: ele.value,
+                val2: ''
             }
             app.http.put("<?= root('api/config/7') ?>", data, (response, code) => {
                 app.toast('Pccent color changed to ' + ele.value).next()
