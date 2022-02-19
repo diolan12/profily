@@ -10,18 +10,18 @@
             </div>
             <div class="col s12">
                 <ul class="collection">
-                    <?php foreach ($data->users as $product) : ?>
+                    <?php foreach ($data->users as $user) : ?>
                         <li class="collection-item avatar">
-                            <img src="<?= $product->picture->file ?>" alt="<?= $product->name ?>" class="circle">
+                            <img src="<?= $user->avatar ?>" alt="<?= $user->name ?>" class="circle">
                             <span class="title red-text">
-                                <strong class ="black-text"><?= $product->name ?></strong>
-                                <?php if($product->deleted_at != null) echo '(deactivated)'?>
+                                <strong class ="black-text"><?= $user->name ?></strong>
+                                <?php if($user->deleted_at != null) echo '(deactivated)'?>
                             </span>
-                            <p><?= $product->email ?></p>
-                            <p><?= $product->role->name ?></p>
-                            <a href="<?= rootDashboard('user/' . beauty_to_kebab($product->name)) ?>" class="secondary-content hide"><i class="material-icons">person_off</i></a>
-                            <a href="<?= rootDashboard('user/' . beauty_to_kebab($product->name)) ?>" class="secondary-content hide"><i class="material-icons">person_remove_alt_1</i></a>
-                            <a href="<?= rootDashboard('user/' . beauty_to_kebab($product->name)) ?>" class="secondary-content"><i class="material-icons">edit</i></a>
+                            <p><?= $user->email ?></p>
+                            <p><?= $user->role->name ?></p>
+                            <a href="<?= rootDashboard('user/' . beauty_to_kebab($user->name)) ?>" class="secondary-content hide"><i class="material-icons">person_off</i></a>
+                            <a href="<?= rootDashboard('user/' . beauty_to_kebab($user->name)) ?>" class="secondary-content hide"><i class="material-icons">person_remove_alt_1</i></a>
+                            <a href="<?= rootDashboard('user/' . beauty_to_kebab($user->name)) ?>" class="secondary-content"><i class="material-icons">edit</i></a>
                         </li>
                     <?php endforeach; ?>
                 </ul>
