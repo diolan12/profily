@@ -111,12 +111,13 @@
     }
 
     function del(id) {
-        app.http.delete("<?= root('api/config/') ?>" + id + '?force', (response, code) => {
+        if (confirm('Are you sure you want to delete?')) {
+            app.http.delete("<?= root('api/config/') ?>" + id + '?force', (response, code) => {
             app.toast('Link deleted').next()
             app.reload()
         }, () => {
             app.toast('Failed to delete link').show();
         });
-
+        }
     }
 </script>
