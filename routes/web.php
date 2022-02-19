@@ -56,6 +56,8 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
 
     $router->get('/color', 'Dashboard@color');
     $router->get('/general', 'Dashboard@general');
+    $router->get('/mission', 'Dashboard@mission');
+    $router->get('/value', 'Dashboard@value');
     $router->get('/connect', 'Dashboard@connect');
     $router->get('/setting', 'Dashboard@setting');
     

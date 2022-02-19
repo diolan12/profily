@@ -53,7 +53,9 @@
     <li><a class="subheader">Brand</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'color') echo 'active' ?>" href="<?= rootDashboard('color') ?>"><i class="material-icons">palette</i>Color</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'general') echo 'active' ?>" href="<?= rootDashboard('general') ?>"><i class="material-icons">info</i>General</a></li>
-    <li><a class="waves-effect <?php if ($nav['active'] == 'connect') echo 'active' ?>" href="<?= rootDashboard('connect') ?>"><i class="material-icons">contact_page</i>Connect</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'mission') echo 'active' ?>" href="<?= rootDashboard('mission') ?>"><i class="material-icons">task</i>Mission</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'value') echo 'active' ?>" href="<?= rootDashboard('value') ?>"><i class="material-icons">photo_filter</i>Value</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'connect') echo 'active' ?>" href="<?= rootDashboard('connect') ?>"><i class="material-icons">link</i>Connect</a></li>
 
     <li>
         <div class="divider"></div>

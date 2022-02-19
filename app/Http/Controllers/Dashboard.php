@@ -59,7 +59,20 @@ class Dashboard extends BaseViewController
         $this->extra['content']['main'] = 'dashboard.about';
         return $this->bootstrap(true);
     }
-
+    public function mission()
+    {
+        $this->extra['meta']['title'] = 'Mission';
+        $this->extra['nav']['active'] = 'mission';
+        $this->extra['content']['main'] = 'dashboard.mission';
+        return $this->bootstrap(true);
+    }
+    public function value()
+    {
+        $this->extra['meta']['title'] = 'Connect';
+        $this->extra['nav']['active'] = 'connect';
+        $this->extra['content']['main'] = 'dashboard.connect';
+        return $this->bootstrap(true);
+    }
     public function connect()
     {
         $this->extra['meta']['title'] = 'Connect';
