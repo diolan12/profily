@@ -300,7 +300,9 @@ $colors = [
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">Color Primary</span>
+                        <span class="card-title">Color Primary
+                            <i class="material-icons right grey-text tooltipped" data-position="bottom" data-tooltip="Primary color usualy lighten. This color used in navigation bar on top.">question_mark</i>
+                        </span>
                         <div class="row">
                             <div id="primary" class="col s12 center <?= $config->color->primary->val1 ?> <?= $config->color->primary->val2 ?>">
                                 Sample color <?= $config->color->primary->val3 ?>
@@ -330,7 +332,9 @@ $colors = [
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">Color Secondary</span>
+                        <span class="card-title">Color Secondary
+                            <i class="material-icons right grey-text tooltipped" data-position="bottom" data-tooltip="Secondary color usualy darken. This color used in bottom footer and browser theme color.">question_mark</i>
+                        </span>
                         <div class="row">
                             <div id="secondary" class="col s12 center <?= $config->color->secondary->val1 ?> <?= $config->color->secondary->val2 ?>">
                                 Sample color <?= $config->color->secondary->val3 ?>
@@ -360,7 +364,9 @@ $colors = [
             <div class="col s12 m4">
                 <div class="card">
                     <div class="card-content">
-                        <span class="card-title">Color Accent</span>
+                        <span class="card-title">Color Accent
+                            <i class="material-icons right grey-text tooltipped" data-position="bottom" data-tooltip="Accent color usualy contrast color from primary color, or whatever color you can imagine. This color used in buttons and more">question_mark</i>
+                        </span>
                         <div class="row">
                             <div id="accent" class="col s12 center <?= $config->color->accent->val1 ?> <?= $config->color->accent->val2 ?>">
                                 Sample color <?= $config->color->accent->val3 ?>
@@ -395,7 +401,7 @@ $colors = [
                 val1: ele.value,
                 val2: ''
             }
-            app.http.put("<?= root('api/config/4') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/3') ?>", data, (response, code) => {
                 app.toast('Primary color changed to ' + ele.value).next()
                 app.reload()
             }, () => {
@@ -410,7 +416,7 @@ $colors = [
                 val3: v[1]
             }
             console.log(ele.value)
-            app.http.put("<?= root('api/config/4') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/3') ?>", data, (response, code) => {
                 app.toast('Primary color modifier changed to ' + v[0]).next()
                 app.reload()
             }, () => {
@@ -423,7 +429,7 @@ $colors = [
                 val1: ele.value,
                 val2: ''
             }
-            app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/4') ?>", data, (response, code) => {
                 app.toast('Secondary color changed to ' + ele.value).next()
                 app.reload()
             }, () => {
@@ -438,7 +444,7 @@ $colors = [
                 val3: v[1]
             }
             console.log(ele.value)
-            app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/4') ?>", data, (response, code) => {
                 app.toast('Secondary color modifier changed to ' + v[0]).next()
                 app.reload()
             }, () => {
@@ -451,7 +457,7 @@ $colors = [
                 val1: ele.value,
                 val2: ''
             }
-            app.http.put("<?= root('api/config/6') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
                 app.toast('Accent color changed to ' + ele.value).next()
                 app.reload()
             }, () => {
@@ -466,7 +472,7 @@ $colors = [
                 val3: v[1]
             }
             console.log(ele.value)
-            app.http.put("<?= root('api/config/6') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
                 app.toast('Accent color modifier changed to ' + v[0]).next()
                 app.reload()
             }, () => {
