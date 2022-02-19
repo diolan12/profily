@@ -171,7 +171,7 @@ if (!function_exists('color')) {
             if ($modifier == 'darken') {
                 $contrast = "white-text";
             }
-            return $color . ' ' . $contrast;
+            return $color . ' ';// . $contrast;
         }
 
         return $color;
