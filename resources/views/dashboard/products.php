@@ -15,7 +15,7 @@
                             <?php if ($product->image != null) : ?>
                                 <img src="<?= $product->image->file ?>" alt="<?= $product->name ?>" class="circle">
                             <?php else : ?>
-                                <img src="<?= asset('img/no-image-icon.png') ?>" alt="<?= $product->name ?>" class="circle">
+                                <img src="<?= asset('img/no-image-icon.png') ?>" alt="No image" class="circle">
                             <?php endif; ?>
                             <span class="title">
                                 <?php if ($product->commodity == null || $product->type == null || $product->image == null) : ?>
