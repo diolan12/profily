@@ -28,8 +28,8 @@
                 </ul>
                 <p class="left-align"><?= $data->product->description ?></p>
 
-                <div class="left-align col s12 l6">
-                    <div class="col s12">
+                <div class="left-align col s12">
+                    <div class="col s12 m6">
                         <h5>Specifications</h5>
                         <ul class="list">
                             <?php
