@@ -10,6 +10,13 @@ class Commodity extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'name' => 'required',
+        'slogan' => '',
+        'description1' => '',
+        'description2' => '',
+        'image' => ''
+    ];
     public function validation()
     {
         return [
@@ -20,6 +27,7 @@ class Commodity extends BaseModel
             'image' => ''
         ];
     }
+
     public function filter($data)
     {
         unset($data['id']);
@@ -36,7 +44,7 @@ class Commodity extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'slogan','description1', 'description2', 'image'
+        'name', 'slogan', 'description1', 'description2', 'image'
     ];
 
     /**

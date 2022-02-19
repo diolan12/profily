@@ -9,6 +9,10 @@ class View extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'product' => '',
+        'count' => ''
+    ];
     public function validation()
     {
         return [
@@ -37,12 +41,11 @@ class View extends BaseModel
      * @var array
      */
     protected $hidden = [];
-    
+
     protected $relations = ['product'];
 
     public function product()
     {
         return $this->hasOne('App\Models\Rest\Product', 'id', 'product');
     }
-    
 }

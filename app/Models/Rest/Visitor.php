@@ -9,6 +9,9 @@ class Visitor extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'count' => ''
+    ];
     public function validation()
     {
         return [
@@ -36,6 +39,4 @@ class Visitor extends BaseModel
      * @var array
      */
     protected $hidden = [];
-
-    
 }

@@ -7,6 +7,9 @@ use App\Models\BaseModel;
 class Role extends BaseModel
 {
 
+    protected $validation = [
+        'name' => ''
+    ];
     public function validation()
     {
         return [
@@ -34,5 +37,4 @@ class Role extends BaseModel
      * @var array
      */
     protected $hidden = [];
-
 }

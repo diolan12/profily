@@ -9,6 +9,11 @@ class Testimony extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'name' => 'required',
+        'quote' => 'required',
+        'country' => 'required'
+    ];
     public function validation()
     {
         return [
@@ -41,6 +46,4 @@ class Testimony extends BaseModel
      * @var array
      */
     protected $hidden = [];
-
-    
 }

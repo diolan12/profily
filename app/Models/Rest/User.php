@@ -15,6 +15,14 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
 {
     use SoftDeletes, Authenticatable, Authorizable, HasFactory;
 
+    protected $validation = [
+        'picture' => '',
+        'name' => 'required',
+        'email' => 'required',
+        'role' => '',
+        'password' => '',
+        'deleted_at' => ''
+    ];
     public function validation()
     {
         return [

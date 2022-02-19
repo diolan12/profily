@@ -9,10 +9,21 @@ class Config extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'key' => 'required|unique:configs',
+        'value1' => '',
+        'value2' => '',
+        'value3' => '',
+        'value4' => '',
+        'value5' => '',
+        'value6' => '',
+        'value7' => '',
+    ];
+
     public function validation()
     {
         return [
-            'key' => 'required|unique:'.$this->getTable(),
+            'key' => 'required|unique:' . $this->getTable(),
             'value1' => '',
             'value2' => '',
             'value3' => '',

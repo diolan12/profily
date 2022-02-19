@@ -9,6 +9,11 @@ class Image extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'file' => 'required',
+        'title' => 'required',
+        'credit' => ''
+    ];
     public function validation()
     {
         return [

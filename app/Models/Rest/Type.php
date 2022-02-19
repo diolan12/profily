@@ -9,6 +9,11 @@ class Type extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'commodity' => 'required',
+        'name' => '',
+        'description' => ''
+    ];
     public function validation()
     {
         return [
@@ -47,5 +52,4 @@ class Type extends BaseModel
     {
         return $this->belongsTo('App\Models\Rest\Commodity', 'commodity');
     }
-
 }

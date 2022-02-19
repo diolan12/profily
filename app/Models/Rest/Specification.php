@@ -9,6 +9,10 @@ class Specification extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'product' => 'required',
+        'value' => 'required'
+    ];
     public function validation()
     {
         return [

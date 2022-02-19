@@ -9,6 +9,10 @@ class SubSpecification extends BaseModel
 {
     use SoftDeletes;
 
+    protected $validation = [
+        'specification' => 'required',
+        'value' => 'required'
+    ];
     public function validation()
     {
         return [
@@ -38,5 +42,4 @@ class SubSpecification extends BaseModel
      * @var array
      */
     protected $hidden = [];
-
 }
