@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col s12 center">
-        <h5>Connect</h5>
+        <h5>Mission</h5>
         <a class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>" href="https://fonts.google.com/icons?selected=Material+Icons" target="_blank">See Icons Reference</a>
         <button class="btn waves-effect waves-light modal-trigger" data-target="add-link">Tambah
             <i class="material-icons right">add</i>
