@@ -69,7 +69,11 @@ class Main extends BaseViewController
         $paginator = paginator($page, $limit, $count);
 
         $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
-        $this->data['products'] = $this->product->with($this->product->getRelations())->offset($offset)->limit($limit)->orderBy('updated_at', 'DESC')->get();
+        $this->data['products'] = $this->product->with($this->product->getRelations())
+            ->offset($offset)
+            ->limit($limit)
+            ->orderBy('updated_at', 'DESC')
+            ->get();
 
         $this->setupPaginations('product', $paginator->current, $paginator->total);
 
@@ -95,7 +99,7 @@ class Main extends BaseViewController
         if ($this->data['product'] == null) {
             return redirect(root('product'));
         }
-        
+
         if (json_decode(json_encode($this->data['product']))->image == null) {
             return redirect(root('product'));
         }
