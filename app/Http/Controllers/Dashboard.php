@@ -68,9 +68,9 @@ class Dashboard extends BaseViewController
     }
     public function value()
     {
-        $this->extra['meta']['title'] = 'Connect';
-        $this->extra['nav']['active'] = 'connect';
-        $this->extra['content']['main'] = 'dashboard.connect';
+        $this->extra['meta']['title'] = 'Value';
+        $this->extra['nav']['active'] = 'value';
+        $this->extra['content']['main'] = 'dashboard.value';
         return $this->bootstrap(true);
     }
     public function connect()
@@ -78,6 +78,13 @@ class Dashboard extends BaseViewController
         $this->extra['meta']['title'] = 'Connect';
         $this->extra['nav']['active'] = 'connect';
         $this->extra['content']['main'] = 'dashboard.connect';
+        return $this->bootstrap(true);
+    }
+    public function setting()
+    {
+        $this->extra['meta']['title'] = 'Setting';
+        $this->extra['nav']['active'] = 'setting';
+        $this->extra['content']['main'] = 'dashboard.setting';
         return $this->bootstrap(true);
     }
 }
