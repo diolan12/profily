@@ -34,7 +34,7 @@
             <div class="background">
                 <img src="https://materializecss.com/images/office.jpg">
             </div>
-            <a><img class="circle" src="<?= root($user->picture->file) ?>" alt="<?= $user->name ?>"></a>
+            <a><img class="circle" src="<?= root($user->avatar) ?>" alt="<?= $user->name ?>"></a>
             <a><span class="white-text name"><?= $user->name ?></span></a>
             <a><span class="white-text email"><?= $user->email ?></span></a>
             <a><span class="white-text email"><?= $user->role->name ?></span></a>
