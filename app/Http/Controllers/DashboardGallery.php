@@ -145,7 +145,6 @@ class DashboardGallery extends BaseViewController
         $image->file = $picName;
         $image->updated_at = Carbon::now();
 
-
         if ($image == null) {
             return redirect(rootDashboard('gallery?toast=Gambar tidak ditemukan'));
         }
