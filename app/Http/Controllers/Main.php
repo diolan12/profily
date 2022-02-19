@@ -30,7 +30,7 @@ class Main extends BaseViewController
                 Visitor::create();
             } else {
                 $visitor = $todayVisitor->first();
-                $visitor->count += + 1;
+                $visitor->count += +1;
                 $visitor->save();
             }
             cookie('visitor-id', \Illuminate\Support\Str::random(32) . '_' . Carbon::now()->format('H-i-s_Y-m-d_T'), 60 * 12);
@@ -93,7 +93,10 @@ class Main extends BaseViewController
         $this->extra['meta']['description'] = $this->data['product']['description'];
 
         if ($this->data['product'] == null) {
-            // abort(404, "Product " . kebab_to_beauty($productName) . " not found");
+            return redirect(root('product'));
+        }
+        
+        if (json_decode(json_encode($this->data['product']))->image == null) {
             return redirect(root('product'));
         }
 
