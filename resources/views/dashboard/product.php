@@ -10,10 +10,9 @@
                 <div class="card">
                     <div class="card-img">
                         <?php if ($data->product->image != null) : ?>
-                            <img class="materialboxed responsive-img card-img" src="<?= $data->product->image->file ?>" data-caption="<?= $data->product->name ?>" alt="<?= $data->product->name ?>">
-                            <img src="<?= $data->product->image->file ?>" alt="<?= $data->product->name ?>" class="materialboxed responsive-img card-img">
+                            <img src="<?= $data->product->image->file ?>" alt="<?= $data->product->name ?>" class="materialboxed responsive-img card-img" data-caption="<?= $data->product->name ?>">
                         <?php else : ?>
-                            <img src="<?= asset('img/no-image-icon.png') ?>" alt="<?= $data->product->name ?>" class="materialboxed responsive-img card-img" data-caption="<?= $data->product->name ?>">
+                            <img src="<?= asset('img/no-image-icon.png') ?>" alt="<?= $data->product->name ?>" class="materialboxed responsive-img card-img">
                         <?php endif; ?>
                     </div>
                     <div class="card-content row">
