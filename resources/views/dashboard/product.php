@@ -10,14 +10,18 @@
                 <div class="card">
                     <div class="card-img">
                         <img class="materialboxed responsive-img card-img" src="<?= $data->product->image->file ?>" data-caption="<?= $data->product->name ?>" alt="<?= $data->product->name ?>">
-                        <a class="btn-floating halfway-fab waves-effect waves-light tooltipped" data-position="left" data-tooltip="Pilih Gambar"><i class="material-icons">upload</i></a>
                     </div>
                     <div class="card-content row">
                         <div class="input-field col s12">
-                            <select onchange="changeImage(this)" class="icons">
-                                <option value="" disabled selected>pilih gambar</option>
+                            <select id="imgpick" onchange="changeImage(this)" class="icons">
+                                <option value="" disabled <?php if ($data->product->image->id == 1) echo 'selected' ?>>Pilih gambar</option>
                                 <?php foreach ($data->images as $image) : ?>
-                                    <option value="<?= $image->id ?>" data-icon="<?= $image->file ?>" class="left"><?= $image->title ?></option>
+                                    <?php $selected = '';
+                                    if ($data->product->image->id == $image->id && $data->product->image->id != 1) {
+                                        $selected = 'selected';
+                                    }
+                                    ?>
+                                    <option value="<?= $image->id ?>" <?= $selected ?> data-icon="<?= $image->file ?>" class="left"><?= $image->title ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <label>Gambar produk</label>
