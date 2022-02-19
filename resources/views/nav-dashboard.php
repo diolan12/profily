@@ -51,7 +51,7 @@
         <div class="divider"></div>
     </li>
     <li><a class="subheader">Brand</a></li>
-    <li><a class="waves-effect <?php if ($nav['active'] == 'color') echo 'active' ?>" href="#!"><i class="material-icons">palette</i>Color</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'color') echo 'active' ?>" href="<?= rootDashboard('color') ?>"><i class="material-icons">palette</i>Color</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'about') echo 'active' ?>" href="#!"><i class="material-icons">info</i>About</a></li>
 
     <li>

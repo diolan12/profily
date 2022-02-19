@@ -43,11 +43,18 @@ class Dashboard extends BaseViewController
 
         return $this->bootstrap(true);
     }
-
+    public function color()
+    {
+        $this->extra['meta']['title'] = 'Color';
+        $this->extra['nav']['active'] = 'color';
+        $this->extra['content']['main'] = 'dashboard.color';
+        return $this->bootstrap(true);
+    }
     public function about()
     {
-        $this->extra['nav']['active'] = 'about us';
-        $this->extra['content']['main'] = 'content.about';
-        return $this->bootstrap();
+        $this->extra['meta']['title'] = 'About';
+        $this->extra['nav']['active'] = 'about';
+        $this->extra['content']['main'] = 'dashboard.about';
+        return $this->bootstrap(true);
     }
 }
