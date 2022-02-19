@@ -12,7 +12,7 @@
                         <?php if ($data->product->image != null) : ?>
                             <img src="<?= $data->product->image->file ?>" alt="<?= $data->product->name ?>" class="materialboxed responsive-img card-img" data-caption="<?= $data->product->name ?>">
                         <?php else : ?>
-                            <img src="<?= asset('img/no-image-icon.png') ?>" alt="<?= $data->product->name ?>" class="materialboxed responsive-img card-img">
+                            <img src="<?= asset('img/no-image-icon.png') ?>" alt="<?= $data->product->name ?>" class="responsive-img card-img">
                         <?php endif; ?>
                     </div>
                     <div class="card-content row">
