@@ -7,12 +7,12 @@
                 <h5>Profil anda</h5>
             </div>
             <div class="col s12 m6">
-                <form action="<?= rootDashboard('user/' . beauty_to_kebab($data->user->name)) ?>" method="post" enctype="multipart/form-data">
+                <form action="<?= rootAuth('profile') ?>" method="post" enctype="multipart/form-data">
 
                     <div class="card">
                         <div class="card-image">
                             <img src="<?= $data->user->avatar ?>" alt="<?= $data->user->name ?>">
-                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">upload</i></a>
+                            <a href="#upload-avatar" class="modal-trigger btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">upload</i></a>
                         </div>
                         <div class="card-content">
                             <span class="card-title">Detail Pengguna</span>
@@ -78,7 +78,32 @@
 
 
         </div>
-
+        <!-- Modal Structure -->
+        <div id="upload-avatar" class="modal">
+            <form action="<?= rootAuth('avatar') ?>" method="post" enctype="multipart/form-data">
+                <div class="modal-content row">
+                    <h5>Upload gambar</h5>
+                    <div class="input-field col s12">
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Pilih avatar</span>
+                                <input type="file" name="avatar" accept="image/*" />
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input name="file" class="file-path validate" type="text">
+                                <span class="helper-text">Disarankan mengupload foto yang sudah terkompres</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>" name="action">
+                        Unggah
+                        <i class="material-icons left">upload</i>
+                    </button>
+                </div>
+            </form>
+        </div>
 
     </div>
     <script type="text/javascript">
