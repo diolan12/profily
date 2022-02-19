@@ -61,27 +61,79 @@ class Auth extends BaseViewController
 
         cookie(auth_cookie, $jwt, $age);
 
-        return redirect(rootDashboard().'?toast=Welcome ' . $user['name']);
+        return redirect(rootDashboard() . '?toast=Welcome ' . $user['name']);
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
         cookie(auth_cookie, '', 0);
 
         return redirect(root());
     }
 
-    public function profile(){
+    public function profile(Request $request)
+    {
+        $toast = $request->input('toast', null);
+        $this->toast($toast);
+
         $this->load('user');
         $this->extra['meta']['title'] = 'Profile';
-        $this->extra['nav']['active'] = 'user';
+        $this->extra['nav']['active'] = 'profile';
         $this->extra['content']['main'] = 'dashboard.profile';
         $this->data['user'] = $this->user->with($this->user->getRelations())->find(auth()->user()->id);
         return $this->bootstrap(true);
     }
 
-    public function uploadPicture() {
+    public function update(Request $request)
+    {
+        $this->load('user');
 
+        $data = $this->validate($request, $this->user->getValidator());
+        $data['updated_at'] = Carbon::now('UTC');
+        $data = $this->user->filter($data);
+
+        $user = $this->user->with($this->user->getRelations())->find(auth()->user()->id);
+
+        if ($user == null) {
+            return redirect(rootAuth('profile?toast=No email records registered'));
+        }
+        $user->update($data);
+
+        return redirect(rootAuth('profile?toast=Profile updated'));
     }
 
+    public function uploadPicture(Request $request)
+    {
+        $this->load('user');
+
+        $file = $request->file('avatar');
+
+        $fn = explode('.', $file->getClientOriginalName()); // file path
+        $format = $fn[(count($fn) - 1)];
+
+        $user = $this->user->with($this->user->getRelations())->find(auth()->user()->id);
+
+        $picName = $user->email . '.' . $format;
+        $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
+        $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
+
+
+        // return dd($user->avatar);
+        if ($user->avatar != asset('img/default-avatar.png')) {
+            $isDeleted = unlink(project_path('public' . $user->avatar));
+        }
+
+        $isMoved = $request->file('avatar')->move($destinationPath, $picName);
+
+        $user->avatar = $picName;
+        $user->updated_at = Carbon::now();
+
+        if ($user == null) {
+            return redirect(rootAuth('profile?toast=No email records registered'));
+        }
+        // $user->update($data);
+        $toast = (!($user->save())) ? "Gagal memperbarui profil" : "Profil berhasil diperbarui";
+
+        return redirect(rootAuth('profile?toast=' . $toast));
+    }
 }
