@@ -8,10 +8,17 @@
                 <div class="addthis_inline_share_toolbox"></div>
             </div>
             <div class="col s12 center">
-                <img class="col s12 m5 materialboxed responsive-img" src="<?= $data->product->image->file ?>" data-caption="<?= $data->product->name ?>" alt="<?= $data->product->name ?>">
+                <div class="col s12 m5">
+                    <div class="card">
+                        <div class="card-image">
+                            <img src="<?= $data->product->image->file ?>" data-caption="<?= $data->product->name ?>" alt="<?= $data->product->name ?>" class="materialboxed">
+                        </div>
+                    </div>
+                </div>
+                <img class="hide col s12 m5 materialboxed responsive-img" src="<?= $data->product->image->file ?>" >
                 <h4><?= $data->product->name ?></h4>
 
-                
+
 
                 <ul class="left-align">
                     <li>Commodity: <b><?= $data->product->commodity->name ?></b></li>
@@ -21,8 +28,8 @@
                 </ul>
                 <p class="left-align"><?= $data->product->description ?></p>
 
-                <div class="left-align col s12">
-                    <div class="col s12 m6">
+                <div class="left-align col s12 l6">
+                    <div class="col s12">
                         <h5>Specifications</h5>
                         <ul class="list">
                             <?php
