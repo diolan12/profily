@@ -395,7 +395,7 @@ $colors = [
                 val1: ele.value,
                 val2: ''
             }
-            app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/4') ?>", data, (response, code) => {
                 app.toast('Primary color changed to ' + ele.value).next()
                 app.reload()
             }, () => {
@@ -410,7 +410,7 @@ $colors = [
                 val3: v[1]
             }
             console.log(ele.value)
-            app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/4') ?>", data, (response, code) => {
                 app.toast('Primary color modifier changed to ' + v[0]).next()
                 app.reload()
             }, () => {
@@ -423,7 +423,7 @@ $colors = [
                 val1: ele.value,
                 val2: ''
             }
-            app.http.put("<?= root('api/config/6') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
                 app.toast('Secondary color changed to ' + ele.value).next()
                 app.reload()
             }, () => {
@@ -438,7 +438,7 @@ $colors = [
                 val3: v[1]
             }
             console.log(ele.value)
-            app.http.put("<?= root('api/config/6') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/5') ?>", data, (response, code) => {
                 app.toast('Secondary color modifier changed to ' + v[0]).next()
                 app.reload()
             }, () => {
@@ -451,8 +451,8 @@ $colors = [
                 val1: ele.value,
                 val2: ''
             }
-            app.http.put("<?= root('api/config/7') ?>", data, (response, code) => {
-                app.toast('Pccent color changed to ' + ele.value).next()
+            app.http.put("<?= root('api/config/6') ?>", data, (response, code) => {
+                app.toast('Accent color changed to ' + ele.value).next()
                 app.reload()
             }, () => {
                 app.toast('Failed to change accent color').show();
@@ -466,7 +466,7 @@ $colors = [
                 val3: v[1]
             }
             console.log(ele.value)
-            app.http.put("<?= root('api/config/7') ?>", data, (response, code) => {
+            app.http.put("<?= root('api/config/6') ?>", data, (response, code) => {
                 app.toast('Accent color modifier changed to ' + v[0]).next()
                 app.reload()
             }, () => {
