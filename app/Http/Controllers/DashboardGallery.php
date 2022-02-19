@@ -49,8 +49,8 @@ class DashboardGallery extends BaseViewController
 
         $picName = uniqid() . '.' . $format;
         $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
-        $destinationPath = base_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
-        
+        $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
+
         $isSuccess = $request->file('image')->move($destinationPath, $picName);
 
         $data = $this->validate($request, $this->image->validation());
@@ -77,7 +77,7 @@ class DashboardGallery extends BaseViewController
 
         $this->load('image');
 
-        $this->extra['nav']['active'] = 'image';
+        $this->extra['nav']['active'] = 'gallery';
         $this->extra['content']['main'] = 'dashboard.image';
 
         $this->data['image'] = $this->image->with($this->image->getRelations())->where('id', $imageID)->first();
@@ -86,34 +86,90 @@ class DashboardGallery extends BaseViewController
             // abort(404, "Komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
             return redirect(rootDashboard('gallery'));
         }
-        $this->extra['meta']['title'] = 'Image '.$this->data['image']->title;
+        $this->extra['meta']['title'] = 'Image ' . $this->data['image']->title;
 
         return $this->bootstrap(true);
     }
 
-    public function testimonyUpdateAt(Request $request, $testimonyID)
+    public function galleryUpdateAt(Request $request, $imageID)
     {
-        $this->load('testimony');
-        $this->extra['meta']['title'] = $testimonyID;
+        $this->load('image');
 
-        $this->extra['nav']['active'] = 'testimony';
-        $this->extra['content']['main'] = 'dashboard.testimony';
+        $this->extra['nav']['active'] = 'gallery';
+        $this->extra['content']['main'] = 'dashboard.image';
 
         $data = $request->all();
         $data['updated_at'] = Carbon::now();
-        $data = $this->testimony->filter($data);
+        $data = $this->image->filter($data);
 
-        $testimony = $this->testimony->where('id', $testimonyID)->first();
+        $image = $this->image->where('id', $imageID)->first();
 
-        if ($testimony == null) {
-            abort(404, "Testimoni tidak ditemukan");
+        if ($image == null) {
+            // abort(404, "Gambar tidak ditemukan");
+            return redirect(rootDashboard('gallery?toast=Gambar tidak ditemukan'));
         }
+        $this->extra['meta']['title'] = $image->title;
 
-        $toast = (!($testimony->update($data))) ? "Gagal memperbarui testimony" : "Testimony berhasil diperbarui";
+        $toast = (!($image->update($data))) ? "Gagal memperbarui detail" : "Detail berhasil diperbarui";
 
         // $this->toast($toast);
 
-        $this->data['testimony'] = $testimony;
-        return redirect(rootDashboard('testimony/' . $testimonyID . '?toast=' . $toast));
+        $this->data['testimony'] = $image;
+        return redirect(rootDashboard('gallery/' . $imageID . '?toast=' . $toast));
+    }
+    public function galleryUpdateImageAt(Request $request, $imageID)
+    {
+        $this->load('image');
+
+        $this->extra['nav']['active'] = 'gallery';
+        $this->extra['content']['main'] = 'dashboard.image';
+
+        $file = $request->file('image');
+
+        $fn = explode('.', $file->getClientOriginalName()); // file path
+        $format = $fn[(count($fn) - 1)];
+
+        $picName = uniqid() . '.' . $format;
+        $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
+        $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
+
+        $isMoved = $request->file('image')->move($destinationPath, $picName);
+
+        $data = $request->all();
+        $data = $this->image->filter($data);
+
+        // delete old image
+
+
+        $image = $this->image->where('id', $imageID)->first();
+
+        $isDeleted = unlink(project_path('public' . $image->file));
+
+        $image->file = $picName;
+        $image->updated_at = Carbon::now();
+
+
+        if ($image == null) {
+            // abort(404, "Gambar tidak ditemukan");
+            return redirect(rootDashboard('gallery?toast=Gambar tidak ditemukan'));
+        }
+        $this->extra['meta']['title'] = $image->title;
+
+        $toast = (!($image->save())) ? "Gagal memperbarui detail" : "Detail berhasil diperbarui";
+
+        // $this->toast($toast);
+
+        // return dd(
+
+        //     [
+        //         project_path('public' . $image->file),
+        //         base_path('public' . $image->file),
+        //         $isDeleted,
+        //         $isMoved
+
+        //     ]
+        // );
+        $this->data['testimony'] = $image;
+        return redirect(rootDashboard('gallery/' . $imageID . '?toast=' . $toast));
     }
 }
