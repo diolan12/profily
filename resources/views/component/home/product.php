@@ -18,23 +18,24 @@
             <div class="row">
 
                 <?php foreach ($data->commodities as $commodity) : ?>
-                    <div class="col s12 m6 l6 xl4">
+                    <?php if ($commodity->image != null) : ?>
+                        <div class="col s12 m6 l6 xl4">
 
-                        <div class="card medium">
-                            <div class="card-image">
-                                <img src="<?= $commodity->image->file ?>" class="materialboxed" data-caption="<?= $commodity->name ?>">
+                            <div class="card medium">
+                                <div class="card-image">
+                                    <img src="<?= $commodity->image->file ?>" class="materialboxed" data-caption="<?= $commodity->name ?>">
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title"><?= $commodity->name ?></span>
+                                    <p class="light"><?= substr($commodity->description1, 0, 126) ?>...</p>
+                                </div>
+                                <div class="card-action right-align">
+                                    <a class="<?= color($config->color->accent, true) ?>-text" href="<?= root('commodity/' . beauty_to_kebab($commodity->name)) ?>">Browse <?= $commodity->name ?></a>
+                                </div>
                             </div>
-                            <div class="card-content">
-                                <span class="card-title"><?= $commodity->name ?></span>
-                                <p class="light"><?= substr($commodity->description1, 0, 126) ?>...</p>
-                            </div>
-                            <div class="card-action right-align">
-                                <a class="<?= color($config->color->accent, true) ?>-text" href="<?= root('commodity/' . beauty_to_kebab($commodity->name)) ?>">Browse <?= $commodity->name ?></a>
-                            </div>
+
                         </div>
-
-
-                    </div>
+                    <?php endif; ?>
                 <?php endforeach; ?>
 
             </div>
