@@ -10,7 +10,7 @@
                 <li class='active'><a href="<?= rootDashboard() ?>"><i class="material-icons left">check_box</i>Auto refresh</a></li>
             <?php endif; ?>
         <?php endif; ?>
-        <li <?php if ($nav['active'] == 'profile') echo 'class="active"' ?> ><a href="<?= rootAuth('profile') ?>"><i class="material-icons left">account_circle</i>Profil</a></li>
+        <li <?php if ($nav['active'] == 'profile') echo 'class="active"' ?>><a href="<?= rootAuth('profile') ?>"><i class="material-icons left">account_circle</i>Profil</a></li>
 
         <li class="divider"></li>
         <li><a href="<?= rootAuth('logout') ?>"><i class="material-icons left">logout</i>Logout</a></li>
@@ -52,7 +52,8 @@
     </li>
     <li><a class="subheader">Brand</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'color') echo 'active' ?>" href="<?= rootDashboard('color') ?>"><i class="material-icons">palette</i>Color</a></li>
-    <li><a class="waves-effect <?php if ($nav['active'] == 'about') echo 'active' ?>" href="#!"><i class="material-icons">info</i>About</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'general') echo 'active' ?>" href="<?= rootDashboard('general') ?>"><i class="material-icons">info</i>General</a></li>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'general') echo 'connect' ?>" href="<?= rootDashboard('connect') ?>"><i class="material-icons">contact_page</i>Connect</a></li>
 
     <li>
         <div class="divider"></div>
