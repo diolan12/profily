@@ -8,7 +8,7 @@
     <!-- <meta http-equiv="refresh" content="5"> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <title><?= ucwords($meta['title']) ?> - <?= $config->web->brand_text->val1 ?></title>
+    <title><?= ucwords($meta['title']) ?> - <?= $config->brand->information->val1 ?></title>
     <link rel="canonical" href="<?= $meta['canonical'] ?>" />
     <meta name="description" content="<?= substr($meta['description'], 0, 170) ?>" />
     <meta name="keywords" content="<?= implode(', ', $meta['keywords']) ?>" />
