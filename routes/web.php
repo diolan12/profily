@@ -60,6 +60,7 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     $router->get('/value', 'Dashboard@value');
     $router->get('/connect', 'Dashboard@connect');
     $router->get('/setting', 'Dashboard@setting');
+    $router->post('/setting', 'Dashboard@logo');
     
     $router->get('/user', 'DashboardUser@index');
     $router->post('/user', 'DashboardUser@new');
@@ -88,7 +89,7 @@ $router->group(['prefix' => 'api/{table}', 'middleware' => 'auth'], function () 
     // $router->post('/w/{column}/{value}', ['uses' => 'RestController@insertWhere']);
 
     $router->put('/{id}', ['uses' => 'RestUpdateController@update']);
-    // $router->post('/{id}', ['uses' => 'RestUpdateController@update']);
+    $router->post('/{id}', ['uses' => 'RestUpdateController@update']);
     // $router->post('/{id}/upload/{column}', ['uses' => 'RestUpdateController@uploadAtColumn']);
 
     $router->delete('/{id}', ['uses' => 'RestDeleteController@delete']);

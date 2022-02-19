@@ -18,7 +18,7 @@ class Dashboard extends BaseViewController
     public function __construct(Request $request)
     {
         parent::__construct($request);
-        
+
         $authCookie = $request->cookie(auth_cookie);
         if ($authCookie != null) {
             cookie(auth_cookie, $authCookie, 60 * 24);
@@ -86,5 +86,36 @@ class Dashboard extends BaseViewController
         $this->extra['nav']['active'] = 'setting';
         $this->extra['content']['main'] = 'dashboard.setting';
         return $this->bootstrap(true);
+    }
+    public function logo(Request $request)
+    {
+        $this->load('config');
+        $this->extra['meta']['title'] = 'Setting';
+        $this->extra['nav']['active'] = 'setting';
+        $this->extra['content']['main'] = 'dashboard.setting';
+
+        $file = $request->file('logo');
+
+        $fn = explode('.', $file->getClientOriginalName()); // file path
+        $format = $fn[(count($fn) - 1)];
+
+        $config = $this->config->find(2);
+
+        $picName = 'logo.' . $format;
+        $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
+        $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
+
+        if ($config->val1 != 'logo-long-light.png') {
+            $isDeleted = unlink(project_path('public' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . $config->val1));
+        }
+
+        $isMoved = $request->file('logo')->move($destinationPath, $picName);
+
+        $config->val1 = $picName;
+        $config->updated_at = Carbon::now();
+
+        $toast = (!($config->save())) ? "Gagal mengunggah logo" : "Logo berhasil diunggah";
+
+        return redirect(rootDashboard('setting?toast=' . $toast));
     }
 }
