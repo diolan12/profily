@@ -7,7 +7,7 @@
                     <img src="<?= root('assets/img/'. $config->web->brand_logo->val1); ?>" class="responsive-img" alt="Logo Long" />
                 </a>
             <?php else : ?>
-                <a href="<?= root() ?>" class="brand-logo text"><?= $config->web->brand_text->val1; ?></a>
+                <a href="<?= root() ?>" class="brand-logo text"><?= $config->brand->information->val1; ?></a>
             <?php endif; ?>
 
             <ul class="right hide-on-med-and-down">
