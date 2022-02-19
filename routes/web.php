@@ -69,7 +69,8 @@ $router->group(['prefix' => 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq'], function () use
     $router->get('logout', ['uses' => 'Auth@logout']);
     $router->get('verify', ['uses' => 'Auth@verify', 'middleware' => 'auth']);
     $router->get('profile', ['uses' => 'Auth@profile', 'middleware' => 'auth']);
-    $router->post('photo', ['uses' => 'Auth@uploadPicture', 'middleware' => 'auth']);
+    $router->post('profile', ['uses' => 'Auth@update', 'middleware' => 'auth']);
+    $router->post('avatar', ['uses' => 'Auth@uploadPicture', 'middleware' => 'auth']);
     $router->post('password', ['uses' => 'Auth@changePassword', 'middleware' => 'auth']);
 });
 // $router->group(['prefix' => 'api/{table}'], function () use ($router) {
