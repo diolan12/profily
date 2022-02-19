@@ -20,8 +20,21 @@
                     <form action="<?= rootDashboard('commodity/' . beauty_to_kebab($data->commodity->name)) ?>" method="post" enctype="multipart/form-data">
 
                         <div class="card-content row">
-
                             <span class="card-title"><strong>Detail Komoditas</strong></span>
+                            <div class="input-field col s12">
+                                <select name="image" onchange="changeImage(this)" class="icons">
+                                    <option value="" disabled <?php if ($data->commodity->image->id == 1) echo 'selected' ?>>Pilih gambar</option>
+                                    <?php foreach ($data->images as $image) : ?>
+                                        <?php $selected = '';
+                                        if ($data->commodity->image->id == $image->id && $data->commodity->image->id != 1) {
+                                            $selected = 'selected';
+                                        }
+                                        ?>
+                                        <option <?= $selected ?> value="<?= $image->id ?>" data-icon="<?= $image->file ?>" class="left"><?= $image->title ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                                <label>Gambar produk</label>
+                            </div>
                             <div class="input-field col s12">
                                 <input id="name" name="name" type="text" class="validate" value="<?= $data->commodity->name ?>">
                                 <label for="name">Nama Komoditas</label>
@@ -90,8 +103,8 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="name" name="name" type="text" class="validate">
-                            <label for="name">Nama</label>
+                            <input id="tname" name="tname" type="text" class="validate">
+                            <label for="tname">Nama</label>
                         </div>
                         <div class="input-field col s12">
                             <textarea id="description" name="description" class="materialize-textarea"></textarea>
@@ -126,7 +139,7 @@
         $('#newType').click(function() {
             var data = {
                 commodity: $('#form-type').find('input[name="commodity"]').val(),
-                name: $('#form-type').find('input[name="name"]').val(),
+                name: $('#form-type').find('input[name="tname"]').val(),
                 description: $('#form-type').find('textarea[name="description"]').val()
             }
             app.http.post("<?= root('api/type') ?>", data, (response, code) => {
