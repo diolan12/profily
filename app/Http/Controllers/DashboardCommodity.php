@@ -42,7 +42,7 @@ class DashboardCommodity extends BaseViewController
         $this->extra['nav']['active'] = 'commodity';
         $this->extra['content']['main'] = 'dashboard.commodities';
         
-        $data = $this->validate($request, $this->commodity->validation());
+        $data = $this->validate($request, $this->commodity->getValidator());
         $data['created_at'] = Carbon::now('UTC');
         $data['updated_at'] = Carbon::now('UTC');
         $data = $this->commodity->filter($data);
@@ -59,12 +59,13 @@ class DashboardCommodity extends BaseViewController
         // $toast = $request->input('toast', null);
         // $this->toast($toast);
 
-        $this->load('commodity');
+        $this->load(['commodity', 'image']);
         $this->extra['meta']['title'] = kebab_to_beauty($commodityName);
 
         $this->extra['nav']['active'] = 'commodity';
         $this->extra['content']['main'] = 'dashboard.commodity';
 
+        $this->data['images'] = $this->image->with($this->image->getRelations())->orderBy('updated_at', 'DESC')->get();
         $this->data['commodity'] = $this->commodity->with($this->commodity->getRelations())->where('name', kebab_to_beauty($commodityName))->first();
 
         if ($this->data['commodity'] == null) {
