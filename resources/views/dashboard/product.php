@@ -55,23 +55,41 @@
                                 </div>
                                 <div class="input-field col s12">
                                     <select id="commodity" onchange="changed('commodity')" name="commodity">
-                                        <option value="" disabled selected>Pilih komoditas</option>
+                                        <?php $selected = '';
+                                        $default = '';
+                                        if ($data->product->commodity == null) {
+                                            $default = 'selected';
+                                        } else {
+                                            $selected = 'selected';
+                                        }
+                                        ?>
+                                        <option value="" disabled <?= $default ?>>Pilih komoditas</option>
                                         <?php foreach ($data->commodities as $commodity) : ?>
                                             <?php if (count($commodity->types) != 0) : ?>
-                                                <option <?php if ($data->product->commodity->id == $commodity->id) echo 'selected' ?> value="<?= $commodity->id ?>"><?= $commodity->name ?></option>
+                                                <option <?= $selected ?> value="<?= $commodity->id ?>"><?= $commodity->name ?></option>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
                                     <label>Komoditas</label>
                                 </div>
                                 <div class="input-field col s12">
+                                    <?php $selected = '';
+                                    $default = '';
+                                    if ($data->product->type == null) {
+                                        $default = 'selected';
+                                    } else {
+                                        $selected = 'selected';
+                                    }
+                                    ?>
                                     <select id="type" onchange="changedType('type')" name="type">
-                                        <option value="" disabled selected>Pilih jenis komoditas</option>
+                                        <option value="" disabled <?= $default ?>>Pilih jenis komoditas</option>
                                         <?php foreach ($data->commodities as $commodity) : ?>
-                                            <?php if ($data->product->commodity->id == $commodity->id) : ?>
-                                                <?php foreach ($commodity->types as $type) : ?>
-                                                    <option value="<?= $type->id ?>" <?php if ($data->product->type->id == $type->id) echo 'selected' ?>><?= $type->name ?></option>
-                                                <?php endforeach; ?>
+                                            <?php if ($data->product->commodity != null) : ?>
+                                                <?php if ($data->product->commodity->id == $commodity->id) : ?>
+                                                    <?php foreach ($commodity->types as $type) : ?>
+                                                        <option value="<?= $type->id ?>" <?= $selected ?>><?= $type->name ?></option>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
