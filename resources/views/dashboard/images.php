@@ -11,7 +11,7 @@
             <div class="col s12">
                 <ul class="row">
                     <?php foreach ($data->images as $image) : ?>
-                        <div class="col s12 m6 l4">
+                        <div class="col s12 m6 l4 xl3">
                             <div class="card">
                                 <div class="card-image">
                                     <img src="<?= $image->file ?>">

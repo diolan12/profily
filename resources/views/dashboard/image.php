@@ -1,7 +1,7 @@
 <div class="">
     <div class="section">
         <div class="row">
-            <div class="col s12 m8 offset-m2">
+            <div class="col s12 m8 offset-m2 l6 offset-l3 xl4 offset-xl4">
                 <div class="card">
                     <form action="<?= rootDashboard('image/' . $data->image->id) ?>" method="post" enctype="multipart/form-data">
                         <div class="card-image">
