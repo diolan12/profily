@@ -149,7 +149,7 @@ class Main extends BaseViewController
         $this->extra['nav']['active'] = 'gallery';
         $this->extra['content']['main'] = 'content.gallery';
 
-        $this->data['images'] = $this->image->where('privacy', true)->get();
+        $this->data['images'] = $this->image->where('privacy', true)->orderBy('updated_at', 'DESC')->get();
 
         return $this->bootstrap();
     }
