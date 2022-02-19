@@ -17,7 +17,7 @@ class Commodity extends Migration
         Schema::create(self::$name, function (Blueprint $table) {
             $table->id();
             $table->string('name', 32)->index()->unique();
-            $table->string('slogan', 32)->nullable();
+            $table->string('slogan', 64)->nullable();
             $table->string('description1', 512)->nullable();
             $table->string('description2', 512)->nullable();
             $table->foreignId('image')->default(1);
