@@ -11,26 +11,28 @@ class Config extends BaseModel
 
     protected $validation = [
         'key' => 'required|unique:configs',
-        'value1' => '',
-        'value2' => '',
-        'value3' => '',
-        'value4' => '',
-        'value5' => '',
-        'value6' => '',
-        'value7' => '',
+        'type' => '',
+        'val1' => '',
+        'val2' => '',
+        'val3' => '',
+        'val4' => '',
+        'val5' => '',
+        'val6' => '',
+        'val7' => '',
     ];
 
     public function validation()
     {
         return [
             'key' => 'required|unique:' . $this->getTable(),
-            'value1' => '',
-            'value2' => '',
-            'value3' => '',
-            'value4' => '',
-            'value5' => '',
-            'value6' => '',
-            'value7' => '',
+            'type' => '',
+            'val1' => '',
+            'val2' => '',
+            'val3' => '',
+            'val4' => '',
+            'val5' => '',
+            'val6' => '',
+            'val7' => '',
         ];
     }
     public function filter($data)
@@ -45,7 +47,7 @@ class Config extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'key', 'value1', 'value2', 'value3', 'value4', 'value5', 'value6', 'value7',
+        'key', 'type', 'val1', 'val2', 'val3', 'val4', 'val5', 'val6', 'val7',
     ];
 
     /**

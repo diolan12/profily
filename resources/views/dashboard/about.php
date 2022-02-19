@@ -3,22 +3,20 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title">Information</span>
-                <form id="information">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input name="val1" id="information-val1" type="text" value="<?= $config->brand->information->val1 ?>" class="validate">
-                            <label for="information-val1">Brand Name</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <input name="val2" id="information-val2" type="text" value="<?= $config->brand->information->val2 ?>" class="validate">
-                            <label for="information-val2">Official Name</label>
-                        </div>
-                        <div class="input-field col s12">
-                            <textarea name="val3" id="information-val3" class="materialize-textarea"><?= $config->brand->information->val3 ?></textarea>
-                            <label for="information-val3">Address</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="val1" id="information-val1" type="text" value="<?= $config->brand->information->val1 ?>" class="validate">
+                        <label for="information-val1">Brand Name</label>
                     </div>
-                </form>
+                    <div class="input-field col s12">
+                        <input name="val2" id="information-val2" type="text" value="<?= $config->brand->information->val2 ?>" class="validate">
+                        <label for="information-val2">Official Name</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <textarea name="val3" id="information-val3" class="materialize-textarea"><?= $config->brand->information->val3 ?></textarea>
+                        <label for="information-val3">Address</label>
+                    </div>
+                </div>
             </div>
             <div class="card-action right-align">
                 <a id="save-information" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>">
@@ -32,14 +30,12 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title">About</span>
-                <form id="about">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea name="val1" id="about-val1" class="materialize-textarea"><?= $config->brand->about->val1 ?></textarea>
-                            <label for="about-val1">About</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea name="val1" id="about-val1" class="materialize-textarea"><?= $config->brand->about->val1 ?></textarea>
+                        <label for="about-val1">About</label>
                     </div>
-                </form>
+                </div>
             </div>
             <div class="card-action right-align">
                 <a id="save-about" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>">
@@ -53,14 +49,12 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title">Slogan</span>
-                <form id="slogan">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea name="val1" id="slogan-val1" class="materialize-textarea"><?= $config->brand->slogan->val1 ?></textarea>
-                            <label for="slogan-val1">Slogan</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea name="val1" id="slogan-val1" class="materialize-textarea"><?= $config->brand->slogan->val1 ?></textarea>
+                        <label for="slogan-val1">Slogan</label>
                     </div>
-                </form>
+                </div>
             </div>
             <div class="card-action right-align">
                 <a id="save-slogan" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>">
@@ -74,14 +68,12 @@
         <div class="card">
             <div class="card-content">
                 <span class="card-title">Vision</span>
-                <form id="vision">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea name="val1" id="vision-val1" class="materialize-textarea"><?= $config->brand->vision->val1 ?></textarea>
-                            <label for="vision-val1">Visi</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea name="val1" id="vision-val1" class="materialize-textarea"><?= $config->brand->vision->val1 ?></textarea>
+                        <label for="vision-val1">Visi</label>
                     </div>
-                </form>
+                </div>
             </div>
             <div class="card-action right-align">
                 <a id="save-vision" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>">

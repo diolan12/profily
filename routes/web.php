@@ -86,7 +86,7 @@ $router->group(['prefix' => 'api/{table}', 'middleware' => 'auth'], function () 
     // $router->post('/w/{column}/{value}', ['uses' => 'RestController@insertWhere']);
 
     $router->put('/{id}', ['uses' => 'RestUpdateController@update']);
-    $router->post('/{id}', ['uses' => 'RestUpdateController@update']);
+    // $router->post('/{id}', ['uses' => 'RestUpdateController@update']);
     // $router->post('/{id}/upload/{column}', ['uses' => 'RestUpdateController@uploadAtColumn']);
 
     $router->delete('/{id}', ['uses' => 'RestDeleteController@delete']);
