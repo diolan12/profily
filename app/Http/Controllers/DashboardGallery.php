@@ -137,10 +137,7 @@ class DashboardGallery extends BaseViewController
 
         $data = $request->all();
         $data = $this->image->filter($data);
-
-        // delete old image
-
-
+        
         $image = $this->image->where('id', $imageID)->first();
 
         $isDeleted = unlink(project_path('public' . $image->file));
@@ -150,25 +147,12 @@ class DashboardGallery extends BaseViewController
 
 
         if ($image == null) {
-            // abort(404, "Gambar tidak ditemukan");
             return redirect(rootDashboard('gallery?toast=Gambar tidak ditemukan'));
         }
         $this->extra['meta']['title'] = $image->title;
 
         $toast = (!($image->save())) ? "Gagal memperbarui detail" : "Detail berhasil diperbarui";
 
-        // $this->toast($toast);
-
-        // return dd(
-
-        //     [
-        //         project_path('public' . $image->file),
-        //         base_path('public' . $image->file),
-        //         $isDeleted,
-        //         $isMoved
-
-        //     ]
-        // );
         $this->data['testimony'] = $image;
         return redirect(rootDashboard('gallery/' . $imageID . '?toast=' . $toast));
     }
