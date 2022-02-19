@@ -13,7 +13,8 @@ class Product extends BaseModel
         'commodity' => '',
         'type' => '',
         'name' => 'required',
-        'description' => ''
+        'description' => '',
+        'image' => ''
     ];
     public function validation()
     {
@@ -21,7 +22,8 @@ class Product extends BaseModel
             'commodity' => '',
             'type' => '',
             'name' => 'required',
-            'description' => ''
+            'description' => '',
+            'image' => ''
         ];
     }
     public function filter($data)
