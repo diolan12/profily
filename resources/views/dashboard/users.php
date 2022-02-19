@@ -19,8 +19,6 @@
                             </span>
                             <p><?= $user->email ?></p>
                             <p><?= $user->role->name ?></p>
-                            <a href="<?= rootDashboard('user/' . beauty_to_kebab($user->name)) ?>" class="secondary-content hide"><i class="material-icons">person_off</i></a>
-                            <a href="<?= rootDashboard('user/' . beauty_to_kebab($user->name)) ?>" class="secondary-content hide"><i class="material-icons">person_remove_alt_1</i></a>
                             <a href="<?= rootDashboard('user/' . beauty_to_kebab($user->name)) ?>" class="secondary-content"><i class="material-icons">edit</i></a>
                         </li>
                     <?php endforeach; ?>
