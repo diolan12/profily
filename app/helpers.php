@@ -57,7 +57,7 @@ if (!function_exists('paginator')) {
 if (!function_exists('cookie')) {
     function cookie($name, string $value = '', int $age = 0)
     {
-        return setcookie($name, $value, time()+60*$age, '/');
+        return setcookie($name, $value, time() + 60 * $age, '/');
     }
 }
 
@@ -84,6 +84,16 @@ if (!function_exists('kebab_to_beauty')) {
     }
 }
 
+if (!function_exists('project_path')) {
+    function project_path($path = DIRECTORY_SEPARATOR)
+    {
+        if ($path[0] == DIRECTORY_SEPARATOR) {
+            return $path;
+        }
+        return app()->basePath() . DIRECTORY_SEPARATOR . "$path";
+    }
+}
+
 if (!function_exists('root')) {
     function root($path = '/')
     {
@@ -98,7 +108,7 @@ if (!function_exists('rootAuth')) {
     function rootAuth($path = '/')
     {
         if ($path[0] == '/') {
-            return $path.'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq';
+            return $path . 'rWVfHZH4ge8vmZAQvre5IaHKToURoEQq';
         }
         return "/rWVfHZH4ge8vmZAQvre5IaHKToURoEQq/$path";
     }
@@ -108,7 +118,7 @@ if (!function_exists('rootDashboard')) {
     function rootDashboard($path = '/')
     {
         if ($path[0] == '/') {
-            return $path.'J2mV38xHiH4abejTlpY9pXhbGtubTCZi';
+            return $path . 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi';
         }
         return "/J2mV38xHiH4abejTlpY9pXhbGtubTCZi/$path";
     }
@@ -207,7 +217,7 @@ if (!function_exists('js_utc_date')) {
 if (!function_exists('utc_to_locale_string')) {
     function utc_to_locale_string($js_utc_date, string $dateStyle = "full", string $timeStyle = "full")
     {
-        $option = '{ timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, dateStyle: "'.$dateStyle.'", timeStyle: "'.$timeStyle.'" }';
+        $option = '{ timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone, dateStyle: "' . $dateStyle . '", timeStyle: "' . $timeStyle . '" }';
         return "$js_utc_date.toLocaleString(undefined, $option)";
     }
 }
