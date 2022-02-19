@@ -9,16 +9,31 @@
             <div class="col s12 m5">
                 <div class="card">
                     <div class="card-img">
-                        <img class="materialboxed responsive-img card-img" src="<?= $data->product->image->file ?>" data-caption="<?= $data->product->name ?>" alt="<?= $data->product->name ?>">
+                        <?php if ($data->product->image != null) : ?>
+                            <img class="materialboxed responsive-img card-img" src="<?= $data->product->image->file ?>" data-caption="<?= $data->product->name ?>" alt="<?= $data->product->name ?>">
+                            <img src="<?= $data->product->image->file ?>" alt="<?= $data->product->name ?>" class="materialboxed responsive-img card-img">
+                        <?php else : ?>
+                            <img src="<?= asset('img/no-image-icon.png') ?>" alt="<?= $data->product->name ?>" class="materialboxed responsive-img card-img" data-caption="<?= $data->product->name ?>">
+                        <?php endif; ?>
                     </div>
                     <div class="card-content row">
                         <div class="input-field col s12">
                             <select id="imgpick" onchange="changeImage(this)" class="icons">
-                                <option value="" disabled <?php if ($data->product->image->id == 1) echo 'selected' ?>>Pilih gambar</option>
+                                <?php
+                                $selected = '';
+                                if ($data->product->image != null) {
+                                    if ($data->product->image->id == 1) {
+                                        $selected = 'selected';
+                                    }
+                                } else $selected = 'selected';
+                                ?>
+                                <option value="" disabled <?= $selected ?>>Pilih gambar</option>
                                 <?php foreach ($data->images as $image) : ?>
                                     <?php $selected = '';
-                                    if ($data->product->image->id == $image->id && $data->product->image->id != 1) {
-                                        $selected = 'selected';
+                                    if ($data->product->image != null) {
+                                        if ($data->product->image->id == $image->id && $data->product->image->id != 1) {
+                                            $selected = 'selected';
+                                        }
                                     }
                                     ?>
                                     <option value="<?= $image->id ?>" <?= $selected ?> data-icon="<?= $image->file ?>" class="left"><?= $image->title ?></option>
