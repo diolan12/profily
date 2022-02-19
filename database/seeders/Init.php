@@ -27,12 +27,6 @@ class Init extends Seeder
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
-            'key' => 'brand_text',
-            'type' => 'web',
-            'val1' => 'Permata Agrindo',
-            'created_at' => Carbon::now('UTC')
-        ]);
-        DB::table(self::$name)->insert([
             'key' => 'brand_logo',
             'type' => 'web',
             'val1' => 'logo-long-light.png',
