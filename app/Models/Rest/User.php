@@ -72,11 +72,6 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     }
     protected $relations = [ 'role'];
 
-    // public function picture()
-    // {
-    //     return $this->hasOne('App\Models\Rest\Image', 'id', 'picture');
-    // }
-
     public function role()
     {
         return $this->hasOne('App\Models\Rest\Role', 'id', 'role');
