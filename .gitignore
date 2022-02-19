@@ -8,6 +8,5 @@ Homestead.yaml
 storage/rsa.private
 storage/rsa.public
 
-public/assets/img
 
 *.zip
