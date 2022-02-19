@@ -91,7 +91,8 @@ class DashboardCommodity extends BaseViewController
         $commodity = $this->commodity->with($this->commodity->getRelations())->where('name', kebab_to_beauty($commodityName))->first();
 
         if ($commodity == null) {
-            abort(404, "Komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
+            return redirect(rootDashboard('commodity/'.beauty_to_kebab($data['name']).'?toast=Komoditas tidak ditemukan'));
+            // abort(404, "Komoditas " . kebab_to_beauty($commodityName) . " tidak ditemukan");
         }
 
         $toast = (!($commodity->update($data))) ? "Gagal memperbarui komoditas" : "Komoditas berhasil diperbarui";
