@@ -35,7 +35,7 @@
                             <label for="name">Nama Komoditas</label>
                         </div>
                         <div class="input-field col s12 m6">
-                            <input id="slogan" name="slogan" type="text" class="validate" data-length="32">
+                            <input id="slogan" name="slogan" type="text" class="validate" data-length="64">
                             <label for="slogan">Slogan</label>
                         </div>
                         <div class="input-field col s12">
