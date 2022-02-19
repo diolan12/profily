@@ -22,8 +22,8 @@ class DashboardProduct extends BaseViewController
 
     public function index(Request $request)
     {
-        $toast = $request->input('toast', null);
-        $this->toast($toast);
+        // $toast = $request->input('toast', null);
+        // $this->toast($toast);
 
         $this->load(['product', 'commodity']);
         $this->extra['meta']['title'] = 'Produk';
