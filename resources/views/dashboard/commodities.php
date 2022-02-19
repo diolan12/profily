@@ -12,8 +12,13 @@
                 <ul class="collection">
                     <?php foreach ($data->commodities as $commodity) : ?>
                         <li class="collection-item avatar">
-                            <img src="<?= $commodity->image->file ?>" alt="<?= $commodity->name ?>" class="circle">
-                            <span class="title"><strong><?= $commodity->name ?></strong></span>
+                            <?php if ($commodity->image != null) : ?>
+                                <img src="<?= $commodity->image->file ?>" alt="<?= $commodity->name ?>" class="circle">
+                            <?php else : ?>
+                                <img src="<?= asset('img/no-image-icon.png') ?>" alt="No image" class="circle">
+                                <i class="tooltipped material-icons red-text left" data-position="bottom" data-tooltip="Data komoditas yang bermasalah tidak akan muncul pada web utama">error</i>
+                            <?php endif; ?>
+                            <span class="title <?php if ($commodity->image == null) echo 'red-text' ?>"><strong><?= $commodity->name ?></strong></span>
                             <p class="truncate"><?= $commodity->description1 ?></p>
                             <a href="<?= rootDashboard('commodity/' . beauty_to_kebab($commodity->name)) ?>" class="secondary-content"><i class="material-icons">edit</i></a>
                         </li>

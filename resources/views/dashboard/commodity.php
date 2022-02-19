@@ -6,16 +6,20 @@
             <div class="col s12 center">
                 <h4><?= $data->commodity->name ?></h4>
             </div>
-            <div class="col s12 center">
+            <div class="col s12 center m6 offset-m3">
                 <div class="card">
                     <div class="card-img">
-                        <img class="materialboxed responsive-img card-img" src="<?= $data->commodity->image->file ?>" data-caption="<?= $data->commodity->name ?>" alt="<?= $data->commodity->name ?>">
-                        <a class="btn-floating halfway-fab waves-effect waves-light tooltipped" data-position="left" data-tooltip="Pilih Gambar"><i class="material-icons">upload</i></a>
+
+                        <?php if ($data->commodity->image != null) : ?>
+                            <img class="materialboxed responsive-img card-img" src="<?= $data->commodity->image->file ?>" data-caption="<?= $data->commodity->name ?>" alt="<?= $data->commodity->name ?>">
+                        <?php else : ?>
+                            <img class="responsive-img card-img" src="<?= asset('img/no-image-icon.png') ?>" data-caption="<?= $data->commodity->name ?>" alt="<?= $data->commodity->name ?>">
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
 
-            <div class="col s12 m6">
+            <div class="col s12 m6 ">
                 <div class="card">
                     <form action="<?= rootDashboard('commodity/' . beauty_to_kebab($data->commodity->name)) ?>" method="post" enctype="multipart/form-data">
 
@@ -23,11 +27,21 @@
                             <span class="card-title"><strong>Detail Komoditas</strong></span>
                             <div class="input-field col s12">
                                 <select name="image" onchange="changeImage(this)" class="icons">
-                                    <option value="" disabled <?php if ($data->commodity->image->id == 1) echo 'selected' ?>>Pilih gambar</option>
+                                    <?php
+                                    $selected = '';
+                                    if ($data->commodity->image != null) {
+                                        if ($data->commodity->image->id == 1) {
+                                            $selected = 'selected';
+                                        }
+                                    } else $selected = 'selected';
+                                    ?>
+                                    <option value="" disabled <?= $selected ?>>Pilih gambar</option>
                                     <?php foreach ($data->images as $image) : ?>
                                         <?php $selected = '';
-                                        if ($data->commodity->image->id == $image->id && $data->commodity->image->id != 1) {
-                                            $selected = 'selected';
+                                        if ($data->commodity->image != null) {
+                                            if ($data->commodity->image->id == $image->id && $data->commodity->image->id != 1) {
+                                                $selected = 'selected';
+                                            }
                                         }
                                         ?>
                                         <option <?= $selected ?> value="<?= $image->id ?>" data-icon="<?= $image->file ?>" class="left"><?= $image->title ?></option>
@@ -122,6 +136,19 @@
         </div>
     </div>
     <script type="text/javascript">
+        function changeImage(select) {
+            console.log(select.value);
+            var data = {
+                image: select.value
+            }
+            app.http.post("<?= root('api/commodity/' . $data->commodity->id) ?>", data, (response, code) => {
+                app.toast('Gambar berhasil diubah').next()
+                app.reload()
+            }, () => {
+                app.toast('Gagal mengubah gambar').show();
+                this.currentSpecificationID = 0;
+            });
+        }
         $('#delete').click(function() {
             if (confirm('Are you sure you want to delete <?= $data->commodity->name ?>')) {
                 app.http.delete("<?= root('api/commodity/' . $data->commodity->id) ?>", (response, code) => {
