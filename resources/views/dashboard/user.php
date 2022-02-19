@@ -9,7 +9,7 @@
                     <div class="card">
                         <div class="card-image">
                             <img src="<?= $data->user->avatar ?>" alt="<?= $data->user->name ?>">
-                            <a class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">upload</i></a>
+                            <a class="btn-floating disabled halfway-fab waves-effect waves-light red"><i class="material-icons">upload</i></a>
                         </div>
                         <div class="card-content">
                             <span class="card-title">Detail Pengguna</span>
