@@ -3,7 +3,7 @@
         <div class="section no-pad-bot">
             <div class="container">
                 <div class="row center">
-                    <h5 class="header col s12 light white-text">Shipping a modern responsive front-end framework based on Material Design</h5>
+                    <h5 class="header col s12 light white-text"></h5>
                 </div>
             </div>
         </div>
