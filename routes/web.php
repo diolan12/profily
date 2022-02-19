@@ -52,6 +52,7 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     $router->post('/gallery', 'DashboardGallery@galleryNew');
     $router->get('/gallery/{imageID}', 'DashboardGallery@galleryAt');
     $router->post('/gallery/{imageID}', 'DashboardGallery@galleryUpdateAt');
+    $router->post('/gallery/{imageID}/img', 'DashboardGallery@galleryUpdateImageAt');
 
     $router->get('/about', 'Dashboard@about');
     $router->get('/setting', 'Dashboard@setting');
