@@ -19,7 +19,7 @@ class User extends Migration
             $table->string('avatar', 96)->default('default-avatar.png');
             $table->foreignId('role')->default(2);
             $table->string('name', 32);
-            $table->string('email', 32);
+            $table->string('email', 64);
             $table->string('password', 96);
             $table->timestamps();
             $table->softDeletes();
