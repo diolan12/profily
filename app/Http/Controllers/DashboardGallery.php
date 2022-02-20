@@ -49,7 +49,7 @@ class DashboardGallery extends BaseViewController
 
         $picName = uniqid() . '.' . $format;
         $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
-        $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
+        $destinationPath = project_path(public_path . DIRECTORY_SEPARATOR . $path); // upload path
 
         $isSuccess = $request->file('image')->move($destinationPath, $picName);
 
@@ -131,7 +131,7 @@ class DashboardGallery extends BaseViewController
 
         $picName = uniqid() . '.' . $format;
         $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
-        $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
+        $destinationPath = project_path(public_path . DIRECTORY_SEPARATOR . $path); // upload path
 
         $isMoved = $request->file('image')->move($destinationPath, $picName);
 
@@ -140,7 +140,7 @@ class DashboardGallery extends BaseViewController
         
         $image = $this->image->where('id', $imageID)->first();
 
-        $isDeleted = unlink(project_path('public' . $image->file));
+        $isDeleted = unlink(project_path(public_path . $image->file));
 
         $image->file = $picName;
         $image->updated_at = Carbon::now();
