@@ -120,7 +120,7 @@ $app->router->group([
 | Here we will define the JWT configuration to be used by the helper.
 |
 */
-define('public_path', 'public');
+define('public_path', getenv('APP_PUBLIC'));
 define('auth_cookie', 'Tvqr7NbwVBvrCjhxXfujtYAaEjZkx4W6');
 define('algorithm', 'RS256');
 define('privateKey', file_get_contents(storage_path('rsa.private')));
