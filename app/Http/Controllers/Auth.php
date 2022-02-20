@@ -113,14 +113,14 @@ class Auth extends BaseViewController
 
         $user = $this->user->with($this->user->getRelations())->find(auth()->user()->id);
 
-        $picName = $user->email . '.' . $format;
+        $picName = explode('@', $user->email)[0] . '.' . $format;
         $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
-        $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
+        $destinationPath = project_path(public_path . DIRECTORY_SEPARATOR . $path); // upload path
 
 
         // return dd($user->avatar);
         if ($user->avatar != asset('img/default-avatar.png')) {
-            $isDeleted = unlink(project_path('public' . $user->avatar));
+            $isDeleted = unlink(project_path(public_path . $user->avatar));
         }
 
         $isMoved = $request->file('avatar')->move($destinationPath, $picName);
