@@ -13,12 +13,12 @@
     <meta name="description" content="<?= substr($meta['description'], 0, 170) ?>" />
     <meta name="keywords" content="<?= implode(', ', $meta['keywords']) ?>" />
 
+    <link rel="stylesheet" href="<?= asset('css/style.css') ?>">
+    <link rel="stylesheet" href="<?= asset('css/materialize.min.css') ?>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/treeflex/dist/css/treeflex.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
-    <link rel="stylesheet" href="<?= asset('css/materialize.min.css') ?>">
-    <link rel="stylesheet" href="<?= asset('css/style.css') ?>">
     <style>
         blockquote {
             border-left: 5px solid <?= color($config->color->accent, false, false, true) ?> !important;

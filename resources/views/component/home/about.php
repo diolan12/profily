@@ -26,7 +26,7 @@
                                     <p><?= $mission->val2 ?></p>
                                 </div>
                             </div>
-                        <?php $delay += 200;
+                        <?php $delay += 100;
                         endforeach; ?>
 
                     </div>
@@ -44,7 +44,7 @@
                                     <p class="light"><?= $value->val2 ?></p>
                                 </div>
                             </div>
-                        <?php $delay += 200;
+                        <?php $delay += 100;
                         endforeach; ?>
 
                     </div>

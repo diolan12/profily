@@ -22,7 +22,7 @@
 
                 <?php $delay = 0;
                 foreach ($data->founders as $founder) : ?>
-                    <div class="col s12 m4 l3" data-aos="fade-left" data-aos-delay="<?= $delay ?>">
+                    <div class="col s12 m4 l3" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
                         <div class="card">
                             <div class="card-image">
                                 <img src="<?= $founder->avatar ?>">
@@ -30,7 +30,7 @@
                             </div>
                         </div>
                     </div>
-                <?php $delay += 200;
+                <?php $delay += 100;
                 endforeach; ?>
 
             </div>
