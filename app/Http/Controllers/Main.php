@@ -115,6 +115,15 @@ class Main extends BaseViewController
             $todayProductView->save();
         }
 
+        $ogs = (object) json_decode(json_encode($this->data['product']));
+
+        $this->extra['meta']['og'] = [
+            'image' => url($ogs->image->file),
+            'image:secure_url' => url($ogs->image->file),
+            'image:alt' => kebab_to_beauty($productName),
+            'title' => kebab_to_beauty($productName)
+        ];
+
         return $this->bootstrap();
     }
 
