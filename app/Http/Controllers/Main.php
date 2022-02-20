@@ -87,7 +87,7 @@ class Main extends BaseViewController
 
         $text = urlencode("Hello, I'm interested about " . kebab_to_beauty($productName));
         $link = $this->config->connect['connect_whatsapp']['val2'] . '?text=' . $text;
-        $this->setupWhatsapp('Chat about ' . kebab_to_beauty($productName), $link);
+        $this->setupWhatsapp('Chat about ' . kebab_to_beauty($productName), $link, true);
 
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'content.product';

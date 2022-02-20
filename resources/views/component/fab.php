@@ -9,7 +9,7 @@ if ($fab->whatsapp == null) {
 ?>
 
 <div class="fixed-action-btn">
-    <a class="btn-floating btn-large teal accent-4">
+    <a class="btn-floating btn-large <?php if ($fab->pulse) echo 'pulse'?> <?= color($config->color->accent) ?> accent-4">
         <i class="large material-icons">whatsapp</i>
     </a>
     <ul>

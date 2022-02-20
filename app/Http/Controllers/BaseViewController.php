@@ -27,6 +27,7 @@ class BaseViewController extends Controller
         $this->config = config_parser(Config::all());
         $this->extra['meta']['canonical'] = URL::current();
         $this->extra['fab'] = (object) [
+            'pulse' => false,
             'whatsapp' => null
         ];
         $this->extra['server'] =  [
@@ -110,6 +111,7 @@ class BaseViewController extends Controller
         'toast' => null,
         'pagination' => null,
         'fab' => [
+            'pulse' => false,
             'whatsapp' => null
         ],
         'server' =>  [
@@ -132,9 +134,10 @@ class BaseViewController extends Controller
         ];
     }
 
-    protected function setupWhatsapp(string $tooltip, string $link)
+    protected function setupWhatsapp(string $tooltip, string $link, bool $pulse = false)
     {
         $this->extra['fab'] = (object) [
+            'pulse' => $pulse,
             'whatsapp' => (object) [
                 'tooltip' => $tooltip,
                 'link' => $link
