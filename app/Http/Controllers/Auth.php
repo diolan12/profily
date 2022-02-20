@@ -113,7 +113,7 @@ class Auth extends BaseViewController
 
         $user = $this->user->with($this->user->getRelations())->find(auth()->user()->id);
 
-        $picName = explode('@', $user->email)[0] . '.' . $format;
+        $picName = uniqid() . '.' . $format;
         $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
         $destinationPath = project_path(public_path . DIRECTORY_SEPARATOR . $path); // upload path
 
