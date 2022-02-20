@@ -12,3 +12,7 @@
 <?= component('home.testimony', $extra) ?>
 
 <?= component('home.founder', $extra) ?>
+
+<script>
+    AOS.init();
+</script>

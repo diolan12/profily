@@ -4,12 +4,13 @@
         <div class="section">
 
             <div class="row">
-                <div class="col s12 center">
+                <div class="col s12 center" data-aos="fade-up">
                     <h4>Testimony</h4>
                 </div>
                 
-                <?php foreach ($data->testimonies as $testimony) : ?>
-                    <div class="col s12 m4 l4 xl3">
+                <?php $delay = 0;
+                foreach ($data->testimonies as $testimony) : ?>
+                    <div class="col s12 m4 l4 xl3" data-aos="fade-left" data-aos-delay="<?= $delay ?>">
                         <div class="card">
                             <div class="card-content">
                                 <span class="card-title grey-text text-darken-4"><?= $testimony->name?></span>
@@ -17,7 +18,8 @@
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php $delay += 200;
+            endforeach; ?>
 
             </div>
 

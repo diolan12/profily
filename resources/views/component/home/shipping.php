@@ -31,7 +31,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col s12 center">
+                <div class="col s12 center" data-aos="fade-up">
                     <h4>Shipping Incoterms</h4>
                     <div class="col s12 m6 offset-m3">
                         <p><i class="material-icons left green-text">done</i>Free On Board</p>

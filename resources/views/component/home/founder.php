@@ -16,12 +16,13 @@
         <div class="section">
 
             <div class="row">
-                <div class="col s12 center">
+                <div class="col s12 center" data-aos="fade-up">
                     <h4>Founder</h4>
                 </div>
 
-                <?php foreach ($data->founders as $founder) : ?>
-                    <div class="col s12 m4 l3">
+                <?php $delay = 0;
+                foreach ($data->founders as $founder) : ?>
+                    <div class="col s12 m4 l3" data-aos="fade-left" data-aos-delay="<?= $delay ?>">
                         <div class="card">
                             <div class="card-image">
                                 <img src="<?= $founder->avatar ?>">
@@ -29,7 +30,8 @@
                             </div>
                         </div>
                     </div>
-                <?php endforeach; ?>
+                <?php $delay += 200;
+                endforeach; ?>
 
             </div>
 

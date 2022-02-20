@@ -1,7 +1,7 @@
 <div id="product" class="scrollspy">
     <div class="parallax-container valign-wrapper">
         <div class="section no-pad-bot">
-            <div class="container">
+            <div class="container" data-aos="fade-right">
                 <div class="row center">
                     <h5 class="header col s12 light white-text right-align animate">Delivering good quality products</h5>
                     <a href="<?= root('product') ?>" class="waves-effect <?= color($config->color->accent) ?> waves-light btn">Browse More</a>
@@ -17,9 +17,10 @@
         <div class="section">
             <div class="row">
 
-                <?php foreach ($data->commodities as $commodity) : ?>
+                <?php $delay = 0;
+                foreach ($data->commodities as $commodity) : ?>
                     <?php if ($commodity->image != null) : ?>
-                        <div class="col s12 m6 l6 xl4">
+                        <div class="col s12 m6 l6 xl4" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
 
                             <div class="card medium">
                                 <div class="card-image">
@@ -36,7 +37,8 @@
 
                         </div>
                     <?php endif; ?>
-                <?php endforeach; ?>
+                <?php $delay += 200;
+                endforeach; ?>
 
             </div>
         </div>
