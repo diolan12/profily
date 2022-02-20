@@ -76,6 +76,7 @@ class BaseViewController extends Controller
     protected $extra = [
         'user' => null,
         'meta' => [
+            'og' => [],
             'title' => '',
             'description' => 'Permata Agrindo is engaged in general supplier, general trading ,and distributor as well as cultivation in agriculture. We partner with Indonesian farmers to produce the highest quality products. We can be sure that our products are of superior quality.',
             'keywords' => [

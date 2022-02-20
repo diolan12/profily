@@ -47,6 +47,10 @@
     <meta name="msapplication-TileColor" content="<?= color($config->color->secondary, false, false, true) ?>">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="<?= color($config->color->secondary, false, false, true) ?>">
+
+    <?php foreach ($meta['og'] as $ogk => $ogc) : ?>
+        <meta property="og:<?= $ogk ?>" content="<?= $ogc ?>">
+    <?php endforeach; ?>
 </head>
 
 <body>

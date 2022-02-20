@@ -126,7 +126,7 @@ class Main extends BaseViewController
         $this->extra['content']['main'] = 'content.commodities';
 
         $this->data['commodities'] = $this->commodity->with($this->commodity->getRelations())->get();
-        $this->data['commodity'] = $this->commodity->where('name', kebab_to_beauty($commodity))->first();
+        $this->data['commodity'] = $this->commodity->with($this->commodity->getRelations())->where('name', kebab_to_beauty($commodity))->first();
         if ($this->data['commodity'] == null) {
             // abort(404, "Commodity " . kebab_to_beauty($commodity) . " not found");
             return redirect(root('product'));
@@ -144,6 +144,15 @@ class Main extends BaseViewController
         $this->data['products'] = $this->product->offset($offset)->limit($limit)->with($this->product->getRelations())->where('commodity', $this->data['commodity']['id'])->get();
 
         $this->setupPaginations('commodity/' . beauty_to_kebab($this->data['commodity']['name']), $paginator->current, $paginator->total);
+
+        $ogs = (object) json_decode(json_encode($this->data['commodity']));
+
+        $this->extra['meta']['og'] = [
+            'image' => url($ogs->image->file),
+            'image:secure_url' => url($ogs->image->file),
+            'image:alt' => kebab_to_beauty($commodity),
+            'title' => kebab_to_beauty($commodity)
+        ];
 
         return $this->bootstrap();
     }
