@@ -5,8 +5,9 @@
 
         <!--   Icon Section   -->
         <div class="row">
-            <div class="col s12 center">
-                <h4>Products</h4>
+            <div class="col s12 center font-recursive">
+                <h4>Our Excellent Products</h4>
+                <h5>We Are Ready To Supply The Global Market in Large Quantities</h5>
             </div>
             <div>
                 <?php foreach ($data->products as $product) : ?>
