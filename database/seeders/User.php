@@ -20,13 +20,22 @@ class User extends Seeder
         DB::table(self::$name)->insert([
             'role' => 1,
             'name' => 'Administrator',
+            'position' => 'Web Administrator',
             'email' => 'admin@permataagrindo.com',
             'password' => Hash::make('4dm1n15tr4t0r'),
             'created_at' => Carbon::now()
         ]);
         DB::table(self::$name)->insert([
             'name' => 'Sintya Pujayanti',
+            'position' => 'CEO',
             'email' => 'chyntialaura@permataagrindo.com',
+            'password' => Hash::make('Bismillah_123'),
+            'created_at' => Carbon::now()
+        ]);
+        DB::table(self::$name)->insert([
+            'name' => 'Dicky Mahardika',
+            'position' => 'CTO',
+            'email' => 'dickymahardika@permataagrindo.com',
             'password' => Hash::make('Bismillah_123'),
             'created_at' => Carbon::now()
         ]);
