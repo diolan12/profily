@@ -14,8 +14,8 @@
                         <li class="collection-item avatar">
                             <img src="<?= $user->avatar ?>" alt="<?= $user->name ?>" class="circle">
                             <span class="title red-text">
-                                <strong class ="black-text"><?= $user->name ?></strong>
-                                <?php if($user->deleted_at != null) echo '(deactivated)'?>
+                                <strong class="black-text"><?= $user->name ?></strong>
+                                <?php if ($user->deleted_at != null) echo '(deactivated)' ?>
                             </span>
                             <p><?= $user->email ?></p>
                             <p><?= $user->position ?></p>
@@ -62,6 +62,7 @@
     </div>
     <script type="text/javascript">
         shown = false;
+
         function togglePassword() {
             if (shown) {
                 $('#password').attr('type', 'password');
