@@ -27,7 +27,7 @@ class User extends Seeder
         ]);
         DB::table(self::$name)->insert([
             'name' => 'Sintya Pujayanti',
-            'position' => 'CEO',
+            'position' => 'CMO',
             'email' => 'chyntialaura@permataagrindo.com',
             'password' => Hash::make('Bismillah_123'),
             'created_at' => Carbon::now()
