@@ -62,9 +62,9 @@ class Storage {
 }
 
 class Cookie {
-    key = undefined;
-    value = undefined;
     constructor() {
+        this.key = undefined;
+        this.value = undefined;
         this.has = (name) => {
             return this.get(name) !== null;
         }
@@ -106,8 +106,8 @@ class Cookie {
     }
 }
 class Href {
-    url = window.location.href;
     constructor() {
+        this.url = window.location.href;
         const path = this.url.split("?")[0];
         const param = this.url.split("?")[1];
 
@@ -251,8 +251,8 @@ class Http {
     }
 }
 class Elem {
-    e = undefined;
     constructor() {
+        this.e = undefined;
         this.byID = (id) => {
             this.e = document.getElementById(id);
             return this.e;
