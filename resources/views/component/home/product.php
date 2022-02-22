@@ -1,22 +1,14 @@
 <div id="product" class="scrollspy">
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container" data-aos="fade-right">
-                <div class="row center">
-                    <h5 class="header col s12 light white-text right-align animate">Delivering good quality products</h5>
-                    <a href="<?= root('product') ?>" class="waves-effect <?= color($config->color->accent) ?> waves-light btn">Browse More</a>
-                </div>
-            </div>
-        </div>
-        <div class="parallax">
-            <img src="<?= asset('img/' . $config->parallax->product->val1) ?>" alt="<?= $config->parallax->product->val1 ?>">
-        </div>
-    </div>
+
 
     <div class="container">
         <div class="section">
             <div class="row">
-
+                <div class="col s12 center font-recursive" data-aos="fade-up">
+                    <h4>Our Excellent Products</h4>
+                    <h5>We Are Ready To Supply The Global Market in Large Quantities
+                    </h5>
+                </div>
                 <?php $delay = 0;
                 foreach ($data->commodities as $commodity) : ?>
                     <?php if ($commodity->image != null) : ?>
@@ -40,6 +32,10 @@
                 <?php $delay += 200;
                 endforeach; ?>
 
+                <div class="col s12 font-recursive right-align" data-aos="fade-up">
+                    <a href="<?= root('product') ?>" class="waves-effect waves-light btn <?= color($config->color->accent) ?>"><i class="material-icons right">arrow_forward</i>Browse Products</a>
+
+                </div>
             </div>
         </div>
     </div>
