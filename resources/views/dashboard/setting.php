@@ -24,10 +24,10 @@
                         </div>
                     </div>
                     <div class="col s12">
-                        <p>Disarankan mengunggah logo dengan dimensi 2000 x 500 berformat png</p>
+                        <p>Disarankan mengunggah logo dengan dimensi 2000 x 500 berformat png yang sudah terkompres</p>
                     </div>
                     <div class="file-field input-field col s12">
-                        <form action="<?= rootDashboard('setting') ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?= rootDashboard('logo') ?>" method="post" enctype="multipart/form-data">
                             <div class="btn">
                                 <span>Ganti</span>
                                 <input onchange="upload(this)" name="logo" type="file">
@@ -52,26 +52,16 @@
         var data = {
             val1: type
         }
-        app.http.put("<?= root('api/config/1') ?>", data, (response, code) => {
+        app.http.put("<?= root('api/config/where/key/brand_type') ?>", data, (response, code) => {
             app.toast('Logo type set to ' + type).show()
 
         }, () => {
             $(this).prop('checked', !$(this).is(':checked'));
-            app.toast('Failed setting logo type').show()
+            app.toast('Failed to change logo type').show()
         });
     })
 
     function upload(input) {
         $('#submit').click();
-        // console.log($(input.files[0]))
-        // var formData = new FormData();
-        // formData.append('logo', $(input.files[0]));
-        // app.http.post("<?= rootDashboard('setting') ?>", formData, (response, code) => {
-        //     app.toast('Logo berhasil diubah').next()
-        //     app.reload()
-
-        // }, () => {
-        //     app.toast('Gagal mengubah logo').show()
-        // });
     }
 </script>
