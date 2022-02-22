@@ -1,5 +1,3 @@
-<!-- <?= component('banner', $extra) ?> -->
-
 <?= component('commodity-slider', $extra) ?>
 
 <div class="container">
@@ -8,8 +6,8 @@
         <!--   Icon Section   -->
         <div class="row">
             <div class="col s12 center">
-                <h4><?= htmlentities($data->commodity->name) ?></h4>
-                <blockquote class="left-align"><?= htmlentities($data->commodity->description1) . '<br/>' . htmlentities($data->commodity->description2) ?></blockquote>
+                <h4 class="font-recursive"><?= htmlentities($data->commodity->name) ?></h4>
+                <blockquote class="left-align font-recursive"><?= htmlentities($data->commodity->description1) . '<br/>' . htmlentities($data->commodity->description2) ?></blockquote>
                 <p class="left-align">Showing results for <?= $data->commodity->name ?>. <a href="<?= root('product') ?>">Click here</a> to see all products.</p>
             </div>
             <div>
