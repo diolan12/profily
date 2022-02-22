@@ -18,7 +18,7 @@
                                 <?php if($user->deleted_at != null) echo '(deactivated)'?>
                             </span>
                             <p><?= $user->email ?></p>
-                            <p><?= $user->role->name ?></p>
+                            <p><?= $user->position ?></p>
                             <a href="<?= rootDashboard('user/' . beauty_to_kebab($user->name)) ?>" class="secondary-content"><i class="material-icons">edit</i></a>
                         </li>
                     <?php endforeach; ?>
