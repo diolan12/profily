@@ -29,6 +29,19 @@ class RestUpdateController extends RestController
         }
         return $this->response();
     }
+    public function updateWhere(Request $request, $table, $col, $val)
+    {
+        parent::__construct($request, $table);
+        if ($this->model != null) {
+            $data = $request->all();
+            $data['updated_at'] = Carbon::now('UTC');
+            $data = $this->model->filter($data);
+
+            $this->code = ($this->model->withTrashed()->where($col, $val)->update($data)) ? 200 : 422;
+            $this->json = $this->model->where($col, $val)->first();
+        }
+        return $this->response();
+    }
     
     public function uploadAtColumn(Request $request, $table, $id, $column) {
         parent::__construct($request, $table);
