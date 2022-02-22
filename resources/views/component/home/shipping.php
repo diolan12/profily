@@ -17,7 +17,7 @@
 
             <div class="row">
                 <div class="col s12 center hide-on-small-only" data-aos="fade-up">
-                    <h4>Shipping Incoterms</h4>
+                    <h4 class="font-recursive">Shipping Incoterms</h4>
                     <div class="tf-tree tf-gap-lg">
                         <ul>
                             <li>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div class="col s12 center hide-on-med-and-up" data-aos="fade-up">
-                    <h4>Shipping Incoterms</h4>
+                    <h4 class="font-recursive">Shipping Incoterms</h4>
                     <div class="col s12 m6 offset-m3">
                         <p><i class="material-icons left green-text">done</i>Free On Board</p>
                         <p><i class="material-icons left green-text">done</i>Cost, Insurance, Freight</p>
