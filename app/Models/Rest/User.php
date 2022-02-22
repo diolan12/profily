@@ -18,6 +18,7 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     protected $validation = [
         'avatar' => '',
         'name' => 'required',
+        'position' => 'required',
         'email' => 'required',
         'role' => '',
         'password' => '',
@@ -26,7 +27,9 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
     public function validation()
     {
         return [
+            'avatar' => '',
             'name' => 'required',
+            'position' => 'required',
             'email' => 'required',
             'role' => '',
             'password' => '',
@@ -40,6 +43,9 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
         if (isset($data['name'])) {
             $data['name'] = ucwords($data['name']);
         }
+        if (isset($data['position'])) {
+            $data['position'] = ucwords($data['position']);
+        }
         if (isset($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         }
@@ -52,7 +58,7 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
      * @var array
      */
     protected $fillable = [
-        'avatar', 'name', 'email', 'role', 'password', 'deleted_at'
+        'avatar', 'name', 'position', 'email', 'role', 'password', 'deleted_at'
     ];
 
     /**
@@ -70,7 +76,7 @@ class User extends BaseModel implements AuthenticatableContract, AuthorizableCon
         }
         return asset('img/' . $value);
     }
-    protected $relations = [ 'role'];
+    protected $relations = ['role'];
 
     public function role()
     {
