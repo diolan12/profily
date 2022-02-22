@@ -2,7 +2,7 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 
 <head>
     <?php if ($server['client']['refresh']) : ?>
@@ -68,7 +68,7 @@
     <meta name="theme-color" content="<?= color($config->color->secondary, false, false, true) ?>">
 </head>
 
-<body>
+<body class="<?= color($config->color->background) ?>">
     <?php if (getenv('APP_DEBUG')) : ?>
         <script type="text/javascript">
             const extra = <?= json_encode($extra) ?>;
