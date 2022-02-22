@@ -30,7 +30,26 @@ class Init extends Seeder
             'key' => 'brand_logo',
             'type' => 'web',
             'val1' => 'logo-long-light.png',
-            'val2' => 'Chintia Coffee Logo',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'banner',
+            'type' => 'web',
+            'val1' => 'banner.jpg',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'style',
+            'type' => 'web',
+            'val1' => 'white-text', // text color
+            'val2' => 'text-lighten-4', // text color modifier
+            'created_at' => Carbon::now('UTC')
+        ]);
+        DB::table(self::$name)->insert([
+            'key' => 'action',
+            'type' => 'web',
+            'val1' => 'Contact US',
+            'val2' => 'https://wa.me/6283852153846',
             'created_at' => Carbon::now('UTC')
         ]);
 
@@ -59,14 +78,16 @@ class Init extends Seeder
             'val3' => '#00c853',
             'created_at' => Carbon::now('UTC')
         ]);
-
-        // Parallax
         DB::table(self::$name)->insert([
-            'key' => 'banner',
-            'type' => 'parallax',
-            'val1' => 'banner.jpg',
+            'key' => 'background',
+            'type' => 'color',
+            'val1' => 'green',
+            'val2' => 'lighten-4',
+            'val3' => '#00c853',
             'created_at' => Carbon::now('UTC')
         ]);
+
+        // Parallax
         DB::table(self::$name)->insert([
             'key' => 'product',
             'type' => 'parallax',
@@ -91,80 +112,88 @@ class Init extends Seeder
             'key' => 'information',
             'type' => 'brand',
             'val1' => 'Permata Agrindo',
-            'val2' => 'PT Permata Agrindo',
-            'val3' => 'Banyuwangi, East Java, Indonesia',
-            'created_at' => Carbon::now('UTC')
-        ]);
-        DB::table(self::$name)->insert([
-            'key' => 'slogan',
-            'type' => 'brand',
-            'val1' => 'Best exporter in the world and promote Indonesian agriculture',
+            'val2' => 'Best exporter in the world and promote Indonesian agriculture',
+            'val3' => 'PT Permata Agrindo',
+            'val4' => 'Banyuwangi, East Java, Indonesia',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
             'key' => 'about',
             'type' => 'brand',
-            'val1' => 'Permata Agrindo is engaged in general supplier, general trading, and distributor as well as cultivation in agriculture. We partner with Indonesian farmers to produce the highest quality products. We can be sure that our products are of superior quality.',
+            'val1' => 'About Us',
+            'val2' => 'Permata Agrindo is engaged in general supplier, general trading, and distributor as well as cultivation in agriculture. We partner with Indonesian farmers to produce the highest quality products. We can be sure that our products are of superior quality.',
             'created_at' => Carbon::now('UTC')
         ]);
         // Vision
         DB::table(self::$name)->insert([
             'key' => 'vision',
             'type' => 'brand',
-            'val1' => 'Our vision is to become the best exporter in the world and promote Indonesian agriculture.',
+            'val1' => 'Our Vision',
+            'val2' => 'Our vision is to become the best exporter in the world and promote Indonesian agriculture.',
+            'created_at' => Carbon::now('UTC')
+        ]);
+        // Mission
+        DB::table(self::$name)->insert([
+            'key' => 'mission',
+            'type' => 'brand',
+            'val1' => 'Our Mission',
+            'val2' => 'Helping Indonesian farmers to become innovative farmers. Strategies for innovation in-stock availability and producing the best quality products from Indonesian farmers.',
             'created_at' => Carbon::now('UTC')
         ]);
 
-        // Mission
-        DB::table(self::$name)->insert([
-            'key' => 'mission_1',
-            'type' => 'mission',
-            'val1' => 'lightbulb',
-            'val2' => 'Helping Indonesian farmers to become innovative farmers.',
-            'created_at' => Carbon::now('UTC')
-        ]);
-        DB::table(self::$name)->insert([
-            'key' => 'mission_2',
-            'type' => 'mission',
-            'val1' => 'star_rate',
-            'val2' => 'Strategies for innovation in-stock availability and producing the best quality products from Indonesian farmers.',
-            'created_at' => Carbon::now('UTC')
-        ]);
-        DB::table(self::$name)->insert([
-            'key' => 'mission_3',
-            'type' => 'mission',
-            'val1' => 'group',
-            'val2' => 'Build strategic business partners with buyers, farmers, and the government in the long term.',
-            'created_at' => Carbon::now('UTC')
-        ]);
+        // DB::table(self::$name)->insert([
+        //     'key' => 'mission_1',
+        //     'type' => 'mission',
+        //     'val1' => 'lightbulb',
+        //     'val2' => 'Helping Indonesian farmers to become innovative farmers.',
+        //     'created_at' => Carbon::now('UTC')
+        // ]);
+        // DB::table(self::$name)->insert([
+        //     'key' => 'mission_2',
+        //     'type' => 'mission',
+        //     'val1' => 'star_rate',
+        //     'val2' => 'Strategies for innovation in-stock availability and producing the best quality products from Indonesian farmers.',
+        //     'created_at' => Carbon::now('UTC')
+        // ]);
+        // DB::table(self::$name)->insert([
+        //     'key' => 'mission_3',
+        //     'type' => 'mission',
+        //     'val1' => 'group',
+        //     'val2' => 'Build strategic business partners with buyers, farmers, and the government in the long term.',
+        //     'created_at' => Carbon::now('UTC')
+        // ]);
 
         // Value
         DB::table(self::$name)->insert([
             'key' => 'value_1',
             'type' => 'value',
-            'val1' => 'Quality',
-            'val2' => 'Each product we sell always uses the best raw material and tested with a highly advanced machine, and certified laboratory to produce the best quality.',
+            'val1' => 'lightbulb',
+            'val2' => 'Quality',
+            'val3' => 'Each product we sell always uses the best raw material and tested with a highly advanced machine, and certified laboratory to produce the best quality.',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
             'key' => 'value_2',
             'type' => 'value',
-            'val1' => 'Innovation',
-            'val2' => 'We always innovate in developing and making new breakthroughs in producing products that have always been of market interest and strengthen the customer\'s taste.',
+            'val1' => 'star_rate',
+            'val2' => 'Innovation',
+            'val3' => 'We always innovate in developing and making new breakthroughs in producing products that have always been of market interest and strengthen the customer\'s taste.',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
             'key' => 'value_3',
             'type' => 'value',
-            'val1' => 'Commitment',
-            'val2' => 'Commitment is one of the keys to customer trust so it is something we always take care of and cannot be ignored. All forms of privileges that we give to serve customers are things that we always take care of.',
+            'val1' => 'group',
+            'val2' => 'Commitment',
+            'val3' => 'Commitment is one of the keys to customer trust so it is something we always take care of and cannot be ignored. All forms of privileges that we give to serve customers are things that we always take care of.',
             'created_at' => Carbon::now('UTC')
         ]);
         DB::table(self::$name)->insert([
             'key' => 'value_4',
             'type' => 'value',
-            'val1' => 'Integrity',
-            'val2' => 'Integrity means telling the truth, keeping our word and treating others with fairness and respect. Integrity is one of our most cherished assets. It must not be compromised.',
+            'val1' => 'group',
+            'val2' => 'Integrity',
+            'val3' => 'Integrity means telling the truth, keeping our word and treating others with fairness and respect. Integrity is one of our most cherished assets. It must not be compromised.',
             'created_at' => Carbon::now('UTC')
         ]);
 
