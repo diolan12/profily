@@ -54,18 +54,18 @@ class Dashboard extends BaseViewController
 
     public function general()
     {
-        $this->extra['meta']['title'] = 'About';
-        $this->extra['nav']['active'] = 'about';
+        $this->extra['meta']['title'] = 'General';
+        $this->extra['nav']['active'] = 'general';
         $this->extra['content']['main'] = 'dashboard.about';
         return $this->bootstrap(true);
     }
-    public function mission()
-    {
-        $this->extra['meta']['title'] = 'Mission';
-        $this->extra['nav']['active'] = 'mission';
-        $this->extra['content']['main'] = 'dashboard.mission';
-        return $this->bootstrap(true);
-    }
+    // public function mission()
+    // {
+    //     $this->extra['meta']['title'] = 'Mission';
+    //     $this->extra['nav']['active'] = 'mission';
+    //     $this->extra['content']['main'] = 'dashboard.mission';
+    //     return $this->bootstrap(true);
+    // }
     public function value()
     {
         $this->extra['meta']['title'] = 'Value';
@@ -80,6 +80,44 @@ class Dashboard extends BaseViewController
         $this->extra['content']['main'] = 'dashboard.connect';
         return $this->bootstrap(true);
     }
+    public function banner()
+    {
+        $this->extra['meta']['title'] = 'Banner';
+        $this->extra['nav']['active'] = 'banner';
+        $this->extra['content']['main'] = 'dashboard.banner';
+        return $this->bootstrap(true);
+    }
+    public function bannerUpload(Request $request)
+    {
+        $this->load('config');
+        $this->extra['meta']['title'] = 'Banner';
+        $this->extra['nav']['active'] = 'banner';
+        $this->extra['content']['main'] = 'dashboard.banner';
+
+        $file = $request->file('banner');
+
+        $fn = explode('.', $file->getClientOriginalName()); // file path
+        $format = $fn[(count($fn) - 1)];
+
+        $config = $this->config->where('key', 'banner')->first();
+
+        $picName = uniqid() . '.' . $format;
+        $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
+        $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
+
+        if ($config->val1 != 'banner.jpg') {
+            $isDeleted = unlink(project_path('public' . DIRECTORY_SEPARATOR . 'assets' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . $config->val1));
+        }
+
+        $isMoved = $request->file('banner')->move($destinationPath, $picName);
+
+        $config->val1 = $picName;
+        $config->updated_at = Carbon::now();
+
+        $toast = (!($config->save())) ? "Gagal mengunggah banner" : "Banner berhasil diunggah";
+
+        return redirect(rootDashboard('banner?toast=' . $toast));
+    }
     public function setting()
     {
         $this->extra['meta']['title'] = 'Setting';
@@ -87,7 +125,7 @@ class Dashboard extends BaseViewController
         $this->extra['content']['main'] = 'dashboard.setting';
         return $this->bootstrap(true);
     }
-    public function logo(Request $request)
+    public function logoUpload(Request $request)
     {
         $this->load('config');
         $this->extra['meta']['title'] = 'Setting';
@@ -99,9 +137,9 @@ class Dashboard extends BaseViewController
         $fn = explode('.', $file->getClientOriginalName()); // file path
         $format = $fn[(count($fn) - 1)];
 
-        $config = $this->config->find(2);
+        $config = $this->config->where('key', 'brand_logo')->first();
 
-        $picName = 'logo.' . $format;
+        $picName = uniqid() . '.' . $format;
         $path = 'assets' . DIRECTORY_SEPARATOR . 'img';
         $destinationPath = project_path('public' . DIRECTORY_SEPARATOR . $path); // upload path
 
