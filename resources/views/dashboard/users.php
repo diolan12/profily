@@ -39,6 +39,10 @@
                             <label for="name">Nama</label>
                         </div>
                         <div class="input-field col s12">
+                            <input id="position" name="position" type="text" class="validate">
+                            <label for="position">Jabatan</label>
+                        </div>
+                        <div class="input-field col s12">
                             <input id="email" name="email" type="email" class="validate">
                             <label for="email">Email</label>
                         </div>
