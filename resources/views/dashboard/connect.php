@@ -25,7 +25,7 @@
                             <label>Type</label>
                         </div>
                         <div class="input-field col s12">
-                            <input id="connect-link-<?= $link->id ?>" type="text" value="<?= $link->val2 ?>" class="validate">
+                            <input id="connect-link-<?= $link->id ?>" type="<?= $link->val1 == 'email' ? 'email' : 'text' ?>" value="<?= $link->val2 ?>" class="validate">
                             <label for="connect-link-<?= $link->id ?>">Link</label>
                         </div>
                     </div>
@@ -113,11 +113,11 @@
     function del(id) {
         if (confirm('Are you sure you want to delete?')) {
             app.http.delete("<?= root('api/config/') ?>" + id + '?force', (response, code) => {
-            app.toast('Link deleted').next()
-            app.reload()
-        }, () => {
-            app.toast('Failed to delete link').show();
-        });
+                app.toast('Link deleted').next()
+                app.reload()
+            }, () => {
+                app.toast('Failed to delete link').show();
+            });
         }
     }
 </script>
