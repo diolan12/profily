@@ -42,8 +42,9 @@ class RestUpdateController extends RestController
         }
         return $this->response();
     }
-    
-    public function uploadAtColumn(Request $request, $table, $id, $column) {
+
+    public function uploadAtColumn(Request $request, $table, $id, $column)
+    {
         parent::__construct($request, $table);
         if ($this->model != null) {
             if (!$request->hasFile("file")) {
@@ -58,35 +59,35 @@ class RestUpdateController extends RestController
 
             if ($m->$column != null) {
                 try {
-                    unlink(storage_path("app/assets/uploads/$table").'/'.$m->$column);
+                    unlink(storage_path("app/assets/uploads/$table") . '/' . $m->$column);
                 } catch (\Exception $e) {
                     // return $this->error('Failed to delete old image', 422);
                 }
             }
-            
-            if($request->has('name')) {
+
+            if ($request->has('name')) {
                 $filename = $request->get('name');
             } else {
                 $filename = Carbon::now()->format('Y-m-d_H-i-s');
             }
-            $filename = str_replace(" ", "_",$filename) . '.' . $format;
+            $filename = str_replace(" ", "_", $filename) . '.' . $format;
 
             $m->$column = $filename;
-            
-            if($request->has('timestamp')) {
+
+            if ($request->has('timestamp')) {
                 $timestamp = $request->get('timestamp');
                 $m->$timestamp = Carbon::now('UTC');
             }
-    
+
             // $target = storage_path('app/assets/uploads/')."$filename.jpg";
-    
+
             $fh = RoadRunnerFileHelper::parse($file);
             $isSuccess = $fh->move(storage_path("app/assets/uploads/$table"), "$filename");
 
             if ($isSuccess) {
                 $m->save();
             }
-    
+
             return $this->success($m);
         }
         return $this->response();
