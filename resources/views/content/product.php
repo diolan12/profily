@@ -15,10 +15,8 @@
                         </div>
                     </div>
                 </div>
-                <img class="hide col s12 m5 materialboxed responsive-img" src="<?= $data->product->image->file ?>" >
-                <h4><?= $data->product->name ?></h4>
-
-
+                <img class="hide col s12 m5 materialboxed responsive-img" src="<?= $data->product->image->file ?>">
+                <h4 class="font-recursive"><?= $data->product->name ?></h4>
 
                 <ul class="left-align">
                     <li>Commodity: <b><?= $data->product->commodity->name ?></b></li>
@@ -26,11 +24,11 @@
                         <li>Type: <b class="tooltipped" data-position="bottom" data-tooltip="<?= $data->product->type->description ?>"><?= $data->product->type->name ?></b></li>
                     <?php endif; ?>
                 </ul>
-                <p class="left-align"><?= $data->product->description ?></p>
+                <p class="left-align font-recursive"><?= $data->product->description ?></p>
 
                 <div class="left-align col s12">
                     <div class="col s12 m6">
-                        <h5>Specifications</h5>
+                        <h5 class="font-recursive">Specifications</h5>
                         <ul class="list">
                             <?php
                             foreach ($data->product->specification as $specification) {
@@ -49,7 +47,7 @@
 
                     <?php if ($data->product->commodity->id == 1) : ?>
                         <div class="col s12 m6">
-                            <h5>Process</h5>
+                            <h5 class="font-recursive">Process</h5>
                             <ul class="list">
                                 <?php if ($data->product->type->id == 1) : ?>
                                     <li><i class="material-icons small">chevron_right</i>
@@ -94,7 +92,7 @@
 
             <div class="row">
                 <div class="col s12 center">
-                    <h5>Roasting</h5>
+                    <h5 class="font-recursive">Roasting</h5>
                     <div class="center-align col s12 m8">
                         <img src="<?= asset('img/roast-level.jpg') ?>" alt="Beans roast level" class="responsive-img" />
                     </div>
