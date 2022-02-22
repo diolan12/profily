@@ -1,5 +1,4 @@
-
-<?= component('banner', $extra) ?>
+<?= component('home.banner', $extra) ?>
 
 <?= component('home.about', $extra) ?>
 
