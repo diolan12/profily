@@ -1,22 +1,21 @@
 <div class="container">
     <div class="row">
         <div class="col l6 s12">
-            <h5 class="white-text">Company Bio</h5>
-            <p class="white-text"><?= $config->brand->about->val1 ?></p>
-            <p class="white-text"><?= $config->brand->information->val2 ?>, <?= $config->brand->information->val3 ?></p>
+            <h5 class="white-text font-recursive">Company Bio</h5>
+            <p class="white-text font-recursive"><?= $config->brand->about->val2 ?></p>
+            <p class="white-text font-recursive"><?= $config->brand->information->val3 ?>, <?= $config->brand->information->val4 ?></p>
         </div>
         <div class="col s5 l3">
-            <h5 class="white-text">Useful Links</h5>
+            <h5 class="white-text font-recursive">Useful Links</h5>
             <ul>
                 <?php if ($user != null) : ?>
                     <li><a href="<?= rootDashboard() ?>" class="white-text">Dashboard</a></li>
                 <?php endif; ?>
-                <li><a href="<?= root('gallery') ?>" class="white-text">Gallery</a></li>
                 <li><a href="<?= root('cookies-policy') ?>" class="white-text">Cookies Policy</a></li>
             </ul>
         </div>
         <div class="col s7 l3">
-            <h5 class="white-text">Connect</h5>
+            <h5 class="white-text font-recursive">Connect</h5>
             <ul>
                 <?php foreach ($config->connect as $key => $value) {
                     $href = "";
