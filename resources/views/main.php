@@ -2,7 +2,7 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 
 <head>
     <!-- <meta http-equiv="refresh" content="5"> -->
@@ -53,7 +53,7 @@
     <?php endforeach; ?>
 </head>
 
-<body>
+<body class="<?= color($config->color->background) ?>">
     <?php if (getenv('APP_DEBUG')) : ?>
         <script type="text/javascript">
             const extra = <?= json_encode($extra) ?>;
