@@ -34,7 +34,7 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     $router->post('/commodity', 'DashboardCommodity@commodityNew');
     $router->get('/commodity/{commodityName}', 'DashboardCommodity@commodityAt');
     $router->post('/commodity/{commodityName}', 'DashboardCommodity@commodityUpdateAt');
-    
+
     $router->get('/commodity/{commodityName}/{typeID}', 'DashboardCommodity@typeAtCommodity');
     $router->post('/commodity/{commodityName}/{typeID}', 'DashboardCommodity@typeUpdateAtCommodity');
 
@@ -63,7 +63,7 @@ $router->group(['prefix' => 'J2mV38xHiH4abejTlpY9pXhbGtubTCZi', 'middleware' => 
     $router->post('/banner', 'Dashboard@bannerUpload');
     $router->get('/setting', 'Dashboard@setting');
     $router->post('/logo', 'Dashboard@logoUpload');
-    
+
     $router->get('/user', 'DashboardUser@index');
     $router->post('/user', 'DashboardUser@new');
     $router->get('/user/{userName}', 'DashboardUser@userAt');
