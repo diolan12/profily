@@ -116,3 +116,32 @@ ul.list ul.sub-list {
 .pointer {
     cursor: pointer;
 }
+
+
+/* Floating card in about */
+
+.row.float {
+    position: relative;
+    top: -96px;
+    margin-bottom: -128px !important;
+}
+
+@media only screen and (max-width: 600px) {
+    .row.float {
+        position: inherit;
+        top: 0;
+        margin-bottom: 0 !important;
+    }
+}
+
+
+/* Font Recursive */
+
+@font-face {
+    font-family: recursive;
+    src: url(font/Recursive.ttf);
+}
+
+.font-recursive {
+    font-family: recursive;
+}
