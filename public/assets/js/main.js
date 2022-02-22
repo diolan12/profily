@@ -25,7 +25,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var scrollSpy = M.ScrollSpy.init(elemScrollspy, options);
 
     var elemSlider = document.querySelectorAll('.slider');
-    var slider = M.Slider.init(elemSlider, options);
+    var elemBannerSlider = document.querySelectorAll('.slider-banner');
+    var slider = M.Slider.init(elemSlider, { indicators: true });
+    var sliderBanner = M.Slider.init(elemBannerSlider, { indicators: false, height: window.innerHeight });
 });
 (function($) {
     $(function() {
@@ -33,15 +35,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // set client timezone
         checkTimezone();
-
-        // app.http.get('/api/product/1').then(function(res) {
-        //     console.log(res);
-        //     app.toast('Product ' + res.json.name + ' received').show(3000);
-        // }).catch((resp) => {
-        //     app.toast('XHR error on ' + resp.status.code + ' ' + resp.status.text).show(3000);
-        // }).finally(() => {
-        //     app.toast('XHR request completed!').show(3000);
-        // });
 
     }); // end of document ready
 })(jQuery); // end of jQuery name space
