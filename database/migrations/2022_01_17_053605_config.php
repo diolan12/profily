@@ -13,7 +13,8 @@ class Config extends Migration
      * @return void
      */
     public function up()
-    {Schema::defaultStringLength(256);
+    {
+        Schema::defaultStringLength(256);
         Schema::create(self::$name, function (Blueprint $table) {
             $table->id();
             $table->string('key', 32)->index()->unique();
