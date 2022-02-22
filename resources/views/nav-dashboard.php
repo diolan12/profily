@@ -32,12 +32,12 @@
     <li>
         <div class="user-view">
             <div class="background">
-                <img src="https://materializecss.com/images/office.jpg">
+                <img src="<?= asset('img/parallax-shipping.jpg') ?>">
             </div>
             <a><img class="circle" src="<?= root($user->avatar) ?>" alt="<?= $user->name ?>"></a>
             <a><span class="white-text name"><?= $user->name ?></span></a>
             <a><span class="white-text email"><?= $user->email ?></span></a>
-            <a><span class="white-text email"><?= $user->role->name ?></span></a>
+            <a><span class="white-text email"><?= $user->position ?></span></a>
         </div>
     </li>
     <li><a class="subheader">Data</a></li>
@@ -53,7 +53,6 @@
     <li><a class="subheader">Brand</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'color') echo 'active' ?>" href="<?= rootDashboard('color') ?>"><i class="material-icons">palette</i>Color</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'general') echo 'active' ?>" href="<?= rootDashboard('general') ?>"><i class="material-icons">info</i>General</a></li>
-    <li><a class="waves-effect <?php if ($nav['active'] == 'mission') echo 'active' ?>" href="<?= rootDashboard('mission') ?>"><i class="material-icons">task</i>Mission</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'value') echo 'active' ?>" href="<?= rootDashboard('value') ?>"><i class="material-icons">photo_filter</i>Value</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'connect') echo 'active' ?>" href="<?= rootDashboard('connect') ?>"><i class="material-icons">link</i>Connect</a></li>
 
@@ -64,5 +63,6 @@
     <?php if ($user->role->id == 1) : ?>
         <li><a href="<?= rootDashboard('user') ?>" class="waves-effect <?php if ($nav['active'] == 'user') echo 'active' ?>"><i class="material-icons">manage_accounts</i>Users</a></li>
     <?php endif; ?>
+    <li><a class="waves-effect <?php if ($nav['active'] == 'banner') echo 'active' ?>" href="<?= rootDashboard('banner') ?>"><i class="material-icons">web</i>Banner</a></li>
     <li><a class="waves-effect <?php if ($nav['active'] == 'setting') echo 'active' ?>" href="<?= rootDashboard('setting') ?>"><i class="material-icons">admin_panel_settings</i>Settings</a></li>
 </ul>
