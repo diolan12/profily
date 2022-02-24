@@ -38,18 +38,22 @@
                         <div class="input-field col s12 m6">
                             <input id="name" name="name" type="text" class="validate" data-length="32">
                             <label for="name">Nama Komoditas</label>
+                            <span class="helper-text" data-error="Text too long"></span>
                         </div>
                         <div class="input-field col s12 m6">
                             <input id="slogan" name="slogan" type="text" class="validate" data-length="64">
                             <label for="slogan">Slogan</label>
+                            <span class="helper-text" data-error="Text too long"></span>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="description1" name="description1" class="materialize-textarea" data-length="512"></textarea>
+                            <textarea id="description1" name="description1" class="materialize-textarea validate" data-length="512"></textarea>
                             <label for="description1">Deskripsi 1</label>
+                            <span class="helper-text" data-error="Text too long"></span>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="description2" name="description2" class="materialize-textarea" data-length="512"></textarea>
+                            <textarea id="description2" name="description2" class="materialize-textarea validate" data-length="512"></textarea>
                             <label for="description2">Deskripsi 2</label>
+                            <span class="helper-text" data-error="Text too long"></span>
                         </div>
                     </div>
                 </div>
