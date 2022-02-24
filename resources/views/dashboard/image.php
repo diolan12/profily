@@ -10,7 +10,6 @@
                             <a href="#modal-upload" class="modal-trigger btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">upload</i></a>
                         </div>
                         <div class="card-content row">
-                            <!-- <span class="card-title"><strong>Ubah Testimoni</strong></span> -->
 
                             <div class="input-field col s12 center">
                                 <div class="switch">
