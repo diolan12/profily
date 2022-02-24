@@ -23,7 +23,7 @@ class RestDeleteController extends RestController
 
             if ($request->has('file')) {
                 $fileRow = $request->input('file');
-                $isDeleted = unlink(project_path('public' . $entity->$fileRow));
+                $isDeleted = unlink(project_path(public_path . $entity->$fileRow));
             }
 
             if ($request->has('force')) {
