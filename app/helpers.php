@@ -150,6 +150,21 @@ if (!function_exists('config_parser')) {
     }
 }
 
+if (!function_exists('isProtectedResource')) {
+    function isProtectedResource(string $name)
+    {
+        $protected = [
+            asset('img/parallax-shipping.jpg'),
+            asset('img/default-avatar.png'),
+            asset('img/no-image-icon.png'),
+            asset('img/roast-level.jpg'),
+            asset('img/founders.jpeg'),
+            asset('img/banner.jpg')
+        ];
+        return in_array($name, $protected);
+    }
+}
+
 if (!function_exists('color')) {
     function color($colorConfig, bool $forText = false, bool $text = true, bool $hex = false)
     {
