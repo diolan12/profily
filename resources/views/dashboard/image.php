@@ -32,11 +32,12 @@
                             </div>
                         </div>
                         <div class="card-action right-align">
-
-                            <a id="delete" class="btn-flat waves-effect waves-light red-text">
-                                Hapus
-                                <i class="material-icons left">delete</i>
-                            </a>
+                            <?php if (!isProtectedResource($data->image->file)) : ?>
+                                <a id="delete" class="btn-flat waves-effect waves-light red-text">
+                                    Hapus
+                                    <i class="material-icons left">delete</i>
+                                </a>
+                            <?php endif; ?>
                             <button type="submit" class="btn-flat waves-effect waves-light <?= color($config->color->accent, true) ?>" name="action">
                                 Simpan
                                 <i class="material-icons left">save_as</i>
