@@ -46,8 +46,9 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="name" name="name" type="text" class="validate">
+                            <input id="name" name="name" type="text" class="validate" data-length="32">
                             <label for="name">Nama Produk</label>
+                            <span class="helper-text" data-error="Text too long"></span>
                         </div>
                         <div class="input-field col s12">
                             <select id="commodity" onchange="changed('commodity')" name="commodity">
@@ -67,8 +68,9 @@
                             <label>Jenis</label>
                         </div>
                         <div class="input-field col s12">
-                            <textarea id="description" name="description" class="materialize-textarea"></textarea>
+                            <textarea id="description" name="description" class="materialize-textarea validate" data-length="512"></textarea>
                             <label for="description">Deskripsi</label>
+                            <span class="helper-text" data-error="Text too long"></span>
                         </div>
                     </div>
                 </div>
