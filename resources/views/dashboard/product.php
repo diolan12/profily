@@ -59,14 +59,12 @@
                                         $default = '';
                                         if ($data->product->commodity == null) {
                                             $default = 'selected';
-                                        } else {
-                                            $selected = 'selected';
                                         }
                                         ?>
                                         <option value="" disabled <?= $default ?>>Pilih komoditas</option>
                                         <?php foreach ($data->commodities as $commodity) : ?>
                                             <?php if (count($commodity->types) != 0) : ?>
-                                                <option <?= $selected ?> value="<?= $commodity->id ?>"><?= $commodity->name ?></option>
+                                                <option <?php if ($commodity->id == $data->product->commodity->id) echo 'selected' ?> value="<?= $commodity->id ?>"><?= $commodity->name ?></option>
                                             <?php endif; ?>
                                         <?php endforeach; ?>
                                     </select>
@@ -77,8 +75,6 @@
                                     $default = '';
                                     if ($data->product->type == null) {
                                         $default = 'selected';
-                                    } else {
-                                        $selected = 'selected';
                                     }
                                     ?>
                                     <select id="type" onchange="changedType('type')" name="type">
@@ -87,7 +83,7 @@
                                             <?php if ($data->product->commodity != null) : ?>
                                                 <?php if ($data->product->commodity->id == $commodity->id) : ?>
                                                     <?php foreach ($commodity->types as $type) : ?>
-                                                        <option value="<?= $type->id ?>" <?= $selected ?>><?= $type->name ?></option>
+                                                        <option <?php if ($type->id == $data->product->type->id) echo 'selected' ?> value="<?= $type->id ?>"><?= $type->name ?></option>
                                                     <?php endforeach; ?>
                                                 <?php endif; ?>
                                             <?php endif; ?>
