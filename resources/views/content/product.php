@@ -1,6 +1,6 @@
 <div class="container">
 
-    <div class="" itemtype="<?= url('product') ?>" itemscope>
+    <div itemscope itemtype="http://schema.org/Product">
 
         <meta itemprop="name" content="<?= $data->product->name ?>" />
         <link itemprop="image" href="<?= $data->product->image->file ?>" />
