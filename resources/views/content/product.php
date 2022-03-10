@@ -1,4 +1,12 @@
 <div class="container">
+
+    <div class="" itemtype="<?= url('product') ?>" itemscope>
+
+        <meta itemprop="name" content="<?= $data->product->name ?>" />
+        <link itemprop="image" href="<?= $data->product->image->file ?>" />
+        <meta itemprop="description" content="<?= $data->product->description ?>" />
+
+    </div>
     <div class="section">
 
         <!--   Icon Section   -->
