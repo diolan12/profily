@@ -121,7 +121,8 @@ class Main extends BaseViewController
             'image' => url($ogs->image->file),
             'image:secure_url' => url($ogs->image->file),
             'image:alt' => kebab_to_beauty($productName),
-            'title' => kebab_to_beauty($productName)
+            'title' => kebab_to_beauty($productName),
+            'description' => $ogs->description
         ];
 
         return $this->bootstrap();
@@ -160,7 +161,8 @@ class Main extends BaseViewController
             'image' => url($ogs->image->file),
             'image:secure_url' => url($ogs->image->file),
             'image:alt' => kebab_to_beauty($commodity),
-            'title' => kebab_to_beauty($commodity)
+            'title' => kebab_to_beauty($commodity),
+            'description' => $ogs->description
         ];
 
         return $this->bootstrap();
