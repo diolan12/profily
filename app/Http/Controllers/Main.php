@@ -55,7 +55,7 @@ class Main extends BaseViewController
     public function product(Request $request)
     {
         $this->load(['product', 'commodity']);
-        $this->extra['meta']['title'] = 'Products';
+        $this->extra['meta']['title'] = 'Our Products';
 
         $this->extra['nav']['active'] = 'product';
         $this->extra['content']['main'] = 'content.products';
@@ -140,7 +140,7 @@ class Main extends BaseViewController
             // abort(404, "Commodity " . kebab_to_beauty($commodity) . " not found");
             return redirect(root('product'));
         }
-        $this->extra['meta']['title'] = 'Commodity ' . kebab_to_beauty($commodity);
+        $this->extra['meta']['title'] = kebab_to_beauty($commodity);
         $this->extra['meta']['description'] = $this->data['commodity']['description1'];
 
         $page = (int) $request->input('page', 1);
