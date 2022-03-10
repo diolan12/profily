@@ -16,7 +16,7 @@
 
                             <div class="card medium">
                                 <div class="card-image">
-                                    <img src="<?= $commodity->image->file ?>" class="materialboxed" data-caption="<?= $commodity->name ?>">
+                                    <img src="<?= $commodity->image->file ?>" data-caption="<?= $commodity->name ?>">
                                 </div>
                                 <div class="card-content">
                                     <span class="card-title"><?= $commodity->name ?></span>
