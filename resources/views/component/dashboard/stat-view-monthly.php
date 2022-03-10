@@ -27,15 +27,17 @@ foreach ($dates as $key => $value) {
 $productsLabel = [];
 $products = [];
 foreach ($data->views_month as $view) {
-    if (!in_array($view->product->name, $productsLabel)) {
-        $productsLabel[] = $view->product->name;
-        $products[] = [
-            'label' => $view->product->name,
-            'records' => [$view]
-        ];
-    } else {
-        $productIndex = array_search($view->product->name, $productsLabel);
-        $products[$productIndex]['records'][] = $view;
+    if ($view->product != null) {
+        if (!in_array($view->product->name, $productsLabel)) {
+            $productsLabel[] = $view->product->name;
+            $products[] = [
+                'label' => $view->product->name,
+                'records' => [$view]
+            ];
+        } else {
+            $productIndex = array_search($view->product->name, $productsLabel);
+            $products[$productIndex]['records'][] = $view;
+        }
     }
 }
 foreach ($products as $index => $product) {
@@ -59,7 +61,7 @@ foreach ($products as $index => $product) {
 <div class="card">
     <div class="card-content">
         <span class="card-title">Products views on <?= Carbon::now()->monthName ?></span>
-        <canvas id="view_month" width="400" height="350"></canvas>
+        <canvas id="view_month" width="400" height="300"></canvas>
     </div>
 </div>
 <script>
