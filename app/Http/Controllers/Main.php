@@ -162,7 +162,7 @@ class Main extends BaseViewController
             'image:secure_url' => url($ogs->image->file),
             'image:alt' => kebab_to_beauty($commodity),
             'title' => kebab_to_beauty($commodity),
-            'description' => $ogs->description
+            'description' => $ogs->description1
         ];
 
         return $this->bootstrap();
