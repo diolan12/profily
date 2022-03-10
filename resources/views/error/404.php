@@ -30,7 +30,7 @@
                         <p>Please try again later</p>
                     </div>
                     <div class="card-action right-align">
-                        <a href="<?= root() ?>" class="<?= color($config->color['accent'], true) ?> waves-effect btn-flat">Take me back</a>
+                        <a href="<?= root() ?>" class="<?= color($config->color['accent'], true) ?> waves-effect btn-flat">Take me home</a>
                     </div>
                 </div>
             </div>
