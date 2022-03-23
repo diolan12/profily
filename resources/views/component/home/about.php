@@ -9,7 +9,7 @@
                     <h4 class="font-recursive"><?= $config->brand->about->val1 ?></h4>
                     <p class="justify flow-text font-recursive"><?= $config->brand->about->val2 ?></p>
                 </div>
-                <div class="col s12 m6 float row">
+                <div class="col s12 m6 row">
                     <div class="col s12 m12 xl6" data-aos="fade-up" data-aos-delay="150">
                         <div class="card">
                             <div class="card-content">
