@@ -1,16 +1,4 @@
 <div id="testimony" class="scrollspy">
-    <div class="parallax-container valign-wrapper">
-        <div class="section no-pad-bot">
-            <div class="container">
-                <div class="row center">
-                    <h5 class="col s12 light white-text"></h5>
-                </div>
-            </div>
-        </div>
-        <div class="parallax">
-            <img src="<?= asset('img/' . $config->parallax->founder->val1) ?>" alt="<?= $config->parallax->product->val1 ?>">
-        </div>
-    </div>
 
     <div class="container">
         <div class="section">
