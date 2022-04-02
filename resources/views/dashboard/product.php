@@ -251,7 +251,7 @@
                 specification: this.currentSpecificationID,
                 value: $('#subvalue').val()
             }
-            app.http.post("<?= root('api/subspecification') ?>", data, (response, code) => {
+            app.http.post("<?= root('api/sub-specification') ?>", data, (response, code) => {
                 app.toast('Sub spesifikasi berhasil dibuat').next()
                 app.reload()
             }, () => {
@@ -276,7 +276,7 @@
 
         function delSubSpec(id) {
             if (confirm('Are you sure you want to delete this sub specification?')) {
-                app.http.delete("<?= root('api/subspecification/') ?>" + id, (response, code) => {
+                app.http.delete("<?= root('api/sub-specification/') ?>" + id, (response, code) => {
                     app.toast('Sub spesifikasi berhasil dihapus').next()
                     app.reload()
 
