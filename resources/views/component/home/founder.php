@@ -11,9 +11,9 @@
                 <?php $delay = 0;
                 foreach ($data->founders as $founder) : ?>
 
-                    <div class="col s12 m4 l3" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
-                        <div class="card">
-                            <img class="responsive-img circle" src="<?= $founder->avatar ?>">
+                    <div class="col s12 m4 xl3" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
+                        <div class="card center">
+                            <img class="responsive-img circle" width="500px" src="<?= $founder->avatar ?>">
                             <div class="card-content center">
                                 <span class="card-title font-recursive"><?= $founder->name ?>
                                 </span>
@@ -21,16 +21,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m4 l3 hide" data-aos="fade-up" data-aos-delay="<?= $delay ?>">
-                        <div class="card">
-                            <div class="card-image">
-                                <img src="<?= $founder->avatar ?>">
-                                <span class="card-title"><?= $founder->name ?>
-                                    <!-- <?= $founder->position ?> -->
-                                </span>
-                            </div>
-                        </div>
-                    </div>
+
                 <?php $delay += 100;
                 endforeach; ?>
 
