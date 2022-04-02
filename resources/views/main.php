@@ -20,6 +20,14 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <style>
+        .slider .indicators .indicator-item {
+            background-color: <?= color($config->color->accent, false, false, true) ?> !important;
+        }
+
+        .slider .indicators .indicator-item.active {
+            background-color: <?= color($config->color->secondary, false, false, true) ?> !important;
+        }
+
         blockquote {
             border-left: 5px solid <?= color($config->color->accent, false, false, true) ?> !important;
         }
