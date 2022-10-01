@@ -113,7 +113,7 @@ class Init extends Seeder
             'type' => 'brand',
             'val1' => 'Permata Agrindo',
             'val2' => 'Best exporter in the world and promote Indonesian agriculture',
-            'val3' => 'PT Permata Agrindo',
+            'val3' => 'PT Suksesindo Digital Filantropi',
             'val4' => 'Banyuwangi, East Java, Indonesia',
             'created_at' => Carbon::now('UTC')
         ]);
